@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudyAbroad – University Search</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- HAMBURGER CHECKBOX -->
+<input type="checkbox" id="menu-toggle" class="menu-toggle-input" />
+
+<!-- ═══════════════════════════════
+     SIDEBAR
+═══════════════════════════════ -->
+<aside class="sidebar">
+  <label for="menu-toggle" class="sidebar-close">✕</label>
+  <div class="logo">
+    <div class="logo-icon">
+      <img src="https://image2url.com/r2/default/images/1773934477074-697d0b36-7fd9-46f7-80d6-bfc7dee5106f.png" />
+    </div>
+    <div class="logo-text">
+      <h2>StudyAbroad</h2>
+      <p>Your Global Edu Hub</p>
+    </div>
+  </div>
+
+  <div class="nav-label">NAVIGATION</div>
+
+  <a href="#" class="nav-item">
+    <span class="icon"><img src="https://cdn.phototourl.com/uploads/2026-03-19-946eb2dd-3b5f-48d6-80d0-7fa75c934061.png"/></span> Dashboard
+  </a>
+  <a href="#" class="nav-item ">
+    <span class="icon"><img src="https://image2url.com/r2/default/images/1773934654644-c697cf14-d089-4158-8b1e-a81d02e3512b.png"/></span> Universities
+    <span class="arrow">›</span>
+  </a>
+  <a href="scholar.html" class="nav-item">
+    <span class="icon"><img src="https://cdn.phototourl.com/uploads/2026-03-19-e2ba4eb4-5953-46a4-8659-2ac3887cd3df.png"></span> Scholarships
+  </a>
+  <a href="#" class="nav-item">
+    <span class="icon"><img src="https://cdn.phototourl.com/uploads/2026-03-19-f01d02ea-68ce-41d6-9895-bf00d441df27.png"/></span> Exams
+  </a>
+  <a href="#" class="nav-item">
+    <span class="icon"><img src="https://cdn.phototourl.com/uploads/2026-03-19-e3bb6416-7202-4d9e-85d2-c9cf57c5ac3b.png"></span> Application Guide
+  </a>
+
+  <button class="sign-in-btn"><img src="https://cdn.phototourl.com/uploads/2026-03-19-0b03ad2c-7d16-42bd-ad0c-d29f30b80658.png"/> Sign In</button>
+</aside>
+
+<!-- ═══════════════════════════════
+     MAIN AREA
+═══════════════════════════════ -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <label for="menu-toggle" class="hamburger-btn">☰</label>
+      <img src="https://cdn.phototourl.com/uploads/2026-03-19-ade37faf-97c0-4cdf-a379-aedeae1b38e1.png" class="globe-icon"/> <span>Study Abroad Hub 2026</span>
+    </div>
+    <div class="topbar-right">
+      <div class="notif-btn"><img src="https://image2url.com/r2/default/images/1773934572626-a0776666-b2e6-40a3-b061-1989071133b1.png" width="16", height="16"/><span class="notif-dot"></span></div>
+      <button class="signin-top-btn">Sign In</button>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <h1 class="page-title">University Search</h1>
+    <p class="page-subtitle">Explore 8 universities across the globe</p>
+
+    <!-- SEARCH BAR -->
+    <div class="search-row">
+      <div class="search-wrap">
+        <span class="search-icon"><img src="https://image2url.com/r2/default/images/1773934654644-c697cf14-d089-4158-8b1e-a81d02e3512b.png" width="16", height="16"/></span>
+        <input type="text" placeholder="Search by university name, country, or city..." />
+      </div>
+      <button class="filter-btn"><img src="https://cdn.phototourl.com/uploads/2026-03-19-86bb8894-8a19-4ca5-a43f-8b3c111692f4.png"/> Filters</button>
+    </div>
+
+    <p class="results-count"><strong>8</strong> universities found</p>
+
+    <!-- ═══════════════════════════════
+         UNIVERSITY CARDS
+    ═══════════════════════════════ -->
+    <div class="cards-grid">
+
+      <!-- MIT -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="https://cdn.phototourl.com/uploads/2026-03-19-cf7bf6ff-af79-4c66-a2ef-90b39705b114.jpg" alt="MIT"/>
+          <div class="card-badge"><span class="star"><img src="star.png"/></span> #1 Global</div>
+          <span class="type-badge">Private</span>
+          <button class="heart-btn">
+            <div class="heart-img-wrap"><img src="https://cdn.phototourl.com/uploads/2026-03-19-b03cd7d2-94ce-4f03-bc03-010ada9589a6.png"></>
+
+            </div>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="card-uni-row">
+            <div class="card-uni-icon"><img src="https://image2url.com/r2/default/images/1773934477074-697d0b36-7fd9-46f7-80d6-bfc7dee5106f.png"/></div>
+            <div class="card-uni-info">
+              <h3>Massachusetts Institute of Technology</h3>
+              <div class="card-uni-loc"><img src="https://cdn.phototourl.com/uploads/2026-03-19-579bf55c-91f1-4add-9093-902047d1f68f.png" width="16", height="15"/> Cambridge, MA, USA</div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag stem">STEM</span>
+            <span class="tag res">Research</span>
+            <span class="tag ivy">Ivy League</span>
+          </div>
+          
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-left"><div>Tuition</div><div class="val">$57,590</div></div>
+          <div class="card-footer-right"><div>Deadline</div><div class="val">Jan 1, 2026</div></div>
+        </div>
+      </div>
+
+      <!-- Oxford -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="https://image2url.com/r2/default/images/1773932499989-8397fe70-a123-4028-abc5-dce68e2882ab.png" alt="Oxford"/>
+          <div class="card-badge"><span class="star"><img src="star.png"/></span> #2 Global</div>
+          <span class="type-badge">Public</span>
+          <button class="heart-btn">
+            <div class="heart-img-wrap"><img src="https://cdn.phototourl.com/uploads/2026-03-19-b03cd7d2-94ce-4f03-bc03-010ada9589a6.png"/></div>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="card-uni-row">
+            <div class="card-uni-icon"><img src="https://image2url.com/r2/default/images/1773934477074-697d0b36-7fd9-46f7-80d6-bfc7dee5106f.png"/></div>
+            <div class="card-uni-info">
+              <h3>University of Oxford</h3>
+              <div class="card-uni-loc"><img src="https://cdn.phototourl.com/uploads/2026-03-19-579bf55c-91f1-4add-9093-902047d1f68f.png" width="16" height="15"/> Oxford, UK</div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag res">Research</span>
+            <span class="tag hum">Humanities</span>
+            <span class="tag his">Historic</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-left"><div>Tuition</div><div class="val">£9,250</div></div>
+          <div class="card-footer-right"><div>Deadline</div><div class="val">Oct 15, 2025</div></div>
+        </div>
+      </div>
+
+      <!-- ETH Zurich -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/ETH_Zurich_main_building.jpg/800px-ETH_Zurich_main_building.jpg" alt="ETH Zurich"/>
+          <div class="card-badge"><span class="star"><img src="star.png"/></span> #7 Global</div>
+          <span class="type-badge">Public</span>
+          <button class="heart-btn">
+            <div class="heart-img-wrap"><img src="https://cdn.phototourl.com/uploads/2026-03-19-b03cd7d2-94ce-4f03-bc03-010ada9589a6.png"/></div>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="card-uni-row">
+            <div class="card-uni-icon"><img src="https://image2url.com/r2/default/images/1773934477074-697d0b36-7fd9-46f7-80d6-bfc7dee5106f.png"/></div>
+            <div class="card-uni-info">
+              <h3>ETH Zurich</h3>
+              <div class="card-uni-loc"><img src="https://cdn.phototourl.com/uploads/2026-03-19-579bf55c-91f1-4add-9093-902047d1f68f.png" width="16" height="15"/> Zurich, Switzerland</div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag stem">STEM</span>
+            <span class="tag lt">Low Tuition</span>
+            <span class="tag eu">Europe</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-left"><div>Tuition</div><div class="val">CHF 730</div></div>
+          <div class="card-footer-right"><div>Deadline</div><div class="val">Apr 15, 2026</div></div>
+        </div>
+      </div>
+      <!-- National University of Singapore -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="nus.jpg" alt="NUS"/>
+          <div class="card-badge"><span class="star"><img src="star.png"/></span> #8 Global</div>
+          <span class="type-badge">Public</span>
+          <button class="heart-btn">
+            <div class="heart-img-wrap"><img src="https://cdn.phototourl.com/uploads/2026-03-19-b03cd7d2-94ce-4f03-bc03-010ada9589a6.png"/></div>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="card-uni-row">
+            <div class="card-uni-icon"><img src="https://image2url.com/r2/default/images/1773934477074-697d0b36-7fd9-46f7-80d6-bfc7dee5106f.png"/></div>
+            <div class="card-uni-info">
+              <h3>National University of Singapore</h3>
+              <div class="card-uni-loc"><img src="https://cdn.phototourl.com/uploads/2026-03-19-579bf55c-91f1-4add-9093-902047d1f68f.png" width="16" height="15"/> Singapore, Singapore</div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag asia">Asia</span>
+            <span class="tag bus">Business</span>
+            <span class="tag tech">Tech</span>
+            <span class="tag schol">🎗️ Scholarships</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-left"><div>Tuition</div><div class="val">S$17,550/year</div></div>
+          <div class="card-footer-right"><div>Deadline</div><div class="val">Mar 1, 2026</div></div>
+        </div>
+      </div>
+
+      <!-- Peking University -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="pku.jpg" alt="Peking University"/>
+          <div class="card-badge"><span class="star"><img src="star.png"/></span> #17 Global</div>
+          <span class="type-badge">Public</span>
+          <button class="heart-btn">
+            <div class="heart-img-wrap"><img src="https://cdn.phototourl.com/uploads/2026-03-19-b03cd7d2-94ce-4f03-bc03-010ada9589a6.png"/></div>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="card-uni-row">
+            <div class="card-uni-icon"><img src="https://image2url.com/r2/default/images/1773934477074-697d0b36-7fd9-46f7-80d6-bfc7dee5106f.png"/></div>
+            <div class="card-uni-info">
+              <h3>Peking University</h3>
+              <div class="card-uni-loc"><img src="https://cdn.phototourl.com/uploads/2026-03-19-579bf55c-91f1-4add-9093-902047d1f68f.png" width="16" height="15"/> Beijing, China</div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag asia">Asia</span>
+            <span class="tag lt">Low Tuition</span>
+            <span class="tag res">Research</span>
+            <span class="tag schol">🎗️ Scholarships</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-left"><div>Tuition</div><div class="val">¥26,000/year</div></div>
+          <div class="card-footer-right"><div>Deadline</div><div class="val">May 31, 2025</div></div>
+        </div>
+      </div>
+
+      <!-- University of Tokyo -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="tokyo.jpg" alt="University of Tokyo"/>
+          <div class="card-badge"><span class="star"><img src="star.png"/></span> #28 Global</div>
+          <span class="type-badge">Public</span>
+          <button class="heart-btn">
+            <div class="heart-img-wrap"><img src="https://cdn.phototourl.com/uploads/2026-03-19-b03cd7d2-94ce-4f03-bc03-010ada9589a6.png"/></div>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="card-uni-row">
+            <div class="card-uni-icon"><img src="https://image2url.com/r2/default/images/1773934477074-697d0b36-7fd9-46f7-80d6-bfc7dee5106f.png"/></div>
+            <div class="card-uni-info">
+              <h3>University of Tokyo</h3>
+              <div class="card-uni-loc"><img src="https://cdn.phototourl.com/uploads/2026-03-19-579bf55c-91f1-4add-9093-902047d1f68f.png" width="16" height="15"/> Tokyo, Japan</div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag res">Research</span>
+            <span class="tag stem">STEM</span>
+            <span class="tag lt">Low Tuition</span>
+            <span class="tag schol">🎗️ Scholarships</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-left"><div>Tuition</div><div class="val">¥535,800/year</div></div>
+          <div class="card-footer-right"><div>Deadline</div><div class="val">Dec 1, 2025</div></div>
+        </div>
+      </div>
+
+      <!-- University of Melbourne -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="melbourne.jpg" alt="University of Melbourne"/>
+          <div class="card-badge"><span class="star"><img src="star.png"/></span> #33 Global</div>
+          <span class="type-badge">Public</span>
+          <button class="heart-btn">
+            <div class="heart-img-wrap"><img src="https://cdn.phototourl.com/uploads/2026-03-19-b03cd7d2-94ce-4f03-bc03-010ada9589a6.png"/></div>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="card-uni-row">
+            <div class="card-uni-icon"><img src="https://image2url.com/r2/default/images/1773934477074-697d0b36-7fd9-46f7-80d6-bfc7dee5106f.png"/></div>
+            <div class="card-uni-info">
+              <h3>University of Melbourne</h3>
+              <div class="card-uni-loc"><img src="https://cdn.phototourl.com/uploads/2026-03-19-579bf55c-91f1-4add-9093-902047d1f68f.png" width="16" height="15"/> Melbourne, Australia</div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag eng">English</span>
+            <span class="tag res">Research</span>
+            <span class="tag pac">Pacific</span>
+            <span class="tag schol">🎗️ Scholarships</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-left"><div>Tuition</div><div class="val">A$43,000/year</div></div>
+          <div class="card-footer-right"><div>Deadline</div><div class="val">Oct 31, 2025</div></div>
+        </div>
+      </div>
+
+      <!-- Seoul National University -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="snu.jpg" alt="Seoul National University"/>
+          <div class="card-badge"><span class="star"><img src="star.png"/></span> #41 Global</div>
+          <span class="type-badge">Public</span>
+          <button class="heart-btn">
+            <div class="heart-img-wrap"><img src="https://cdn.phototourl.com/uploads/2026-03-19-b03cd7d2-94ce-4f03-bc03-010ada9589a6.png"/></div>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="card-uni-row">
+            <div class="card-uni-icon"><img src="https://image2url.com/r2/default/images/1773934477074-697d0b36-7fd9-46f7-80d6-bfc7dee5106f.png"/></div>
+            <div class="card-uni-info">
+              <h3>Seoul National University</h3>
+              <div class="card-uni-loc"><img src="https://cdn.phototourl.com/uploads/2026-03-19-579bf55c-91f1-4add-9093-902047d1f68f.png" width="16" height="15"/> Seoul, South Korea</div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag asia">Asia</span>
+            <span class="tag lt">Low Tuition</span>
+            <span class="tag res">Research</span>
+            <span class="tag schol">🎗️ Scholarships</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-left"><div>Tuition</div><div class="val">₩4,200,000/year</div></div>
+          <div class="card-footer-right"><div>Deadline</div><div class="val">Sep 15, 2025</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
