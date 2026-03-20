@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Нэвтрэх / Бүртгүүлэх — StudyAbroadHub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+  <div class="bg-blob-1" aria-hidden="true"></div>
+  <div class="bg-blob-2" aria-hidden="true"></div>
+
+  <div class="auth-wrapper">
+
+    <!-- ЛОГО -->
+    <a href="index.html" class="auth-logo">
+      <div class="auth-logo-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+        </svg>
+      </div>
+      <span class="auth-logo-text">StudyAbroad<span>Hub</span></span>
+    </a>
+
+    <!-- КАРТ -->
+    <div class="auth-card">
+
+      <!-- ТАБУУД -->
+      <div class="auth-tabs" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true"  onclick="switchTab('login')" >Нэвтрэх</button>
+        <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('register')">Бүртгүүлэх</button>
+      </div>
+
+      <!-- НЭВТРЭХ ХЭСЭГ -->
+      <div class="auth-panel active" id="panel-login" role="tabpanel">
+        <h1 class="auth-heading">Тавтай морил!</h1>
+        <p class="auth-subheading">Үргэлжлүүлэхийн тулд бүртгэлдээ нэвтэрнэ үү.</p>
+
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="login-email">И-мэйл хаяг</label>
+            <input class="form-input" id="login-email" type="email" placeholder="ta@example.com" autocomplete="email" />
+            <span class="form-error" id="login-email-err"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-meta">
+              <a href="#" class="forgot-link">Нууц үгээ мартсан уу?</a>
+            </div>
+            <label class="form-label" for="login-password">Нууц үг</label>
+            <input class="form-input" id="login-password" type="password" placeholder="••••••••" autocomplete="current-password" />
+            <span class="form-error" id="login-password-err"></span>
+          </div>
+
+          <button type="submit" class="btn-submit" id="login-btn">Нэвтрэх</button>
+        </form>
+
+        <div class="divider">эсвэл</div>
+
+        <div class="social-btns">
+          <button class="btn-social" type="button">
+            <!-- Google icon -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.83z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.83c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+            </svg>
+            Google
+          </button>
+          <button class="btn-social" type="button">
+            <!-- Generic mail icon for email SSO -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2 7l10 7 10-7"/>
+            </svg>
+            И-мэйл SSO
+          </button>
+        </div>
+      </div>
+
+      <!-- БҮРТГҮҮЛЭХ ХЭСЭГ -->
+      <div class="auth-panel" id="panel-register" role="tabpanel">
+        <h1 class="auth-heading">Бүртгэл үүсгэх</h1>
+        <p class="auth-subheading">Мөрөөдлийн их сургуулиа олоход туслах дансаа нээгээрэй.</p>
+
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="reg-firstname">Нэр</label>
+              <input class="form-input" id="reg-firstname" type="text" placeholder="Болд" autocomplete="given-name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-lastname">Овог</label>
+              <input class="form-input" id="reg-lastname" type="text" placeholder="Баяр" autocomplete="family-name" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-email">И-мэйл хаяг</label>
+            <input class="form-input" id="reg-email" type="email" placeholder="ta@example.com" autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Нууц үг</label>
+            <input class="form-input" id="reg-password" type="password" placeholder="8+ тэмдэгт" autocomplete="new-password" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-grade">Анги</label>
+            <select class="form-input" id="reg-grade">
+              <option value="" disabled selected>Ангиа сонгоно уу</option>
+              <option>10-р анги</option>
+              <option>11-р анги</option>
+              <option>12-р анги</option>
+              <option>Төгссөн</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-submit" id="register-btn">Бүртгэл үүсгэх</button>
+        </form>
+
+        <p class="terms-note">
+          Бүртгүүлснээр та манай
+          <a href="#">Үйлчилгээний нөхцөл</a> болон
+          <a href="#">Нууцлалын бодлого</a>-г зөвшөөрч байна.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- БУЦАХ ХОЛБООС -->
+    <a href="index.html" class="back-link">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+      </svg>
+      Нүүр хуудас руу буцах
+    </a>
+
+  </div>
+
+  <script>
+    /* ── TAB SWITCH ── */
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+        const isActive = (i === 0 && tab === 'login') || (i === 1 && tab === 'register');
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive);
+      });
+      document.querySelectorAll('.auth-panel').forEach(panel => {
+        panel.classList.toggle('active', panel.id === 'panel-' + tab);
+      });
+    }
+
+    /* ── HELPERS ── */
+    function showError(id, msg) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = msg;
+    }
+    function clearErrors(...ids) {
+      ids.forEach(id => { const el = document.getElementById(id); if (el) el.textContent = ''; });
+    }
+    function setLoading(btn, loading) {
+      btn.disabled = loading;
+      btn.textContent = loading ? 'Уншиж байна...' : btn.dataset.label;
+    }
+
+    /* ── LOGIN ── */
+    const loginForm = document.getElementById('login-form');
+    const loginBtn  = document.getElementById('login-btn');
+    loginBtn.dataset.label = loginBtn.textContent;
+
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      clearErrors('login-email-err', 'login-password-err');
+
+      const email    = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value;
+      let valid = true;
+
+      if (!email) {
+        showError('login-email-err', 'И-мэйл хаягаа оруулна уу.');
+        valid = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError('login-email-err', 'Зөв и-мэйл хаяг оруулна уу.');
+        valid = false;
+      }
+
+      if (!password) {
+        showError('login-password-err', 'Нууц үгээ оруулна уу.');
+        valid = false;
+      } else if (password.length < 6) {
+        showError('login-password-err', 'Нууц үг хамгийн багадаа 6 тэмдэгт байх ёстой.');
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      setLoading(loginBtn, true);
+      setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+    });
+
+    /* ── REGISTER ── */
+    const registerForm = document.getElementById('panel-register').querySelector('form');
+    const registerBtn  = document.getElementById('register-btn');
+    registerBtn.dataset.label = registerBtn.textContent;
+
+    registerForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const firstname = document.getElementById('reg-firstname').value.trim();
+      const lastname  = document.getElementById('reg-lastname').value.trim();
+      const email     = document.getElementById('reg-email').value.trim();
+      const password  = document.getElementById('reg-password').value;
+      const grade     = document.getElementById('reg-grade').value;
+
+      if (!firstname || !lastname || !email || !password || !grade) {
+        alert('Бүх талбарыг бөглөнө үү.');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert('Зөв и-мэйл хаяг оруулна уу.');
+        return;
+      }
+      if (password.length < 8) {
+        alert('Нууц үг хамгийн багадаа 8 тэмдэгт байх ёстой.');
+        return;
+      }
+
+      setLoading(registerBtn, true);
+      setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+    });
+
+    /* ── SOCIAL BUTTONS ── */
+    document.querySelectorAll('.btn-social').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.location.href = 'dashboard.html';
+      });
+    });
+  </script>
+
+</body>
+</html>
