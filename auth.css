@@ -28,7 +28,7 @@
   --shadow:       0 4px 16px rgba(0,0,0,.08);
   --shadow-lg:    0 8px 32px rgba(0,0,0,.14);
 }
-
+ 
 body {
   font-family: var(--font);
   color: var(--slate-700);
