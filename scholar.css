@@ -68,7 +68,7 @@ body {
 .logo-icon {
   width: 40px;
   height: 40px;
-  background: var(--purple);
+  background: linear-gradient(135deg, #818cf8, #a855f7);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -84,6 +84,8 @@ body {
 }
 
 .logo-text h2 { font-size: 15px; font-weight: 700; color: var(--text); }
+h2 span{ color : var(--purple)}
+
 .logo-text p  { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
 .nav-label {
@@ -117,6 +119,48 @@ body {
 .nav-item:hover        { background: var(--purple-light); color: var(--purple); }
 .nav-item .icon        { font-size: 16px; width: 20px; text-align: center; }
 .nav-item .arrow       { margin-left: auto; font-size: 12px; }
+
+
+/* ── SIDEBAR FOOTER ── */
+.sidebar-footer {
+  margin-top: 200px;
+  padding: 16px;
+  border-top: 1px solid var(--slate-100);
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: var(--radius);
+  background: var(--slate-50);
+}
+
+.user-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #818cf8, #a855f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: .85rem;
+  flex-shrink: 0;
+}
+
+.user-name {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--slate-700);
+}
+
+.user-role {
+  font-size: .7rem;
+  color: var(--slate-400);
+}
+
 
 .sign-in-btn {
   margin: auto 16px 0;
