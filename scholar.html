@@ -1,208 +1,282 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>StudyAbroad – Тэтгэлэг Хайгч</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <title>Тэтгэлэг – Next Steps</title>
   <link rel="stylesheet" href="scholar.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<!-- HAMBURGER CHECKBOX -->
-<input type="checkbox" id="menu-toggle" class="menu-toggle-input" />
+<div class="db-shell">
 
-<aside class="sidebar">
-  <label for="menu-toggle" class="sidebar-close">✕</label>
-  <div class="logo">
-    <div class="logo-icon">
-      <img src="https://image2url.com/r2/default/images/1773934477074-697d0b36-7fd9-46f7-80d6-bfc7dee5106f.png" />
+  <aside class="db-sidebar">
+    <div class="db-sidebar__logo-wrap">
+      <div class="db-sidebar__logo-box">
+        <svg class="icon icon-20" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3.33 1.67 6.67 1.67 12 0v-5"/></svg>
+      </div>
+      <span class="db-sidebar__brand">NEXT STEPS</span>
     </div>
-    <div class="logo-text">
-      <h2>StudyAbroad<span>Hub</span></h2>
-        <p>Таны Дэлхийн Боловсролын Төв</p>
-    </div>
-  </div>
-  
-  <div class="nav-label">ҮНДСЭН</div>
 
-  <a href="dashboard.html" class="nav-item">
-      <span class="icon"><img src="https://cdn.phototourl.com/uploads/2026-03-19-946eb2dd-3b5f-48d6-80d0-7fa75c934061.png"/></span> Хянах самбар
-    </a>
-    <a href="uni.html" class="nav-item">
-      <span class="icon"><img src="https://image2url.com/r2/default/images/1773934654644-c697cf14-d089-4158-8b1e-a81d02e3512b.png"/></span> Их Сургуулиуд
-    </a>
-    <a href="#" class="nav-item">
-      <span class="icon"><img src="https://cdn.phototourl.com/uploads/2026-03-19-e2ba4eb4-5953-46a4-8659-2ac3887cd3df.png"></span> Тэтгэлэгүүд
-    <span class="arrow">›</span>
-    </a>
-    <a href="exam-info.html" class="nav-item">
-      <span class="icon"><img src="https://cdn.phototourl.com/uploads/2026-03-19-f01d02ea-68ce-41d6-9895-bf00d441df27.png"/></span> Шалгалтууд
-    </a>
-    <a href="#" class="nav-item">
-      <span class="icon"><img src="https://cdn.phototourl.com/uploads/2026-03-19-e3bb6416-7202-4d9e-85d2-c9cf57c5ac3b.png"></span> Элсэлтийн Гарын Авлага
-    </a>
-    <div class="sidebar-footer">
-      <div class="user-chip">
-        <div class="user-avatar">М</div>
+    <nav class="db-sidebar__nav">
+      <div class="db-sidebar__section">
+        <p class="db-sidebar__section-label">ЦЭС</p>
+        <a href="dashboard.html" class="db-sidebar__item">
+          <svg class="icon icon-18" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Хянах самбар
+        </a>
+        <a href="uni.html" class="db-sidebar__item">
+          <svg class="icon icon-18" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Сургууль хайх
+        </a>
+        <a href="#" class="db-sidebar__item active">
+          <svg class="icon icon-18" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          Тэтгэлгүүд
+        </a>
+        <a href="#" class="db-sidebar__item">
+          <svg class="icon icon-18" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Шалгалтууд
+        </a>
+        <a href="#" class="db-sidebar__item">
+          <svg class="icon icon-18" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Элсэлтийн заавар
+        </a>
+      </div>
+    </nav>
+
+    <div class="db-sidebar__footer">
+      <div class="db-sidebar__user">
+        <div class="db-sidebar__avatar">Б</div>
         <div>
-          <div class="user-name">Мөнхбат</div>
-          <div class="user-role">12-р ангийн сурагч</div>
+          <div class="db-sidebar__user-name">Бат-Эрдэнэ</div>
+          <div class="db-sidebar__user-role">Оюутан</div>
         </div>
       </div>
     </div>
   </aside>
 
-<div class="main">
+  <div class="db-main">
 
-  <!-- TOPBAR -->
-  <header class="topbar">
-    <div class="topbar-left">
-      <label for="menu-toggle" class="hamburger-btn">☰</label>
-      <img src="https://cdn.phototourl.com/uploads/2026-03-19-ade37faf-97c0-4cdf-a379-aedeae1b38e1.png" class="globe-icon"/> <span>Гадаадад Суралцах Төв 2026</span>
-    </div>
-    <div class="topbar-right">
-      <div class="notif-btn"><img src="https://image2url.com/r2/default/images/1773934572626-a0776666-b2e6-40a3-b061-1989071133b1.png" width="16" height="16"/><span class="notif-dot"></span></div>
-    </div>
-  </header>
-    
-  <!-- CONTENT -->
-  <div class="content">
-    <h1 class="page-title">Тэтгэлэг Хайгч</h1>
-    <p class="page-subtitle">Дэлхийн шилдэг их сургуулиудаас 9 тэтгэлгийг нээгээрэй</p>
-
-    <!-- STAT CARDS -->
-    <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-icon purple">
-          <img src="https://cdn.phototourl.com/uploads/2026-03-19-e2ba4eb4-5953-46a4-8659-2ac3887cd3df.png" width="20" height="20" />
-        </div>
-        <div class="stat-info">
-          <span class="stat-number">9</span>
-          <span class="stat-label">Нийт Тэтгэлэг</span>
-        </div>
+    <div class="db-topbar">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span class="font-bold text-xs tracking-widest uppercase">ГАДААДАД СУРАЛЦАХ 2026</span>
       </div>
-
-      <div class="stat-card">
-        <div class="stat-icon green">
-          <img src="https://cdn.phototourl.com/uploads/2026-03-19-ad7536a1-a648-4616-9540-e5b335c8831c.png" width="20" height="20"/>
-        </div>
-        <div class="stat-info">
-          <span class="stat-number">8</span>
-          <span class="stat-label">Бүрэн Санхүүжилт</span>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon blue">
-          <img src="https://cdn.phototourl.com/uploads/2026-03-19-49c28450-54a8-4ba9-bb35-5fb99bd83206.png" width="20" height="20"/>
-        </div>
-        <div class="stat-info">
-          <span class="stat-number">8</span>
-          <span class="stat-label">Улс Орон</span>
-        </div>
+      <div class="db-topbar__actions">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell w-5 h-5 text-[#0A0E27]"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
       </div>
     </div>
 
-    <!-- SEARCH BAR -->
-    <div class="search-row">
-      <div class="search-wrap">
-        <span class="search-icon"><img src="https://image2url.com/r2/default/images/1773934654644-c697cf14-d089-4158-8b1e-a81d02e3512b.png" width="16" height="16"/></span>
-        <input type="text" placeholder="Их сургуулийн нэр, улс орон, хот хайх..." />
+    <div class="db-content">
+      <div class="uni-hero">
+        <h1>Өөрт тохирсон тэтгэлгээ ол</h1>
+        <div class="uni-search-row">
+          <div class="uni-search-wrap">
+            <svg class="icon icon-18" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input class="uni-search-input" type="text" placeholder="Тэтгэлэг, их сургуулиуд, улсаар хайх ..."/>
+          </div>
+          <button class="uni-filter-btn">
+            ШҮҮЛТҮҮР
+          </button>
+        </div>
+
+        <div class="filter-categories">
+          <button class="cat-btn active">СУРЛАГЫН АМЖИЛТ</button>
+          <button class="cat-btn">ХЭРЭГЦЭЭНД СУУРИЛСАН</button>
+          <button class="cat-btn">УЛС ОРНЫ ОНЦЛОГ</button>
+          <button class="cat-btn">ХӨТӨЛБӨРИЙН ОНЦЛОГ</button>
+        </div>
       </div>
-      <button class="filter-btn"><img src="https://cdn.phototourl.com/uploads/2026-03-19-86bb8894-8a19-4ca5-a43f-8b3c111692f4.png"/> Шүүлтүүр</button>
+
+      <div class="scholarship-tabs">
+        <button class="tab-btn">БҮХ ТЭТГЭЛЭГ</button>
+        <button class="tab-btn active">БҮТЭН САНХҮҮЖИЛТ</button>
+        <button class="tab-btn">ХАГАС САНХҮҮЖИЛТ</button>
+      </div>
+
+      <div class="filter-panel" id="filterPanel">
+        <div class="filter-grid">
+          <div class="filter-group">
+            <label>УЛС</label>
+            <select id="regionSelect">
+              <option value="all">Бүгд (All)</option>
+              <option value="usa">АНУ (USA)</option>
+              <option value="uk">Их Британи (UK)</option>
+              <option value="japan">Япон (Japan)</option>
+              <option value="korea">Өмнөд Солонгос</option>
+              <option value="australia">Австрали</option>
+              <option value="china">Хятад</option>
+              <option value="europe">Европ</option>
+              <option value="canada">Канада</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>ШААРДЛАГА</label>
+            <select id="programSelect">
+              <option value="all">Бүгд (All)</option>
+              <option value="engineering">Бүтэн</option>
+              <option value="computer-science">Хагас</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>ДУУСАХ ХУГАЦАА</label>
+            <select id="rankSelect">
+              <option value="ranking">Бакалавр</option>
+              <option value="tuition-low">мастер</option>
+              <option value="tuition-high">магистурант/докторант</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filter-footer">
+          <label class="checkbox-container">
+            <input type="checkbox" id="scholarOnly">
+            <span class="checkmark"></span>
+            ЗӨВХӨН ТЭТГЭЛЭГТЭЙ СУРГУУЛИУД
+          </label>
+          <button class="reset-btn">✕ RESET</button>
+        </div>
+      </div>
+
+      <div class="uni-results-area">
+        <div class="uni-results-header">Нийт 8 тэтгэлэг олдлоо</div>
+        <div class="uni-grid scholarship-grid"> <div class="scholar-card">
+            <div class="scholar-card__header">
+              <div class="scholar-card__logo">UoC</div>
+              <div class="scholar-card__title-wrap">
+                <h3 class="scholar-card__name">Гейтс Кембрижийн Тэтгэлэг</h3>
+                <p class="scholar-card__provider">Кембрижийн Их Сургууль</p>
+              </div>
+              <button class="heart-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+              </button>
+            </div>
+            <div class="scholar-card__funding-box">
+              <span class="funding-label">БҮТЭН САНХҮҮЖИЛТ</span>
+              <div class="funding-type">Бүтэн Тэтгэлэг</div>
+            </div>
+            <div class="scholar-card__tags">
+              <span class="uni-tag">Бүтэн санхүүжилт</span>
+              <span class="uni-tag">Магистр, Доктор</span>
+            </div>
+            <div class="scholar-card__footer">
+              <div class="scholar-card__deadline">
+                <span class="deadline-label">ДУУСАХ ХУГАЦАА</span>
+                <span class="deadline-date">2025 оны 10-р сар 12</span>
+              </div>
+              <button class="apply-btn">БҮРТГҮҮЛЭХ</button>
+            </div>
+          </div>
+
+          <div class="scholar-card">
+            <div class="scholar-card__header">
+              <div class="scholar-card__logo">VJU</div>
+              <div class="scholar-card__title-wrap">
+                <h3 class="scholar-card__name">MEXT Тэтгэлэг</h3>
+                <p class="scholar-card__provider">Японы Засгийн Газрын Тэтгэлэг</p>
+              </div>
+              <button class="heart-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>            
+              </button>
+            </div>
+            <div class="scholar-card__funding-box">
+              <span class="funding-label">БҮТЭН САНХҮҮЖИЛТ</span>
+              <div class="funding-type">Бүтэн Тэтгэлэг</div>
+            </div>
+            <div class="scholar-card__tags">
+              <span class="uni-tag">Бүтэн санхүүжилт</span>
+              <span class="uni-tag">Бакалавр</span>
+            </div>
+            <div class="scholar-card__footer">
+              <div class="scholar-card__deadline">
+                <span class="deadline-label">ДУУСАХ ХУГАЦАА</span>
+                <span class="deadline-date">2025 оны 6-р сар 15</span>
+              </div>
+              <button class="apply-btn">БҮРТГҮҮЛЭХ</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+<!-- SCHOLARSHIP MODAL -->
+<div id="scholModal" class="schol-modal">
+  <div class="schol-modal-overlay"></div>
+  <div class="schol-modal-content">
+    <span class="schol-close-modal">&times;</span>
+
+    <!-- Header – lime -->
+    <div class="schol-modal-header">
+      <div class="schol-modal-logo" id="sm-logo">UoC</div>
+      <div class="schol-modal-header-info">
+        <h2 id="sm-title">Тэтгэлгийн нэр</h2>
+        <p id="sm-provider"></p>
+        <span class="schol-modal-badge" id="sm-funding">БҮТЭН САНХҮҮЖИЛТ</span>
+      </div>
     </div>
 
-    <!-- FILTER CHIPS -->
-    <div class="filter-chips">
-      <span class="chip">Бүх Тэтгэлэг</span>
-      <span class="chip">Бүрэн Санхүүжилт</span>
-      <span class="chip">Хэсэгчилсэн Санхүүжилт</span>
-      <span class="chip">Бакалавр</span>
-      <span class="chip">Магистр</span>
-      <span class="chip">Докторантур</span>
+    <!-- Stats grid -->
+    <div class="schol-modal-stats">
+      <div class="schol-stat-box">
+        <span class="stat-label">AMOUNT</span>
+        <span class="stat-value" id="sm-amount">Full Funding</span>
+      </div>
+      <div class="schol-stat-box">
+        <span class="stat-label">DEADLINE</span>
+        <span class="stat-value schol-deadline" id="sm-deadline">—</span>
+      </div>
+      <div class="schol-stat-box">
+        <span class="stat-label">LEVEL</span>
+        <span class="stat-value" id="sm-level">—</span>
+      </div>
     </div>
 
-    <p class="results-count"><strong>9</strong> тэтгэлэг олдлоо</p>
-
-    <!-- SCHOLARSHIP CARDS GRID -->
-    <div class="cards-grid">
-
-      <!-- Card -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-avatar">GB</div>
-          <div class="card-title-wrap">
-            <h3 class="card-title">Gates Cambridge Тэтгэлэг</h3>
-            <p class="card-university">Кембрижийн Их Сургууль</p>
-          </div>
-          <button class="heart-btn">♡</button>
-        </div>
-
-        <div class="card-tags">
-          <span class="tag green">Бүрэн Санхүүжилт</span>
-          <span class="tag green-outline">Бүрэн Санхүүжилт</span>
-          <span class="tag blue-outline">Докторантур</span>
-        </div>
-
-        <p class="card-desc">Gates Cambridge тэтгэлэг нь Кембрижийн их сургуульд докторантурын түвшинд суралцахад зориулсан өндөр өрсөлдөөнтэй бүрэн санхүүжилтийн тэтгэлэг юм.</p>
-
-        <div class="card-meta">
-          <div class="meta-box green">
-            <span class="meta-label">$ Дүн</span>
-            <span class="meta-value">Бүрэн Санхүүжилт</span>
-          </div>
-          <div class="meta-box red">
-            <span class="meta-label">Хугацаа</span>
-            <span class="meta-value">2025.10.12</span>
-          </div>
-        </div>
-
-        <div class="card-footer">
-          <div class="footer-item"><img src="https://cdn.phototourl.com/uploads/2026-03-19-4377c9c6-0f13-4a21-82e2-36580373daac.png"> Докторантур</div>
-          <div class="footer-item"><img src="https://cdn.phototourl.com/uploads/2026-03-19-579bf55c-91f1-4add-9093-902047d1f68f.png" width="20" height="20"> Их Британи</div>
-        </div>
+    <!-- Body -->
+    <div class="schol-modal-body">
+      <div class="info-section">
+        <h3>✦ ТУХАЙ</h3>
+        <p>Энэхүү тэтгэлэг нь олон улсын өрсөлдөөнт тэтгэлэг бөгөөд шилдэг оюутнуудад зориулагдсан бөгөөд бүрэн санхүүжилтийг хамардаг.</p>
       </div>
 
-      <!-- Card -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-avatar">GB</div>
-          <div class="card-title-wrap">
-            <h3 class="card-title">Gates Cambridge Тэтгэлэг</h3>
-            <p class="card-university">Кембрижийн Их Сургууль</p>
-          </div>
-          <button class="heart-btn">♡</button>
-        </div>
-
-        <div class="card-tags">
-          <span class="tag green">Бүрэн Санхүүжилт</span>
-          <span class="tag green-outline">Бүрэн Санхүүжилт</span>
-          <span class="tag blue-outline">Докторантур</span>
-        </div>
-
-        <p class="card-desc">Gates Cambridge тэтгэлэг нь Кембрижийн их сургуульд докторантурын түвшинд суралцахад зориулсан өндөр өрсөлдөөнтэй бүрэн санхүүжилтийн тэтгэлэг юм.</p>
-
-        <div class="card-meta">
-          <div class="meta-box green">
-            <span class="meta-label">$ Дүн</span>
-            <span class="meta-value">Бүрэн Санхүүжилт</span>
-          </div>
-          <div class="meta-box red">
-            <span class="meta-label">Хугацаа</span>
-            <span class="meta-value">2025.10.12</span>
-          </div>
-        </div>
-
-        <div class="card-footer">
-          <div class="footer-item"><img src="https://cdn.phototourl.com/uploads/2026-03-19-4377c9c6-0f13-4a21-82e2-36580373daac.png"> Докторантур</div>
-          <div class="footer-item"><img src="https://cdn.phototourl.com/uploads/2026-03-19-579bf55c-91f1-4add-9093-902047d1f68f.png" width="20" height="20"> Их Британи</div>
-        </div>
+      <div class="info-section">
+        <h3>✦ ШААРДЛАГУУД</h3>
+        <ul class="requirements-list">
+          <li>Академик амжилт өндөр (GPA 3.5+)</li>
+          <li>Манлайлах чадварын нотолгоо</li>
+          <li>Нийгэмд хувь нэмэр оруулах хүсэл</li>
+          <li>Англи хэлний мэдлэг (IELTS 6.5+)</li>
+        </ul>
       </div>
 
+      <div class="info-section">
+        <h3>✦ ХАМРАХ ХҮРЭЭ</h3>
+        <div class="program-tags">
+          <span>Сургалтын төлбөр</span>
+          <span>Амьжиргааны зардал</span>
+          <span>Тэтгэмж</span>
+          <span>Онгоцны тийз</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="modal-footer">
+      <button class="schol-save-btn save-btn">
+        <i class="fa-regular fa-heart"></i>
+        <span>ХАДГАЛАХ</span>
+      </button>
+      <button class="details-btn">
+        БҮРТГҮҮЛЭХ <i class="fas fa-external-link-alt"></i>
+      </button>
     </div>
   </div>
 </div>
-
+<script src="scholar.js"></script>
 </body>
 </html>
