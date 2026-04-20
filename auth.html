@@ -3,35 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Нэвтрэх / Бүртгүүлэх — StudyAbroadHub</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <title>Нэвтрэх / Бүртгүүлэх — NEXT STEPS</title>
+  <link rel="stylesheet" href="styles.css"/>
   <link rel="stylesheet" href="auth.css" />
 </head>
 <body>
 
-  <div class="bg-blob-1" aria-hidden="true"></div>
-  <div class="bg-blob-2" aria-hidden="true"></div>
+<!-- ═══════════════════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <div class="nav__logo-box">
+        <svg class="icon icon-24" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3.33 1.67 6.67 1.67 10 0v-5"/></svg>
+      </div>
+      <span class="nav__brand">NEXT STEPS</span>
+    </a>
+    <div class="nav__links">
+      <a href="uni.html" class="nav__link">Их Сургуулиуд</a>
+      <a href="scholar.html" class="nav__link">Тэтгэлгүүд</a>
+      <a href="exam-info.html" class="nav__link">Шалгалтууд</a>
+    </div>
+    <a href="index.html" class="nav__link nav__link--back">← Буцах</a>
+  </div>
+</nav>
 
+<!-- ═══════════════════════════════════════════════════════════
+     AUTH SECTION
+══════════════════════════════════════════════════════════════ -->
+<section class="auth-section">
   <div class="auth-wrapper">
 
-    <!-- ЛОГО -->
-    <a href="index.html" class="auth-logo">
-      <div class="auth-logo-icon">
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/>
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-        </svg>
-      </div>
-      <span class="auth-logo-text">StudyAbroad<span>Hub</span></span>
-    </a>
-  
     <!-- КАРТ -->
     <div class="auth-card">
- 
+
       <!-- ТАБУУД -->
       <div class="auth-tabs" role="tablist">
-        <button class="tab-btn active" role="tab" aria-selected="true"  onclick="switchTab('login')" >Нэвтрэх</button>
+        <button class="tab-btn active" role="tab" aria-selected="true"  onclick="switchTab('login')">Нэвтрэх</button>
         <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('register')">Бүртгүүлэх</button>
       </div>
 
@@ -56,14 +65,13 @@
             <span class="form-error" id="login-password-err"></span>
           </div>
 
-          <button type="submit" class="btn-submit" id="login-btn">Нэвтрэх</button>
+          <button type="submit" class="btn-submit" id="login-btn">НЭВТРЭХ</button>
         </form>
 
         <div class="divider">эсвэл</div>
 
         <div class="social-btns">
           <button class="btn-social" type="button">
-            <!-- Google icon -->
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
               <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -73,10 +81,9 @@
             Google
           </button>
           <button class="btn-social" type="button">
-            <!-- Generic mail icon for email SSO -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="4" width="20" height="16" rx="2"/>
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2 7l10 7 10-7"/>
+              <rect x="2" y="4" width="20" height="16" rx="0"/>
+              <path stroke-linecap="square" stroke-linejoin="miter" d="M2 7l10 7 10-7"/>
             </svg>
             И-мэйл SSO
           </button>
@@ -121,7 +128,7 @@
             </select>
           </div>
 
-          <button type="submit" class="btn-submit" id="register-btn">Бүртгэл үүсгэх</button>
+          <button type="submit" class="btn-submit" id="register-btn">БҮРТГЭЛ ҮҮСГЭХ</button>
         </form>
 
         <p class="terms-note">
@@ -133,115 +140,108 @@
 
     </div>
 
-    <!-- БУЦАХ ХОЛБООС -->
-    <a href="index.html" class="back-link">
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
-      </svg>
-      Нүүр хуудас руу буцах
-    </a>
-
   </div>
+</section>
 
-  <script>
-    /* ── TAB SWITCH ── */
-    function switchTab(tab) {
-      document.querySelectorAll('.tab-btn').forEach((btn, i) => {
-        const isActive = (i === 0 && tab === 'login') || (i === 1 && tab === 'register');
-        btn.classList.toggle('active', isActive);
-        btn.setAttribute('aria-selected', isActive);
-      });
-      document.querySelectorAll('.auth-panel').forEach(panel => {
-        panel.classList.toggle('active', panel.id === 'panel-' + tab);
-      });
-    }
-
-    /* ── HELPERS ── */
-    function showError(id, msg) {
-      const el = document.getElementById(id);
-      if (el) el.textContent = msg;
-    }
-    function clearErrors(...ids) {
-      ids.forEach(id => { const el = document.getElementById(id); if (el) el.textContent = ''; });
-    }
-    function setLoading(btn, loading) {
-      btn.disabled = loading;
-      btn.textContent = loading ? 'Уншиж байна...' : btn.dataset.label;
-    }
-
-    /* ── LOGIN ── */
-    const loginForm = document.getElementById('login-form');
-    const loginBtn  = document.getElementById('login-btn');
-    loginBtn.dataset.label = loginBtn.textContent;
-
-    loginForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      clearErrors('login-email-err', 'login-password-err');
-
-      const email    = document.getElementById('login-email').value.trim();
-      const password = document.getElementById('login-password').value;
-      let valid = true;
-
-      if (!email) {
-        showError('login-email-err', 'И-мэйл хаягаа оруулна уу.');
-        valid = false;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showError('login-email-err', 'Зөв и-мэйл хаяг оруулна уу.');
-        valid = false;
-      }
-
-      if (!password) {
-        showError('login-password-err', 'Нууц үгээ оруулна уу.');
-        valid = false;
-      } else if (password.length < 6) {
-        showError('login-password-err', 'Нууц үг хамгийн багадаа 6 тэмдэгт байх ёстой.');
-        valid = false;
-      }
-
-      if (!valid) return;
-
-      setLoading(loginBtn, true);
-      setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+<script>
+  /* ── TAB SWITCH ── */
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+      const isActive = (i === 0 && tab === 'login') || (i === 1 && tab === 'register');
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-selected', isActive);
     });
-
-    /* ── REGISTER ── */
-    const registerForm = document.getElementById('panel-register').querySelector('form');
-    const registerBtn  = document.getElementById('register-btn');
-    registerBtn.dataset.label = registerBtn.textContent;
-
-    registerForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const firstname = document.getElementById('reg-firstname').value.trim();
-      const lastname  = document.getElementById('reg-lastname').value.trim();
-      const email     = document.getElementById('reg-email').value.trim();
-      const password  = document.getElementById('reg-password').value;
-      const grade     = document.getElementById('reg-grade').value;
-
-      if (!firstname || !lastname || !email || !password || !grade) {
-        alert('Бүх талбарыг бөглөнө үү.');
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert('Зөв и-мэйл хаяг оруулна уу.');
-        return;
-      }
-      if (password.length < 8) {
-        alert('Нууц үг хамгийн багадаа 8 тэмдэгт байх ёстой.');
-        return;
-      }
-
-      setLoading(registerBtn, true);
-      setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+    document.querySelectorAll('.auth-panel').forEach(panel => {
+      panel.classList.toggle('active', panel.id === 'panel-' + tab);
     });
+  }
 
-    /* ── SOCIAL BUTTONS ── */
-    document.querySelectorAll('.btn-social').forEach(btn => {
-      btn.addEventListener('click', () => {
-        window.location.href = 'dashboard.html';
-      });
+  /* ── HELPERS ── */
+  function showError(id, msg) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = msg;
+  }
+  function clearErrors(...ids) {
+    ids.forEach(id => { const el = document.getElementById(id); if (el) el.textContent = ''; });
+  }
+  function setLoading(btn, loading) {
+    btn.disabled = loading;
+    btn.textContent = loading ? 'УНШИЖ БАЙНА...' : btn.dataset.label;
+  }
+
+  /* ── LOGIN ── */
+  const loginForm = document.getElementById('login-form');
+  const loginBtn  = document.getElementById('login-btn');
+  loginBtn.dataset.label = loginBtn.textContent;
+
+  loginForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearErrors('login-email-err', 'login-password-err');
+
+    const email    = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+    let valid = true;
+
+    if (!email) {
+      showError('login-email-err', 'И-мэйл хаягаа оруулна уу.');
+      valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showError('login-email-err', 'Зөв и-мэйл хаяг оруулна уу.');
+      valid = false;
+    }
+
+    if (!password) {
+      showError('login-password-err', 'Нууц үгээ оруулна уу.');
+      valid = false;
+    } else if (password.length < 6) {
+      showError('login-password-err', 'Нууц үг хамгийн багадаа 6 тэмдэгт байх ёстой.');
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    setLoading(loginBtn, true);
+    setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+  });
+
+  /* ── REGISTER ── */
+  const registerForm = document.getElementById('panel-register').querySelector('form');
+  const registerBtn  = document.getElementById('register-btn');
+  registerBtn.dataset.label = registerBtn.textContent;
+
+  registerForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const firstname = document.getElementById('reg-firstname').value.trim();
+    const lastname  = document.getElementById('reg-lastname').value.trim();
+    const email     = document.getElementById('reg-email').value.trim();
+    const password  = document.getElementById('reg-password').value;
+    const grade     = document.getElementById('reg-grade').value;
+
+    if (!firstname || !lastname || !email || !password || !grade) {
+      alert('Бүх талбарыг бөглөнө үү.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Зөв и-мэйл хаяг оруулна уу.');
+      return;
+    }
+    if (password.length < 8) {
+      alert('Нууц үг хамгийн багадаа 8 тэмдэгт байх ёстой.');
+      return;
+    }
+
+    setLoading(registerBtn, true);
+    setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+  });
+
+  /* ── SOCIAL BUTTONS ── */
+  document.querySelectorAll('.btn-social').forEach(btn => {
+    btn.addEventListener('click', () => {
+      window.location.href = 'dashboard.html';
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
