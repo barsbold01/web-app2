@@ -235,6 +235,36 @@
 
 .terms-note a:hover { color: var(--gray-600); }
 
+/* ── PASSWORD TOGGLE ── */
+.input-wrap {
+  position: relative;
+}
+.input-wrap .form-input {
+  padding-right: 44px;
+}
+.pwd-toggle {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--gray-500);
+  cursor: pointer;
+  transition: color .15s;
+}
+.pwd-toggle:hover { color: var(--navy); }
+.pwd-toggle svg {
+  width: 16px; height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* ── FORM VALIDATION ── */
 .form-error {
   display: block;

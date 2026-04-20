@@ -521,3 +521,79 @@ nav {
 .activity-action { font-weight: 700; font-size: .875rem; margin-bottom: 2px; }
 .activity-detail { color: var(--gray-500); font-size: .75rem; }
 .activity-time   { color: var(--gray-400); font-size: .72rem; margin-top: 2px; }
+
+/* ============================================================
+   ███  SHARED MOBILE NAV (scholar, uni, and db-shell pages)
+   ============================================================ */
+
+/* Sidebar overlay */
+.db-sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity .25s;
+}
+.db-sidebar-overlay.is-visible { display: block; opacity: 1; }
+
+/* Menu toggle button */
+.db-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border: var(--border);
+  background: none;
+  color: var(--navy);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.db-menu-btn:hover { background: var(--lime); }
+.db-menu-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Mobile bottom nav */
+.db-mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 64px;
+  background: var(--navy);
+  border-top: 4px solid var(--lime);
+  z-index: 200;
+}
+.db-mobile-nav__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transition: color .15s;
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+.db-mobile-nav__item:last-child { border-right: none; }
+.db-mobile-nav__item svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.db-mobile-nav__item:hover { color: var(--white); }
+.db-mobile-nav__item.active { color: var(--lime); }
+
+@media (max-width: 1024px) {
+  /* Sidebar slides in */
+  .db-sidebar {
+    left: -260px;
+    transition: left .25s ease;
+    z-index: 200;
+  }
+  .db-sidebar.is-open { left: 0; }
+  .db-main { margin-left: 0 !important; padding-bottom: 64px; }
+  .db-menu-btn    { display: flex; }
+  .db-mobile-nav  { display: flex; }
+}

@@ -11,8 +11,11 @@
 <body>
 <div class="app-layout">
 
+  <!-- SIDEBAR OVERLAY -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
   <!-- ХАЖУУГИЙН САМБАР -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="app-sidebar">
     <div class="logo">
       <div class="logo-icon">
         <img src="https://image2url.com/r2/default/images/1773934477074-697d0b36-7fd9-46f7-80d6-bfc7dee5106f.png" />
@@ -57,7 +60,10 @@
   <main class="main">
     <header class="topbar">
       <div class="topbar-left">
-        <img src="https://cdn.phototourl.com/uploads/2026-03-19-ade37faf-97c0-4cdf-a379-aedeae1b38e1.png" class="globe-icon"/> <span>Гадаадад Суралцах Төв 2026</span>
+        <button class="menu-btn" id="menu-btn" aria-label="Цэс нээх">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <span>Гадаадад Суралцах Төв 2026</span>
       </div>
       <div class="topbar-right">
         <div class="notif-btn"><img src="https://image2url.com/r2/default/images/1773934572626-a0776666-b2e6-40a3-b061-1989071133b1.png" width="16", height="16"/><span class="notif-dot"></span></div>
@@ -480,6 +486,30 @@
   </main>
 </div>
 
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-nav">
+  <a href="#" class="mobile-nav__item active" onclick="showPage('dashboard');return false;">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    <span>Самбар</span>
+  </a>
+  <a href="uni.html" class="mobile-nav__item">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span>Сургууль</span>
+  </a>
+  <a href="scholar.html" class="mobile-nav__item">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+    <span>Тэтгэлэг</span>
+  </a>
+  <a href="exam-info.html" class="mobile-nav__item">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    <span>Шалгалт</span>
+  </a>
+  <a href="#" class="mobile-nav__item">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <span>Заавар</span>
+  </a>
+</nav>
+
 <script>
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -491,6 +521,24 @@
       }
     });
     window.scrollTo(0, 0);
+    /* close sidebar on mobile after nav */
+    document.getElementById('app-sidebar').classList.remove('is-open');
+    document.getElementById('sidebar-overlay').classList.remove('is-visible');
+  }
+
+  /* Mobile sidebar toggle */
+  const menuBtn = document.getElementById('menu-btn');
+  const sidebar = document.getElementById('app-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-visible');
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-visible');
+    });
   }
 </script>
 

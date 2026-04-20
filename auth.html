@@ -61,7 +61,13 @@
               <a href="#" class="forgot-link">Нууц үгээ мартсан уу?</a>
             </div>
             <label class="form-label" for="login-password">Нууц үг</label>
-            <input class="form-input" id="login-password" type="password" placeholder="••••••••" autocomplete="current-password" />
+            <div class="input-wrap">
+              <input class="form-input" id="login-password" type="password" placeholder="••••••••" autocomplete="current-password" />
+              <button type="button" class="pwd-toggle" data-target="login-password" aria-label="Нууц үг харуулах">
+                <svg class="eye-icon" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-off-icon" viewBox="0 0 24 24" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              </button>
+            </div>
             <span class="form-error" id="login-password-err"></span>
           </div>
 
@@ -114,7 +120,13 @@
 
           <div class="form-group">
             <label class="form-label" for="reg-password">Нууц үг</label>
-            <input class="form-input" id="reg-password" type="password" placeholder="8+ тэмдэгт" autocomplete="new-password" />
+            <div class="input-wrap">
+              <input class="form-input" id="reg-password" type="password" placeholder="8+ тэмдэгт" autocomplete="new-password" />
+              <button type="button" class="pwd-toggle" data-target="reg-password" aria-label="Нууц үг харуулах">
+                <svg class="eye-icon" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-off-icon" viewBox="0 0 24 24" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              </button>
+            </div>
           </div>
 
           <div class="form-group">
@@ -144,6 +156,17 @@
 </section>
 
 <script>
+  /* ── SESSION CHECK: redirect if already logged in ── */
+  if (localStorage.getItem('ns_session')) {
+    window.location.replace('dashboard.html');
+  }
+
+  /* ── USER STORE ── */
+  function getUsers()            { return JSON.parse(localStorage.getItem('ns_users') || '[]'); }
+  function saveUsers(users)      { localStorage.setItem('ns_users', JSON.stringify(users)); }
+  function findUser(email)       { return getUsers().find(u => u.email.toLowerCase() === email.toLowerCase()); }
+  function createSession(user)   { localStorage.setItem('ns_session', JSON.stringify({ email: user.email, name: user.firstname, grade: user.grade })); }
+
   /* ── TAB SWITCH ── */
   function switchTab(tab) {
     document.querySelectorAll('.tab-btn').forEach((btn, i) => {
@@ -159,15 +182,32 @@
   /* ── HELPERS ── */
   function showError(id, msg) {
     const el = document.getElementById(id);
-    if (el) el.textContent = msg;
+    if (el) { el.textContent = msg; el.previousElementSibling && el.previousElementSibling.classList.add('invalid'); }
   }
   function clearErrors(...ids) {
-    ids.forEach(id => { const el = document.getElementById(id); if (el) el.textContent = ''; });
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.textContent = ''; }
+    });
+    document.querySelectorAll('.form-input.invalid').forEach(i => i.classList.remove('invalid'));
   }
   function setLoading(btn, loading) {
     btn.disabled = loading;
     btn.textContent = loading ? 'УНШИЖ БАЙНА...' : btn.dataset.label;
   }
+
+  /* ── PASSWORD TOGGLE ── */
+  document.querySelectorAll('.pwd-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input   = document.getElementById(btn.dataset.target);
+      const eyeOn   = btn.querySelector('.eye-icon');
+      const eyeOff  = btn.querySelector('.eye-off-icon');
+      const isHidden = input.type === 'password';
+      input.type          = isHidden ? 'text' : 'password';
+      eyeOn.style.display  = isHidden ? 'none'  : '';
+      eyeOff.style.display = isHidden ? ''      : 'none';
+    });
+  });
 
   /* ── LOGIN ── */
   const loginForm = document.getElementById('login-form');
@@ -183,25 +223,26 @@
     let valid = true;
 
     if (!email) {
-      showError('login-email-err', 'И-мэйл хаягаа оруулна уу.');
-      valid = false;
+      showError('login-email-err', 'И-мэйл хаягаа оруулна уу.'); valid = false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showError('login-email-err', 'Зөв и-мэйл хаяг оруулна уу.');
-      valid = false;
+      showError('login-email-err', 'Зөв и-мэйл хаяг оруулна уу.'); valid = false;
     }
-
     if (!password) {
-      showError('login-password-err', 'Нууц үгээ оруулна уу.');
-      valid = false;
+      showError('login-password-err', 'Нууц үгээ оруулна уу.'); valid = false;
     } else if (password.length < 6) {
-      showError('login-password-err', 'Нууц үг хамгийн багадаа 6 тэмдэгт байх ёстой.');
-      valid = false;
+      showError('login-password-err', 'Нууц үг хамгийн багадаа 6 тэмдэгт байх ёстой.'); valid = false;
     }
-
     if (!valid) return;
 
+    /* Check credentials against stored users; allow any valid format for demo */
+    const user = findUser(email);
+    if (user && user.password !== password) {
+      showError('login-password-err', 'Нууц үг буруу байна.'); return;
+    }
+
     setLoading(loginBtn, true);
-    setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+    const sessionUser = user || { email, firstname: email.split('@')[0], grade: '' };
+    setTimeout(() => { createSession(sessionUser); window.location.href = 'dashboard.html'; }, 700);
   });
 
   /* ── REGISTER ── */
@@ -219,25 +260,30 @@
     const grade     = document.getElementById('reg-grade').value;
 
     if (!firstname || !lastname || !email || !password || !grade) {
-      alert('Бүх талбарыг бөглөнө үү.');
-      return;
+      alert('Бүх талбарыг бөглөнө үү.'); return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      alert('Зөв и-мэйл хаяг оруулна уу.');
-      return;
+      alert('Зөв и-мэйл хаяг оруулна уу.'); return;
     }
     if (password.length < 8) {
-      alert('Нууц үг хамгийн багадаа 8 тэмдэгт байх ёстой.');
-      return;
+      alert('Нууц үг хамгийн багадаа 8 тэмдэгт байх ёстой.'); return;
+    }
+    if (findUser(email)) {
+      alert('Энэ и-мэйл хаягаар бүртгэл аль хэдийн байна.'); return;
     }
 
+    const users = getUsers();
+    users.push({ firstname, lastname, email, password, grade });
+    saveUsers(users);
+
     setLoading(registerBtn, true);
-    setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+    setTimeout(() => { createSession({ email, firstname, grade }); window.location.href = 'dashboard.html'; }, 700);
   });
 
   /* ── SOCIAL BUTTONS ── */
   document.querySelectorAll('.btn-social').forEach(btn => {
     btn.addEventListener('click', () => {
+      createSession({ email: 'social@nextsteps.mn', firstname: 'Хэрэглэгч', grade: '' });
       window.location.href = 'dashboard.html';
     });
   });
