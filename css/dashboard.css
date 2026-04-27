@@ -193,9 +193,9 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
   align-items: center;
   gap: 8px;
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.3rem;
-  letter-spacing: -.04em;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -.02em;
   color: var(--navy);
 }
 
@@ -670,6 +670,113 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
 .placeholder-desc { color: var(--gray-500); font-size: .875rem; }
 
 /* ============================================================
+   APPLICATION PAGE
+   ============================================================ */
+.application-wrap {
+  padding: 0 28px 40px;
+}
+
+.application-hero {
+  background: var(--navy);
+  color: var(--white);
+  border: var(--border);
+  padding: 28px 36px;
+  margin-bottom: 24px;
+}
+
+.application-hero h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.04em;
+  margin-bottom: 10px;
+}
+
+.application-hero p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.74);
+  max-width: 760px;
+}
+
+.application-roadmap {
+  position: relative;
+  padding-left: 98px;
+}
+
+.roadmap-line {
+  position: absolute;
+  left: 44px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--lime);
+}
+
+.roadmap-item {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.roadmap-item:last-child {
+  margin-bottom: 0;
+}
+
+.roadmap-step {
+  position: absolute;
+  left: -98px;
+  top: 14px;
+  width: 64px;
+  height: 64px;
+  border: var(--border4);
+  background: var(--lime);
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roadmap-card {
+  background: var(--bg);
+  border: var(--border);
+  padding: 24px 26px;
+}
+
+.roadmap-card h3 {
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.roadmap-card p {
+  color: var(--gray-600);
+  font-size: 1rem;
+  max-width: 860px;
+}
+
+.application-help {
+  border: var(--border4);
+  background: var(--lime);
+  color: var(--navy);
+  margin-top: 28px;
+  padding: 38px 22px;
+  text-align: center;
+}
+
+.application-help h3 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+}
+
+.application-help p {
+  font-size: 1.1rem;
+  max-width: 680px;
+  margin: 0 auto 18px;
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 /* ── Sidebar overlay (mobile) ── */
@@ -750,9 +857,26 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
   .menu-btn      { display: flex; }
   .mobile-nav    { display: flex; }
   .main          { padding-bottom: 64px; }
+  .application-wrap { padding: 0 16px 40px; }
+  .application-roadmap { padding-left: 72px; }
+  .roadmap-step { left: -72px; width: 54px; height: 54px; font-size: 1.4rem; }
 }
 
 @media (max-width: 640px) {
   .qa-grid { grid-template-columns: repeat(2, 1fr); }
   .page-title { font-size: 1.6rem; }
+  .application-hero { padding: 20px 18px; }
+  .application-hero p { font-size: .95rem; }
+  .application-roadmap { padding-left: 0; }
+  .roadmap-line { display: none; }
+  .roadmap-step {
+    position: static;
+    margin-bottom: 8px;
+    width: 52px;
+    height: 52px;
+    font-size: 1.2rem;
+  }
+  .roadmap-card h3 { font-size: 1.55rem; }
+  .roadmap-card p { font-size: .95rem; }
+  .application-help p { font-size: .96rem; }
 }

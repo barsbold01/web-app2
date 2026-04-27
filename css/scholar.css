@@ -121,15 +121,16 @@ body {
 .db-sidebar__logo-box .icon { color: var(--navy); }
 .db-sidebar__brand { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--white); letter-spacing: -.02em; }
 .db-sidebar__nav { padding: 16px 0; flex: 1; }
-.db-sidebar__section { padding: 0 12px; margin-bottom: 8px; }
-.db-sidebar__section-label { font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 8px 12px 4px; }
+.db-sidebar__section { padding: 0; margin-bottom: 8px; }
+.db-sidebar__section-label { font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 16px 20px 6px; }
 .db-sidebar__item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 12px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 20px;
   color: rgba(255,255,255,.65); font-weight: 600; font-size: .875rem;
-  border-radius: 0; transition: background .15s, color .15s;
+  transition: background .15s, color .15s;
   width: 100%;
   border-left: 3px solid transparent;
+  text-decoration: none;
 }
 .db-sidebar__item:hover { background: rgba(255,255,255,.06); color: var(--white); }
 .db-sidebar__item.active { background: rgba(204,255,0,.1); color: var(--lime); border-left-color: var(--lime); }
@@ -334,7 +335,7 @@ body {
 }
 .uni-stat__label { font-size: .85rem; font-weight: 600; color: var(--navy); opacity: .7; }
 
-.uni-results-area { padding: 0 28px 48px; }
+.uni-results-area { padding: 0 0 48px; }
 .uni-results-header {
   padding: 24px 0 16px;
   font-family: var(--font-display);
@@ -482,15 +483,14 @@ body {
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto; 
-    padding: 0;
-    width: 500px;
-    max-height: 80vh; 
-    overflow-y: auto; 
-    position: relative;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 0;
+  width: min(500px, calc(100vw - 32px));
+  max-height: 88vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .modal-header-img {
@@ -630,8 +630,9 @@ body {
 .scholarship-tabs {
   display: flex;
   gap: 12px;
-  padding-left: 28px;
-  margin-top: 24px; 
+  padding-left: 0;
+  margin-top: 24px;
+  flex-wrap: wrap;
 }
 
 .tab-btn {
@@ -904,4 +905,137 @@ body {
 .schol-save-btn.active {
   background-color: var(--lime);
   color: #000;
+}
+
+/* ============================================================
+   TOPBAR TITLE
+   ============================================================ */
+.db-topbar__left {
+  display: flex;
+  align-items: center;
+}
+.db-topbar__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -.03em;
+  color: var(--navy);
+}
+
+/* ============================================================
+   MOBILE BOTTOM NAV
+   ============================================================ */
+.db-mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 64px;
+  background: var(--navy);
+  border-top: 4px solid var(--lime);
+  z-index: 200;
+}
+.db-mobile-nav__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transition: color .15s;
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+.db-mobile-nav__item:last-child { border-right: none; }
+.db-mobile-nav__item svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.db-mobile-nav__item:hover { color: var(--white); }
+.db-mobile-nav__item.active { color: var(--lime); }
+
+/* ============================================================
+   MODAL ANCHOR BUTTON
+   ============================================================ */
+.details-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* ============================================================
+   REQUIREMENTS LIST (modal)
+   ============================================================ */
+.requirements-list { display: flex; flex-direction: column; gap: 6px; padding-left: 4px; }
+.requirements-list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: .875rem;
+  color: var(--navy);
+  line-height: 1.5;
+}
+.requirements-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px;
+  width: 6px; height: 6px;
+  background: var(--lime);
+  border: 1px solid var(--navy);
+}
+
+/* ============================================================
+   FILTER CHECKBOX
+   ============================================================ */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: .875rem;
+  font-weight: 600;
+}
+.checkbox-container input[type="checkbox"] {
+  width: 16px; height: 16px;
+  cursor: pointer;
+  accent-color: var(--lime);
+}
+.checkmark { display: none; }
+
+/* ============================================================
+   RESPONSIVE — ≤ 1024px  (tablet / small laptop)
+   Sidebar is hidden; bottom nav provides navigation.
+   No hamburger needed.
+   ============================================================ */
+@media (max-width: 1024px) {
+  .db-sidebar { left: -260px; transition: left .25s ease; }
+  .db-main { margin-left: 0; padding-bottom: 64px; }
+  .db-mobile-nav { display: flex; }
+  .db-content { padding: 20px 20px 48px; }
+  .uni-results-area { padding: 0 0 48px; }
+  .filter-grid { grid-template-columns: repeat(2, 1fr); }
+  .scholarship-tabs { flex-wrap: wrap; }
+}
+
+/* ============================================================
+   RESPONSIVE — ≤ 640px  (phone)
+   ============================================================ */
+@media (max-width: 640px) {
+  .db-content { padding: 12px 12px 64px; }
+  .uni-results-area { padding: 0 0 64px; }
+  .uni-hero { padding: 24px 16px 20px; }
+  .uni-hero h1 { font-size: 1.7rem; margin-bottom: 14px; }
+  .uni-search-row { flex-direction: column; }
+  .uni-filter-btn { width: 100%; justify-content: center; }
+  .filter-categories { gap: 6px; }
+  .cat-btn { padding: 8px 12px; font-size: 10px; }
+  .scholarship-tabs { gap: 6px; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+  .tab-btn { padding: 8px 14px; font-size: 11px; white-space: nowrap; }
+  .filter-grid { grid-template-columns: 1fr; }
+  .uni-grid { grid-template-columns: 1fr !important; }
+  .scholar-card__footer { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .apply-btn { width: 100%; justify-content: center; }
+  .schol-modal-content { max-width: calc(100vw - 16px); width: calc(100vw - 16px); }
 }

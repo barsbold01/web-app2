@@ -6,13 +6,10 @@
   <title>Хяналтын самбар — Дараагийн Алхам</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
 </head>
 <body>
 <div class="app-layout">
-
-  <!-- SIDEBAR OVERLAY -->
-  <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
   <!-- ХАЖУУГИЙН САМБАР -->
   <aside class="sidebar" id="app-sidebar">
@@ -28,7 +25,7 @@
 
     <div class="nav-label">ҮНДСЭН</div>
 
-    <a href="#" class="nav-item">
+    <a href="#dashboard" class="nav-item active" data-page="dashboard" onclick="showPage('dashboard'); return false;">
       <span class="icon"><img src="https://cdn.phototourl.com/uploads/2026-03-19-946eb2dd-3b5f-48d6-80d0-7fa75c934061.png"/></span> Хянах самбар
       <span class="arrow">›</span>
     </a>
@@ -41,8 +38,8 @@
     <a href="exam-info.html" class="nav-item">
       <span class="icon"><img src="https://cdn.phototourl.com/uploads/2026-03-19-f01d02ea-68ce-41d6-9895-bf00d441df27.png"/></span> Шалгалтууд
     </a>
-    <a href="#" class="nav-item">
-      <span class="icon"><img src="https://cdn.phototourl.com/uploads/2026-03-19-e3bb6416-7202-4d9e-85d2-c9cf57c5ac3b.png"></span> Элсэлтийн Гарын Авлага
+    <a href="#application" class="nav-item" data-page="application" onclick="showPage('application'); return false;">
+      <span class="icon"><img src="https://cdn.phototourl.com/uploads/2026-03-19-e3bb6416-7202-4d9e-85d2-c9cf57c5ac3b.png"></span> Application
     </a>
 
     <div class="sidebar-footer">
@@ -60,9 +57,6 @@
   <main class="main">
     <header class="topbar">
       <div class="topbar-left">
-        <button class="menu-btn" id="menu-btn" aria-label="Цэс нээх">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
         <span>Гадаадад Суралцах Төв 2026</span>
       </div>
       <div class="topbar-right">
@@ -112,13 +106,13 @@
                 </div>
                 <span class="qa-label">Шалгалтын мэдээлэл</span>
               </button>
-              <button class="qa-item" onclick="showPage('guide')">
+              <button class="qa-item" onclick="showPage('application')">
                 <div class="qa-icon qi-emerald">
                   <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                   </svg>
                 </div>
-                <span class="qa-label">Элсэлтийн гарын авлага</span>
+                <span class="qa-label">Application</span>
               </button>
             </div>
           </div>
@@ -468,18 +462,77 @@
       </div>
     </div>
 
-    <!-- ЭЛСЭЛТИЙН ГАРЫН АВЛАГА -->
-    <div class="page" id="page-guide">
+    <!-- APPLICATION -->
+    <div class="page" id="page-application">
       <header class="page-header">
         <div>
-          <h1 class="page-title">Элсэлтийн Гарын Авлага 📝</h1>
-          <p class="page-sub">CV, урамшуулах захидал, зөвлөмжийн захидал</p>
+          <h1 class="page-title">Your Application Roadmap</h1>
+          <p class="page-sub">Follow this step-by-step guide to navigate your university application process.</p>
         </div>
       </header>
-      <div class="card placeholder-card">
-        <div class="placeholder-emoji">📋</div>
-        <h2 class="placeholder-title">Элсэлтийн Баримт Бичгүүд</h2>
-        <p class="placeholder-desc">Шаардагдах бүх баримт бичгийн алхам алхмаар гарын авлага болон загварууд.</p>
+      <div class="application-wrap">
+        <div class="application-hero">
+          <h2>Your Application Roadmap</h2>
+          <p>Follow this step-by-step guide to successfully navigate the university application process.</p>
+        </div>
+
+        <div class="application-roadmap">
+          <div class="roadmap-line"></div>
+
+          <article class="roadmap-item">
+            <div class="roadmap-step">01</div>
+            <div class="roadmap-card">
+              <h3>Build Your Profile</h3>
+              <p>Start developing your academic and extracurricular profile early. Focus on activities that align with your interests and demonstrate commitment and impact.</p>
+            </div>
+          </article>
+
+          <article class="roadmap-item">
+            <div class="roadmap-step">02</div>
+            <div class="roadmap-card">
+              <h3>Research Universities</h3>
+              <p>Identify universities that match your goals. Review their programs, admission criteria, and application deadlines in detail.</p>
+            </div>
+          </article>
+
+          <article class="roadmap-item">
+            <div class="roadmap-step">03</div>
+            <div class="roadmap-card">
+              <h3>Prepare Your Documents</h3>
+              <p>Gather CV/Resume, personal statement, recommendation letters, and transcripts. Make sure each document is clear and professional.</p>
+            </div>
+          </article>
+
+          <article class="roadmap-item">
+            <div class="roadmap-step">04</div>
+            <div class="roadmap-card">
+              <h3>Write Your Essays</h3>
+              <p>Craft compelling personal statements and supplemental essays that reflect your authentic voice and motivation.</p>
+            </div>
+          </article>
+
+          <article class="roadmap-item">
+            <div class="roadmap-step">05</div>
+            <div class="roadmap-card">
+              <h3>Submit Applications</h3>
+              <p>Complete and submit all application components before deadlines. Double-check every field before sending.</p>
+            </div>
+          </article>
+
+          <article class="roadmap-item">
+            <div class="roadmap-step">06</div>
+            <div class="roadmap-card">
+              <h3>Await And Respond To Offers</h3>
+              <p>Track your results, compare offers, and respond on time. If accepted, carefully review scholarship and financial-aid details.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="application-help">
+          <h3>Need Help? Talk To A Mentor</h3>
+          <p>Connect with experienced mentors who can guide you through every step of your application journey.</p>
+          <a class="btn btn-indigo" href="auth.html">Find A Mentor</a>
+        </div>
       </div>
     </div>
 
@@ -488,7 +541,7 @@
 
 <!-- MOBILE BOTTOM NAV -->
 <nav class="mobile-nav">
-  <a href="#" class="mobile-nav__item active" onclick="showPage('dashboard');return false;">
+  <a href="#dashboard" class="mobile-nav__item" data-page="dashboard" onclick="showPage('dashboard');return false;">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
     <span>Самбар</span>
   </a>
@@ -504,41 +557,29 @@
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
     <span>Шалгалт</span>
   </a>
-  <a href="#" class="mobile-nav__item">
+  <a href="#application" class="mobile-nav__item" data-page="application" onclick="showPage('application');return false;">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-    <span>Заавар</span>
+    <span>Apply</span>
   </a>
 </nav>
 
-<script>
+  <script>
   function showPage(id) {
+    const page = document.getElementById('page-' + id);
+    if (!page) return;
+
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.getElementById('page-' + id).classList.add('active');
-    document.querySelectorAll('.nav-item').forEach(n => {
-      if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'" + id + "'")) {
-        n.classList.add('active');
-      }
+    page.classList.add('active');
+    document.querySelectorAll('.nav-item[data-page], .mobile-nav__item[data-page]').forEach(item => {
+      item.classList.toggle('active', item.dataset.page === id);
     });
+    history.replaceState(null, '', '#' + id);
     window.scrollTo(0, 0);
-    /* close sidebar on mobile after nav */
-    document.getElementById('app-sidebar').classList.remove('is-open');
-    document.getElementById('sidebar-overlay').classList.remove('is-visible');
   }
 
-  /* Mobile sidebar toggle */
-  const menuBtn = document.getElementById('menu-btn');
-  const sidebar = document.getElementById('app-sidebar');
-  const overlay = document.getElementById('sidebar-overlay');
-  if (menuBtn) {
-    menuBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('is-open');
-      overlay.classList.toggle('is-visible');
-    });
-    overlay.addEventListener('click', () => {
-      sidebar.classList.remove('is-open');
-      overlay.classList.remove('is-visible');
-    });
+  const initialPage = (window.location.hash || '').replace('#', '');
+  if (initialPage) {
+    showPage(initialPage);
   }
 </script>
 
