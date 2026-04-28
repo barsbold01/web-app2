@@ -13,7 +13,7 @@ const UNIVERSITIES = [
     type: 'Хувийн',
     rank: 1,
     rankLabel: 'ДЭЛХИЙД #1',
-    image: 'https://edunirvana.in/wp-content/uploads/2025/07/mit_16x9_0.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GateTower.jpg/640px-GateTower.jpg',
     tuition: '$57,986/жил',
     tuitionUSD: 57986,
     tuitionCategory: 'very-high',

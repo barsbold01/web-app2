@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return `
       <div class="uni-card" data-id="${uni.id}">
         <div class="uni-card__img-wrap">
-          <img src="${uni.image}" alt="${uni.nameEn}" loading="lazy"/>
+          <img src="${uni.image}" alt="${uni.nameEn}" loading="lazy" onerror="this.style.display='none'"/>
           <span class="uni-card__rank">${uni.rankLabel}</span>
           <button class="heart-btn" aria-label="Хадгалах">${heartSVG}</button>
           <span class="uni-card__type">${uni.type}</span>
