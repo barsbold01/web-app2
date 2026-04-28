@@ -85,24 +85,15 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
   border-radius: 0;
 }
 
-.logo-icon img {
-  width: 55%; height: 70%;
-  object-fit: contain;
-  filter: brightness(0);
-}
+.logo-icon svg { width: 20px; height: 20px; }
 
-.logo-icon svg { width: 20px; height: 20px; color: var(--navy); stroke: var(--navy); }
-
-.logo-text h2 {
+.logo-brand {
   font-family: var(--font-display);
-  font-size: 1rem;
   font-weight: 700;
+  font-size: 1rem;
   color: var(--white);
   letter-spacing: -.02em;
 }
-
-.logo-text h2 span { color: var(--lime); }
-.logo-text p  { font-size: .72rem; color: rgba(255,255,255,.4); margin-top: 2px; }
 
 .nav-label {
   font-size: .68rem;
@@ -136,8 +127,16 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
 .nav-item:hover { background: rgba(255,255,255,.06); color: var(--white); }
 .nav-item.active { background: rgba(204,255,0,.1); color: var(--lime); border-left-color: var(--lime); }
 
-.nav-item .icon  { font-size: 16px; width: 20px; text-align: center; }
-.nav-item .arrow { margin-left: auto; font-size: 12px; }
+.nav-icon {
+  width: 18px; height: 18px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: middle;
+}
 
 /* ============================================================
    SIDEBAR FOOTER
