@@ -101,6 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
       if (icon) icon.className = 'fa-regular fa-heart';
       if (text) text.textContent = 'ХАДГАЛАХ';
     }
+    if (saveBtn) {
+      // Энэ uni cart дээр хадгалагдсан эсэхийг шалгах
+      const cardEl = grid.querySelector(`.uni-card[data-id="${uni.id}"]`);
+      const isSaved = cardEl?.querySelector('.heart-btn')?.classList.contains('is-active');
+
+      saveBtn.classList.toggle('active', !!isSaved);
+      const icon = saveBtn.querySelector('i');
+      const text = saveBtn.querySelector('span');
+      if (icon) icon.className = isSaved ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+      if (text) text.textContent = isSaved ? 'ХАДГАЛАГДСАН' : 'ХАДГАЛАХ';
+
+      // modal save товч дарахад cart-ын heart-тай sync хийх
+      saveBtn.dataset.uniId = uni.id;
+    }
 
     modal.style.display = 'block';
   };
@@ -149,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.querySelectorAll('.uni-card').forEach(card => {
       card.addEventListener('click', (e) => {
         if (e.target.closest('.heart-btn')) {
-          e.target.closest('.heart-btn').classList.toggle('saved');
+          e.target.closest('.heart-btn').classList.toggle('is-active');
           return;
         }
         const uni = UNIVERSITIES.find(u => u.id === card.dataset.id);
@@ -192,20 +206,28 @@ document.addEventListener('DOMContentLoaded', () => {
   closeBtn?.addEventListener('click', () => { modal.style.display = 'none'; });
 
   // ── ХАДГАЛАХ товч ─────────────────────────────────────────────────────────
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.save-btn');
-    if (!btn) return;
-    btn.classList.toggle('active');
-    const icon = btn.querySelector('i');
-    const text = btn.querySelector('span');
-    if (btn.classList.contains('active')) {
-      icon?.classList.replace('fa-regular', 'fa-solid');
-      if (text) text.textContent = 'ХАДГАЛАГДСАН';
-    } else {
-      icon?.classList.replace('fa-solid', 'fa-regular');
-      if (text) text.textContent = 'ХАДГАЛАХ';
-    }
-  });
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.save-btn');
+  if (!btn) return;
+  btn.classList.toggle('active');
+  const isNowActive = btn.classList.contains('active');
+  const icon = btn.querySelector('i');
+  const text = btn.querySelector('span');
+  if (isNowActive) {
+    icon?.classList.replace('fa-regular', 'fa-solid');
+    if (text) text.textContent = 'ХАДГАЛАГДСАН';
+  } else {
+    icon?.classList.replace('fa-solid', 'fa-regular');
+    if (text) text.textContent = 'ХАДГАЛАХ';
+  }
+
+  // Cart дээрх heart-тай sync хийх
+  const uniId = btn.dataset.uniId;
+  if (uniId) {
+    const cardHeart = grid.querySelector(`.uni-card[data-id="${uniId}"] .heart-btn`);
+    if (cardHeart) cardHeart.classList.toggle('is-active', isNowActive);
+  }
+});
 
   // ── Эхний рендер ─────────────────────────────────────────────────────────
   render();
