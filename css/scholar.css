@@ -226,31 +226,87 @@ body {
 /* ── Main Area ────────────────────────────────────────────── */
 .db-main { margin-left: 260px; flex: 1; display: flex; flex-direction: column; min-height: 100vh; overflow-y: auto;}
 
-/* ── Top Bar ──────────────────────────────────────────────── */
-.db-topbar {
-  height: 64px; background: var(--white);
+/* ============================================================
+   TOPBAR
+   ============================================================ */
+.topbar {
+  background: var(--white);
   border-bottom: var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 24px; flex-shrink: 0;
-  position: sticky; top: 0; z-index: 50;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  flex-shrink: 0;
 }
 
-.db-topbar__title { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: -.04em; color: var(--navy); }
-.db-topbar__actions { display: flex; align-items: center; gap: 12px; }
-.db-topbar__link {
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -.02em;
+  color: var(--navy);
+}
+
+.globe-icon { display: none; }
+
+.topbar-left span { font-weight: 800; }
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.notif-btn {
   padding: 8px 20px;
-  border: var(--border); color: var(--navy);
-  font-weight: 700; font-size: .8rem; letter-spacing: .04em;
+  border: var(--border);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .04em;
+  background: none;
+  cursor: pointer;
+  transition: background .15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  border-radius: 0;
+}
+.notif-btn img { width: 16px; height: 16px; }
+.notif-btn:hover { background: var(--lime); }
+
+.notif-dot {
+  width: 8px; height: 8px;
+  background: var(--red-600);
+  border-radius: 50%;
+  position: absolute;
+  top: 6px; right: 6px;
+  border: 2px solid var(--white);
+}
+
+.signin-top-btn {
+  font-family: var(--font-body);
+  background: var(--navy);
+  color: var(--lime);
+  border: none;
+  border-radius: 0;
+  padding: 8px 20px;
+  font-size: .8rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: .04em;
   transition: background .15s;
 }
-.db-topbar__link:hover { background: var(--lime); }
-.db-topbar__cta {
-  padding: 8px 20px;
-  background: var(--navy); color: var(--lime);
-  font-weight: 700; font-size: .8rem; letter-spacing: .04em;
-  transition: background .15s;
-}
-.db-topbar__cta:hover { background: #000; }
+.signin-top-btn:hover { background: #000; }
+
 
 /* ── university Content ────────────────────────────────────── */
 .db-content { padding: 28px 28px 48px; flex: 1; }

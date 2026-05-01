@@ -306,6 +306,7 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
 }
 .signin-top-btn:hover { background: #000; }
 
+
 /* ── university Content ────────────────────────────────────── */
 .db-content { padding: 28px 28px 48px; flex: 1; }
 
