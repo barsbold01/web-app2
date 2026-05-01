@@ -5,7 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── DOM лавлагаанууд ────────────────────────────────────────────────────────
+  // ── DOM ────────────────────────────────────────────────────────
   const grid          = document.getElementById('scholarGrid');
   const resultsHeader = document.getElementById('scholarResultsHeader');
   const searchInput   = document.querySelector('.uni-search-input');
@@ -101,10 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (linkEl) linkEl.href = sch.applyLink;
 
     if (saveBtn) {
-      saveBtn.classList.remove('active');
-      const icon = saveBtn.querySelector('i');
-      if (icon) icon.className = 'fa-regular fa-heart';
-    }
+    const cardEl = grid.querySelector(`.scholar-card[data-id="${sch.id}"]`);
+    const isSaved = cardEl?.querySelector('.heart-btn')?.classList.contains('is-active');
+    saveBtn.classList.toggle('active', !!isSaved);
+    const icon = saveBtn.querySelector('i');
+    if (icon) icon.className = isSaved ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+    saveBtn.dataset.scholId = sch.id;
+  }
 
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
@@ -123,6 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.closest('.apply-btn') || e.target.closest('.heart-btn')) return;
         const sch = SCHOLARSHIPS.find(s => s.id === card.dataset.id);
         if (sch) openModal(sch);
+      });
+
+      const heartBtn = card.querySelector('.heart-btn');
+      heartBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        heartBtn.classList.toggle('is-active');
       });
 
       const applyBtn = card.querySelector('.apply-btn');
@@ -187,11 +196,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── ХАДГАЛАХ toggle ────────────────────────────────────────────────────────
   saveBtn?.addEventListener('click', () => {
     saveBtn.classList.toggle('active');
+    const isNowActive = saveBtn.classList.contains('active');
     const icon = saveBtn.querySelector('i');
-    if (saveBtn.classList.contains('active')) {
+    if (isNowActive) {
       icon?.classList.replace('fa-regular', 'fa-solid');
     } else {
       icon?.classList.replace('fa-solid', 'fa-regular');
+    }
+    // Card-ын heart-тай sync
+    const scholId = saveBtn.dataset.scholId;
+    if (scholId) {
+      const cardHeart = grid.querySelector(`.scholar-card[data-id="${scholId}"] .heart-btn`);
+      if (cardHeart) cardHeart.classList.toggle('is-active', isNowActive);
     }
   });
 
