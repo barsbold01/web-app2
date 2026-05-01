@@ -223,87 +223,34 @@ body {
 
 .user-name { font-size: .875rem; font-weight: 600; color: var(--white); }
 .user-role { font-size: .7rem; color: rgba(255,255,255,.4); }
+/* ── Main Area ────────────────────────────────────────────── */
+.db-main { margin-left: 260px; flex: 1; display: flex; flex-direction: column; min-height: 100vh; overflow-y: auto;}
 
-/* ============================================================
-   TOPBAR
-   ============================================================ */
-.topbar {
-  background: var(--white);
+/* ── Top Bar ──────────────────────────────────────────────── */
+.db-topbar {
+  height: 64px; background: var(--white);
   border-bottom: var(--border);
-  padding: 0 24px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; flex-shrink: 0;
+  position: sticky; top: 0; z-index: 50;
 }
 
-.topbar-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: -.02em;
-  color: var(--navy);
-}
-
-.globe-icon { display: none; }
-
-.topbar-left span { font-weight: 800; }
-
-.topbar-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.notif-btn {
+.db-topbar__title { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: -.04em; color: var(--navy); }
+.db-topbar__actions { display: flex; align-items: center; gap: 12px; }
+.db-topbar__link {
   padding: 8px 20px;
-  border: var(--border);
-  color: var(--navy);
-  font-weight: 700;
-  font-size: .8rem;
-  letter-spacing: .04em;
-  background: none;
-  cursor: pointer;
-  transition: background .15s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-  border-radius: 0;
-}
-.notif-btn img { width: 16px; height: 16px; }
-.notif-btn:hover { background: var(--lime); }
-
-.notif-dot {
-  width: 8px; height: 8px;
-  background: var(--red-600);
-  border-radius: 50%;
-  position: absolute;
-  top: 6px; right: 6px;
-  border: 2px solid var(--white);
-}
-
-.signin-top-btn {
-  font-family: var(--font-body);
-  background: var(--navy);
-  color: var(--lime);
-  border: none;
-  border-radius: 0;
-  padding: 8px 20px;
-  font-size: .8rem;
-  font-weight: 700;
-  cursor: pointer;
-  letter-spacing: .04em;
+  border: var(--border); color: var(--navy);
+  font-weight: 700; font-size: .8rem; letter-spacing: .04em;
   transition: background .15s;
 }
-.signin-top-btn:hover { background: #000; }
+.db-topbar__link:hover { background: var(--lime); }
+.db-topbar__cta {
+  padding: 8px 20px;
+  background: var(--navy); color: var(--lime);
+  font-weight: 700; font-size: .8rem; letter-spacing: .04em;
+  transition: background .15s;
+}
+.db-topbar__cta:hover { background: #000; }
 
 /* ── university Content ────────────────────────────────────── */
 .db-content { padding: 28px 28px 48px; flex: 1; }
@@ -724,6 +671,35 @@ body {
   line-height: 1;
 }
 
+.filter-categories {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.cat-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 10px 18px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.cat-btn.active {
+  background-color: #ccff00; 
+  color: #000;
+  border-color: #ccff00;
+}
+
+.cat-btn:hover:not(.active) {
+  border-color: #ccff00;
+  color: #ccff00;
+}
 
 .scholarship-tabs {
   display: flex;

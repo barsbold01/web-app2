@@ -222,6 +222,9 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
 .user-name { font-size: .875rem; font-weight: 600; color: var(--white); }
 .user-role { font-size: .7rem; color: rgba(255,255,255,.4); }
 
+/* ── Main Area ────────────────────────────────────────────── */
+.db-main { margin-left: 260px; flex: 1; display: flex; flex-direction: column; min-height: 100vh; }
+
 /* ============================================================
    TOPBAR
    ============================================================ */
