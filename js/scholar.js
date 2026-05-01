@@ -156,14 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Category товчлуурууд (UI тоглоом) ─────────────────────────────────────
-  catBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      catBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
-
   // ── Шүүлтүүр нээх/хаах ───────────────────────────────────────────────────
   filterBtn?.addEventListener('click', () => {
     filterPanel?.classList.toggle('active');
