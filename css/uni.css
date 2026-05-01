@@ -119,7 +119,7 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
 .db-sidebar__logo-box .icon { color: var(--navy); }
 .db-sidebar__brand { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--white); letter-spacing: -.02em; }
 .db-sidebar__nav { padding: 16px 0; flex: 1; }
-.db-sidebar__section { padding: 0; margin-bottom: 8px; }
+.db-sidebar__section { padding: 0; margin-bottom: 8px; }  
 .db-sidebar__section-label { font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 16px 20px 6px; }
 .db-sidebar__item {
   display: flex; align-items: center; gap: 10px;

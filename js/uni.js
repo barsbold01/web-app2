@@ -150,20 +150,38 @@ document.addEventListener('DOMContentLoaded', () => {
     return result;
   };
 
+  // ── Хадгалсан төлвийг сэргээх ────────────────────────────────────────────
+  const restoreHeartStates = () => {
+    if (typeof fav_isUniSaved !== 'function') return;
+    grid.querySelectorAll('.uni-card').forEach(card => {
+      if (fav_isUniSaved(card.dataset.id)) {
+        card.querySelector('.heart-btn')?.classList.add('is-active');
+      }
+    });
+  };
+
   // ── Гридийг дахин бүтээх ──────────────────────────────────────────────────
   const render = () => {
     const filtered = getFiltered();
     grid.innerHTML = filtered.map(buildCard).join('');
     resultsHeader.textContent = `Нийт ${filtered.length} сургууль олдлоо`;
     attachCardListeners();
+    restoreHeartStates();
   };
 
   // ── Картын event listener-үүдийг холбох ──────────────────────────────────
   const attachCardListeners = () => {
     grid.querySelectorAll('.uni-card').forEach(card => {
       card.addEventListener('click', (e) => {
-        if (e.target.closest('.heart-btn')) {
-          e.target.closest('.heart-btn').classList.toggle('is-active');
+        const heartBtn = e.target.closest('.heart-btn');
+        if (heartBtn) {
+          heartBtn.classList.toggle('is-active');
+          const uni = UNIVERSITIES.find(u => u.id === card.dataset.id);
+          if (uni && typeof fav_saveUni === 'function') {
+            heartBtn.classList.contains('is-active')
+              ? fav_saveUni(uni)
+              : fav_removeUni(uni.id);
+          }
           return;
         }
         const uni = UNIVERSITIES.find(u => u.id === card.dataset.id);
@@ -226,6 +244,10 @@ document.addEventListener('click', (e) => {
   if (uniId) {
     const cardHeart = grid.querySelector(`.uni-card[data-id="${uniId}"] .heart-btn`);
     if (cardHeart) cardHeart.classList.toggle('is-active', isNowActive);
+    if (typeof fav_saveUni === 'function') {
+      const uni = UNIVERSITIES.find(u => u.id === uniId);
+      if (uni) { isNowActive ? fav_saveUni(uni) : fav_removeUni(uniId); }
+    }
   }
 });
 

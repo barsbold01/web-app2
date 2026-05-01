@@ -70,12 +70,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // ── Хадгалсан төлвийг сэргээх ────────────────────────────────────────────
+  const restoreHeartStates = () => {
+    if (typeof fav_isScholarSaved !== 'function') return;
+    grid.querySelectorAll('.scholar-card').forEach(card => {
+      if (fav_isScholarSaved(card.dataset.id)) {
+        card.querySelector('.heart-btn')?.classList.add('is-active');
+      }
+    });
+  };
+
   // ── Гридийг дахин бүтээх ──────────────────────────────────────────────────
   const render = () => {
     const filtered = getFiltered();
     grid.innerHTML = filtered.map(buildCard).join('');
     resultsHeader.textContent = `Нийт ${filtered.length} тэтгэлэг олдлоо`;
     attachCardListeners();
+    restoreHeartStates();
   };
 
   // ── Модалд өгөгдөл дүүргэх ─────────────────────────────────────────────────
@@ -132,6 +143,12 @@ document.addEventListener('DOMContentLoaded', () => {
       heartBtn?.addEventListener('click', (e) => {
         e.stopPropagation();
         heartBtn.classList.toggle('is-active');
+        const sch = SCHOLARSHIPS.find(s => s.id === card.dataset.id);
+        if (sch && typeof fav_saveScholar === 'function') {
+          heartBtn.classList.contains('is-active')
+            ? fav_saveScholar(sch)
+            : fav_removeScholar(sch.id);
+        }
       });
 
       const applyBtn = card.querySelector('.apply-btn');
@@ -208,6 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (scholId) {
       const cardHeart = grid.querySelector(`.scholar-card[data-id="${scholId}"] .heart-btn`);
       if (cardHeart) cardHeart.classList.toggle('is-active', isNowActive);
+      if (typeof fav_saveScholar === 'function') {
+        const sch = SCHOLARSHIPS.find(s => s.id === scholId);
+        if (sch) { isNowActive ? fav_saveScholar(sch) : fav_removeScholar(scholId); }
+      }
     }
   });
 

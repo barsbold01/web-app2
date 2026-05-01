@@ -1,0 +1,155 @@
+// ─────────────────────────────────────────────────────────────────────────────
+//  favorites.js  –  Хадгалсан хэсгүүдийн удирдлага (localStorage + dashboard)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const FAV_UNIS_KEY    = 'ns_saved_unis';
+const FAV_SCHOLARS_KEY = 'ns_saved_scholars';
+
+/* ── Storage helpers ─────────────────────────────────────────────────────── */
+
+function fav_getSavedUnis() {
+  try { return JSON.parse(localStorage.getItem(FAV_UNIS_KEY) || '[]'); }
+  catch { return []; }
+}
+
+function fav_getSavedScholars() {
+  try { return JSON.parse(localStorage.getItem(FAV_SCHOLARS_KEY) || '[]'); }
+  catch { return []; }
+}
+
+function fav_isUniSaved(id) {
+  return fav_getSavedUnis().some(u => u.id === id);
+}
+
+function fav_isScholarSaved(id) {
+  return fav_getSavedScholars().some(s => s.id === id);
+}
+
+function fav_saveUni(uni) {
+  const saved = fav_getSavedUnis();
+  if (saved.find(u => u.id === uni.id)) return;
+  saved.push({
+    id:             uni.id,
+    name:           uni.name,
+    location:       uni.location,
+    deadline:       uni.deadline,
+    hasScholarship: uni.hasScholarship,
+    tags:           uni.tags || []
+  });
+  localStorage.setItem(FAV_UNIS_KEY, JSON.stringify(saved));
+}
+
+function fav_removeUni(id) {
+  localStorage.setItem(FAV_UNIS_KEY, JSON.stringify(
+    fav_getSavedUnis().filter(u => u.id !== id)
+  ));
+}
+
+function fav_saveScholar(sch) {
+  const saved = fav_getSavedScholars();
+  if (saved.find(s => s.id === sch.id)) return;
+  saved.push({
+    id:           sch.id,
+    name:         sch.name,
+    provider:     sch.provider,
+    deadline:     sch.deadline,
+    funding:      sch.funding,
+    fundingLabel: sch.fundingLabel || (sch.funding === 'full' ? 'Бүрэн' : 'Хагас'),
+    level:        sch.level || ''
+  });
+  localStorage.setItem(FAV_SCHOLARS_KEY, JSON.stringify(saved));
+}
+
+function fav_removeScholar(id) {
+  localStorage.setItem(FAV_SCHOLARS_KEY, JSON.stringify(
+    fav_getSavedScholars().filter(s => s.id !== id)
+  ));
+}
+
+/* ── Dashboard rendering ─────────────────────────────────────────────────── */
+
+function fav_renderDashboard() {
+  _renderSavedUnis();
+  _renderSavedScholars();
+}
+
+function _renderSavedUnis() {
+  const list = document.getElementById('savedUniList');
+  if (!list) return;
+  const unis = fav_getSavedUnis();
+  if (unis.length === 0) {
+    list.innerHTML = '<div class="saved-empty">Хадгалсан их сургууль байхгүй байна. <a href="uni.html">Хайж олох →</a></div>';
+    return;
+  }
+  list.innerHTML = unis.map(u => `
+    <div class="saved-item">
+      <div class="saved-icon si-indigo">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/>
+        </svg>
+      </div>
+      <div class="saved-info">
+        <div class="saved-name">${u.name}</div>
+        <div class="saved-meta">${u.location}</div>
+      </div>
+      <div class="saved-actions">
+        ${u.hasScholarship ? '<span class="badge badge-green">Тэтгэлэгт</span>' : '<span class="badge badge-amber">' + (u.tags[0] || '') + '</span>'}
+        <div class="saved-due">Хугацаа: ${u.deadline}</div>
+        <button class="saved-remove-btn" aria-label="Устгах" data-uni-id="${u.id}">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="12" height="12">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>`).join('');
+
+  list.querySelectorAll('.saved-remove-btn[data-uni-id]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      fav_removeUni(btn.dataset.uniId);
+      fav_renderDashboard();
+    });
+  });
+}
+
+function _renderSavedScholars() {
+  const list = document.getElementById('savedScholList');
+  if (!list) return;
+  const scholars = fav_getSavedScholars();
+  if (scholars.length === 0) {
+    list.innerHTML = '<div class="saved-empty">Хадгалсан тэтгэлэг байхгүй байна. <a href="scholar.html">Хайж олох →</a></div>';
+    return;
+  }
+  list.innerHTML = scholars.map(s => `
+    <div class="saved-item">
+      <div class="saved-icon si-purple">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+      </div>
+      <div class="saved-info">
+        <div class="saved-name">${s.name}</div>
+        <div class="saved-meta">${s.provider}${s.level ? ' · ' + s.level : ''}</div>
+      </div>
+      <div class="saved-actions">
+        <span class="badge ${s.funding === 'full' ? 'badge-green' : 'badge-amber'}">${s.fundingLabel}</span>
+        <div class="saved-due">${s.deadline}</div>
+        <button class="saved-remove-btn" aria-label="Устгах" data-schol-id="${s.id}">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="12" height="12">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>`).join('');
+
+  list.querySelectorAll('.saved-remove-btn[data-schol-id]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      fav_removeScholar(btn.dataset.scholId);
+      fav_renderDashboard();
+    });
+  });
+}
+
+/* ── Auto-render on dashboard load ──────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', fav_renderDashboard);
