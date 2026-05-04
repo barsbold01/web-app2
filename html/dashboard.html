@@ -488,6 +488,7 @@
   </a>
 </nav>
 
+  <script src="../js/session.js"></script>
   <script src="../js/favorites.js"></script>
   <script>
   function showPage(id) {
@@ -508,25 +509,7 @@
     showPage(initialPage);
   }
 
-  /* Load user from session */
-  (function() {
-    var s = localStorage.getItem('ns_session');
-    if (!s) return;
-    var u = JSON.parse(s);
-    var name = u.name || 'Хэрэглэгч';
-    var grade = u.grade || '';
-    var initial = name.charAt(0).toUpperCase();
-    var av = document.querySelector('.user-avatar');
-    var nm = document.querySelector('.user-name');
-    var gr = document.querySelector('.user-role');
-    if (av) av.textContent = initial;
-    if (nm) nm.textContent = name;
-    if (gr) gr.textContent = grade;
-    var titleEl = document.querySelector('.page-title');
-    if (titleEl && titleEl.textContent.includes('Мөнхбат')) {
-      titleEl.textContent = 'Тавтай морил, ' + name + '!  ';
-    }
-  })();
+  /* session.js already ran above — sidebar + welcome title are updated */
 
   /* Dynamic deadline urgency */
   (function() {

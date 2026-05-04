@@ -1,19 +1,25 @@
-// ─────────────────────────────────────────────────────────────────────────────
-//  favorites.js  –  Хадгалсан хэсгүүдийн удирдлага (localStorage + dashboard)
-// ─────────────────────────────────────────────────────────────────────────────
+// favorites.js – per-user saved universities and scholarships (localStorage).
+// Keys are scoped to the logged-in user's email so favorites never bleed
+// between accounts and persist across page refreshes.
 
-const FAV_UNIS_KEY    = 'ns_saved_unis';
-const FAV_SCHOLARS_KEY = 'ns_saved_scholars';
+function _favKey(base) {
+  try {
+    const u = JSON.parse(localStorage.getItem('ns_session'));
+    return u?.email ? `${base}_${u.email}` : base;
+  } catch {
+    return base;
+  }
+}
 
 /* ── Storage helpers ─────────────────────────────────────────────────────── */
 
 function fav_getSavedUnis() {
-  try { return JSON.parse(localStorage.getItem(FAV_UNIS_KEY) || '[]'); }
+  try { return JSON.parse(localStorage.getItem(_favKey('ns_saved_unis')) || '[]'); }
   catch { return []; }
 }
 
 function fav_getSavedScholars() {
-  try { return JSON.parse(localStorage.getItem(FAV_SCHOLARS_KEY) || '[]'); }
+  try { return JSON.parse(localStorage.getItem(_favKey('ns_saved_scholars')) || '[]'); }
   catch { return []; }
 }
 
@@ -36,13 +42,14 @@ function fav_saveUni(uni) {
     hasScholarship: uni.hasScholarship,
     tags:           uni.tags || []
   });
-  localStorage.setItem(FAV_UNIS_KEY, JSON.stringify(saved));
+  localStorage.setItem(_favKey('ns_saved_unis'), JSON.stringify(saved));
 }
 
 function fav_removeUni(id) {
-  localStorage.setItem(FAV_UNIS_KEY, JSON.stringify(
-    fav_getSavedUnis().filter(u => u.id !== id)
-  ));
+  localStorage.setItem(
+    _favKey('ns_saved_unis'),
+    JSON.stringify(fav_getSavedUnis().filter(u => u.id !== id))
+  );
 }
 
 function fav_saveScholar(sch) {
@@ -57,13 +64,14 @@ function fav_saveScholar(sch) {
     fundingLabel: sch.fundingLabel || (sch.funding === 'full' ? 'Бүрэн' : 'Хагас'),
     level:        sch.level || ''
   });
-  localStorage.setItem(FAV_SCHOLARS_KEY, JSON.stringify(saved));
+  localStorage.setItem(_favKey('ns_saved_scholars'), JSON.stringify(saved));
 }
 
 function fav_removeScholar(id) {
-  localStorage.setItem(FAV_SCHOLARS_KEY, JSON.stringify(
-    fav_getSavedScholars().filter(s => s.id !== id)
-  ));
+  localStorage.setItem(
+    _favKey('ns_saved_scholars'),
+    JSON.stringify(fav_getSavedScholars().filter(s => s.id !== id))
+  );
 }
 
 /* ── Dashboard rendering ─────────────────────────────────────────────────── */
@@ -93,7 +101,9 @@ function _renderSavedUnis() {
         <div class="saved-meta">${u.location}</div>
       </div>
       <div class="saved-actions">
-        ${u.hasScholarship ? '<span class="badge badge-green">Тэтгэлэгт</span>' : '<span class="badge badge-amber">' + (u.tags[0] || '') + '</span>'}
+        ${u.hasScholarship
+          ? '<span class="badge badge-green">Тэтгэлэгт</span>'
+          : `<span class="badge badge-amber">${u.tags[0] || ''}</span>`}
         <div class="saved-due">Хугацаа: ${u.deadline}</div>
         <button class="saved-remove-btn" aria-label="Устгах" data-uni-id="${u.id}">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="12" height="12">

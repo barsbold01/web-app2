@@ -160,24 +160,10 @@
     <span>Заавар</span>
   </a>
 </nav>
+<script src="../js/session.js"></script>
 <script src="../js/favorites.js"></script>
 <script src="../js/data.js"></script>
 <script src="../js/scholar.js"></script>
 <script src="../react/dist/search-filter.iife.js"></script>
-<script>
-(function() {
-  var s = localStorage.getItem('ns_session');
-  if (!s) return;
-  var u = JSON.parse(s);
-  var name = u.name || 'Хэрэглэгч';
-  var initial = name.charAt(0).toUpperCase();
-  var av = document.querySelector('.db-sidebar__avatar');
-  var nm = document.querySelector('.db-sidebar__user-name');
-  var gr = document.querySelector('.db-sidebar__user-role');
-  if (av) av.textContent = initial;
-  if (nm) nm.textContent = name;
-  if (gr) gr.textContent = u.grade || '';
-})();
-</script>
 </body>
 </html>
