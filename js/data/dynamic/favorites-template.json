@@ -1,0 +1,23 @@
+{
+  "saved_unis": [
+    {
+      "id": "",
+      "name": "",
+      "location": "",
+      "deadline": "",
+      "hasScholarship": false,
+      "tags": []
+    }
+  ],
+  "saved_scholars": [
+    {
+      "id": "",
+      "name": "",
+      "provider": "",
+      "deadline": "",
+      "funding": "",
+      "fundingLabel": "",
+      "level": ""
+    }
+  ]
+}

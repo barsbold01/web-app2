@@ -232,11 +232,13 @@ function selectExam(key) {
 document.querySelectorAll('.etab-btn').forEach(btn =>
   btn.addEventListener('click', () => setTab(btn.dataset.tab)));
 
-/* ── Initial render ── */
-buildExamList();
-buildQuickFacts();
-buildBanner();
-buildOverview();
-buildFormat();
-buildPrep();
-buildDates();
+/* ── Initial render (waits for JSON data to load) ── */
+window.appData.then(() => {
+  buildExamList();
+  buildQuickFacts();
+  buildBanner();
+  buildOverview();
+  buildFormat();
+  buildPrep();
+  buildDates();
+});

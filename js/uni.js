@@ -3,7 +3,7 @@
 //  Өгөгдлийг data.js-ийн UNIVERSITIES массиваас ачаалж ES6 аргаар рендерлэнэ
 // ─────────────────────────────────────────────────────────────────────────────
 
-document.addEventListener('DOMContentLoaded', () => {
+window.appData.then(() => {
 
   // ── DOM лавлагаанууд ────────────────────────────────────────────────────────
   const grid          = document.getElementById('uniGrid');

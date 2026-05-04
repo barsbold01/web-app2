@@ -3,7 +3,7 @@
 //  Өгөгдлийг data.js-ийн SCHOLARSHIPS массиваас ачаалж ES6 аргаар рендерлэнэ
 // ─────────────────────────────────────────────────────────────────────────────
 
-document.addEventListener('DOMContentLoaded', () => {
+window.appData.then(() => {
 
   // ── DOM ────────────────────────────────────────────────────────
   const grid          = document.getElementById('scholarGrid');
