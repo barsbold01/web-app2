@@ -65,72 +65,7 @@
     </header>
 
     <div class="db-content">
-      <div class="uni-hero">
-        <h1>Өөрт тохирсон тэтгэлгээ ол</h1>
-        <div class="uni-search-row">
-          <div class="uni-search-wrap">
-            <svg class="icon icon-18" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input class="uni-search-input" type="text" placeholder="Тэтгэлэг, их сургуулиуд, улсаар хайх ..."/>
-          </div>
-          <button class="uni-filter-btn">
-            ШҮҮЛТҮҮР
-          </button>
-        </div>
-
-        
-      </div>
-
-      <div class="scholarship-tabs">
-        <button class="tab-btn">БҮХ ТЭТГЭЛЭГ</button>
-        <button class="tab-btn active">БҮТЭН САНХҮҮЖИЛТ</button>
-        <button class="tab-btn">ХАГАС САНХҮҮЖИЛТ</button>
-      </div>
-
-      <div class="filter-panel" id="filterPanel">
-        <div class="filter-grid">
-          <div class="filter-group">
-            <label>УЛС</label>
-            <select id="regionSelect">
-              <option value="all">Бүгд (All)</option>
-              <option value="usa">АНУ (USA)</option>
-              <option value="uk">Их Британи (UK)</option>
-              <option value="japan">Япон (Japan)</option>
-              <option value="korea">Өмнөд Солонгос</option>
-              <option value="australia">Австрали</option>
-              <option value="china">Хятад</option>
-              <option value="europe">Европ</option>
-              <option value="canada">Канада</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <label>ШААРДЛАГА</label>
-            <select id="programSelect">
-              <option value="all">Бүгд (All)</option>
-              <option value="engineering">Бүтэн</option>
-              <option value="computer-science">Хагас</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <label>ДУУСАХ ХУГАЦАА</label>
-            <select id="rankSelect">
-              <option value="ranking">Бакалавр</option>
-              <option value="tuition-low">мастер</option>
-              <option value="tuition-high">магистурант/докторант</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="filter-footer">
-          <label class="checkbox-container">
-            <input type="checkbox" id="scholarOnly">
-            <span class="checkmark"></span>
-            ЗӨВХӨН ТЭТГЭЛЭГТЭЙ СУРГУУЛИУД
-          </label>
-          <button class="reset-btn">✕ RESET</button>
-        </div>
-      </div>
+      <div id="scholar-search-root"></div>
 
       <div class="uni-results-area">
         <div class="uni-results-header" id="scholarResultsHeader">Нийт 0 тэтгэлэг олдлоо</div>
@@ -225,8 +160,10 @@
     <span>Заавар</span>
   </a>
 </nav>
+<script src="../js/favorites.js"></script>
 <script src="../js/data.js"></script>
 <script src="../js/scholar.js"></script>
+<script src="../react/dist/search-filter.iife.js"></script>
 <script>
 (function() {
   var s = localStorage.getItem('ns_session');

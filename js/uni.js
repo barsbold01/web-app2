@@ -1,27 +1,20 @@
-// ─────────────────────────────────────────────────────────────────────────────
-//  uni.js  –  Их сургуулийн хуудасны бүх JavaScript
-//  Өгөгдлийг data.js-ийн UNIVERSITIES массиваас ачаалж ES6 аргаар рендерлэнэ
-// ─────────────────────────────────────────────────────────────────────────────
+// University page — card rendering and modal logic.
+// Filter state is owned by the React UniSearchFilter component (react/src/UniSearchFilter.jsx)
+// and communicated via the custom 'filtersChanged' window event.
 
 window.appData.then(() => {
 
-  // ── DOM лавлагаанууд ────────────────────────────────────────────────────────
+  // ── DOM refs ──────────────────────────────────────────────────
   const grid          = document.getElementById('uniGrid');
   const resultsHeader = document.getElementById('uniResultsHeader');
-  const searchInput   = document.querySelector('.uni-search-input');
-  const filterBtn     = document.querySelector('.uni-filter-btn');
-  const filterPanel   = document.getElementById('filterPanel');
-  const regionSelect  = document.getElementById('regionSelect');
-  const programSelect = document.getElementById('programSelect');
-  const rankSelect    = document.getElementById('rankSelect');
-  const tuitionSelect = document.getElementById('tuitionSelect');
-  const scholarOnly   = document.getElementById('scholarOnly');
-  const resetBtn      = document.querySelector('.reset-btn');
   const modal         = document.getElementById('uniModal');
   const closeBtn      = document.querySelector('.close-modal');
   const saveBtn       = document.querySelector('.save-btn');
 
-  // ── SVG templates ──────────────────────────────────────────────────────────
+  // ── Filter state (driven by React component) ──────────────────
+  let currentFilters = { query: '', region: 'all', program: 'all', sort: 'ranking', tuition: 'all', scholarOnly: false };
+
+  // ── SVG templates ─────────────────────────────────────────────
   const heartSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>`;
@@ -30,7 +23,7 @@ window.appData.then(() => {
     <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
   </svg>`;
 
-  // ── Картын HTML үүсгэх ──────────────────────────────────────────────────────
+  // ── Card HTML builder ─────────────────────────────────────────
   const buildCard = (uni) => {
     const scholarTag = uni.hasScholarship
       ? `<span class="uni-tag uni-tag--scholar">${scholarSVG} Тэтгэлэгт</span>`
@@ -76,7 +69,7 @@ window.appData.then(() => {
       </div>`;
   };
 
-  // ── Модалд өгөгдөл дүүргэх ─────────────────────────────────────────────────
+  // ── Modal population ──────────────────────────────────────────
   const openModal = (uni) => {
     document.getElementById('uniModalImg').style.backgroundImage  = `url('${uni.image}')`;
     document.getElementById('uniModalName').textContent           = uni.nameEn;
@@ -102,7 +95,6 @@ window.appData.then(() => {
       if (text) text.textContent = 'ХАДГАЛАХ';
     }
     if (saveBtn) {
-      // Энэ uni cart дээр хадгалагдсан эсэхийг шалгах
       const cardEl = grid.querySelector(`.uni-card[data-id="${uni.id}"]`);
       const isSaved = cardEl?.querySelector('.heart-btn')?.classList.contains('is-active');
 
@@ -112,21 +104,16 @@ window.appData.then(() => {
       if (icon) icon.className = isSaved ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
       if (text) text.textContent = isSaved ? 'ХАДГАЛАГДСАН' : 'ХАДГАЛАХ';
 
-      // modal save товч дарахад cart-ын heart-тай sync хийх
       saveBtn.dataset.uniId = uni.id;
     }
 
     modal.style.display = 'block';
   };
 
-  // ── Шүүлт + эрэмбэлэлт ───────────────────────────────────────────────────
+  // ── Filter + sort ─────────────────────────────────────────────
   const getFiltered = () => {
-    const query    = searchInput?.value.toLowerCase().trim() ?? '';
-    const region   = regionSelect?.value   ?? 'all';
-    const program  = programSelect?.value  ?? 'all';
-    const sort     = rankSelect?.value     ?? 'ranking';
-    const tuition  = tuitionSelect?.value  ?? 'all';
-    const onlyScholar = scholarOnly?.checked ?? false;
+    const { region, program, sort, tuition, scholarOnly } = currentFilters;
+    const query = currentFilters.query.toLowerCase().trim();
 
     let result = UNIVERSITIES.filter(uni => {
       if (query && !uni.name.toLowerCase().includes(query)
@@ -135,7 +122,7 @@ window.appData.then(() => {
       if (region !== 'all' && uni.region !== region) return false;
       if (program !== 'all' && !uni.programs.includes(program)) return false;
       if (tuition !== 'all' && uni.tuitionCategory !== tuition) return false;
-      if (onlyScholar && !uni.hasScholarship) return false;
+      if (scholarOnly && !uni.hasScholarship) return false;
       return true;
     });
 
@@ -150,7 +137,7 @@ window.appData.then(() => {
     return result;
   };
 
-  // ── Хадгалсан төлвийг сэргээх ────────────────────────────────────────────
+  // ── Restore saved heart states ────────────────────────────────
   const restoreHeartStates = () => {
     if (typeof fav_isUniSaved !== 'function') return;
     grid.querySelectorAll('.uni-card').forEach(card => {
@@ -160,7 +147,7 @@ window.appData.then(() => {
     });
   };
 
-  // ── Гридийг дахин бүтээх ──────────────────────────────────────────────────
+  // ── Grid render ───────────────────────────────────────────────
   const render = () => {
     const filtered = getFiltered();
     grid.innerHTML = filtered.map(buildCard).join('');
@@ -169,7 +156,7 @@ window.appData.then(() => {
     restoreHeartStates();
   };
 
-  // ── Картын event listener-үүдийг холбох ──────────────────────────────────
+  // ── Card event listeners ──────────────────────────────────────
   const attachCardListeners = () => {
     grid.querySelectorAll('.uni-card').forEach(card => {
       card.addEventListener('click', (e) => {
@@ -190,67 +177,47 @@ window.appData.then(() => {
     });
   };
 
-  // ── Шүүлтийн хяналтуудыг холбох ──────────────────────────────────────────
-  [searchInput, regionSelect, programSelect, rankSelect, tuitionSelect, scholarOnly]
-    .forEach(el => el?.addEventListener('change', render));
-
-  searchInput?.addEventListener('input', render);
-
-  // ── Шүүлтүүр нээх/хаах ───────────────────────────────────────────────────
-  filterBtn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    filterPanel?.classList.toggle('active');
-  });
-
-  window.addEventListener('click', (e) => {
-    if (filterPanel && !filterPanel.contains(e.target) && e.target !== filterBtn) {
-      filterPanel.classList.remove('active');
-    }
-    if (e.target === modal) modal.style.display = 'none';
-  });
-
-  // ── Reset товч ────────────────────────────────────────────────────────────
-  resetBtn?.addEventListener('click', () => {
-    if (searchInput)   searchInput.value  = '';
-    if (regionSelect)  regionSelect.value  = 'all';
-    if (programSelect) programSelect.value = 'all';
-    if (rankSelect)    rankSelect.value    = 'ranking';
-    if (tuitionSelect) tuitionSelect.value = 'all';
-    if (scholarOnly)   scholarOnly.checked = false;
+  // ── React filter event ────────────────────────────────────────
+  window.addEventListener('filtersChanged', (e) => {
+    currentFilters = e.detail;
     render();
   });
 
-  // ── Модал хаах ────────────────────────────────────────────────────────────
+  // ── Modal backdrop click ──────────────────────────────────────
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) modal.style.display = 'none';
+  });
+
+  // ── Modal close button ────────────────────────────────────────
   closeBtn?.addEventListener('click', () => { modal.style.display = 'none'; });
 
-  // ── ХАДГАЛАХ товч ─────────────────────────────────────────────────────────
-document.addEventListener('click', (e) => {
-  const btn = e.target.closest('.save-btn');
-  if (!btn) return;
-  btn.classList.toggle('active');
-  const isNowActive = btn.classList.contains('active');
-  const icon = btn.querySelector('i');
-  const text = btn.querySelector('span');
-  if (isNowActive) {
-    icon?.classList.replace('fa-regular', 'fa-solid');
-    if (text) text.textContent = 'ХАДГАЛАГДСАН';
-  } else {
-    icon?.classList.replace('fa-solid', 'fa-regular');
-    if (text) text.textContent = 'ХАДГАЛАХ';
-  }
-
-  // Cart дээрх heart-тай sync хийх
-  const uniId = btn.dataset.uniId;
-  if (uniId) {
-    const cardHeart = grid.querySelector(`.uni-card[data-id="${uniId}"] .heart-btn`);
-    if (cardHeart) cardHeart.classList.toggle('is-active', isNowActive);
-    if (typeof fav_saveUni === 'function') {
-      const uni = UNIVERSITIES.find(u => u.id === uniId);
-      if (uni) { isNowActive ? fav_saveUni(uni) : fav_removeUni(uniId); }
+  // ── Modal save button ─────────────────────────────────────────
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.save-btn');
+    if (!btn) return;
+    btn.classList.toggle('active');
+    const isNowActive = btn.classList.contains('active');
+    const icon = btn.querySelector('i');
+    const text = btn.querySelector('span');
+    if (isNowActive) {
+      icon?.classList.replace('fa-regular', 'fa-solid');
+      if (text) text.textContent = 'ХАДГАЛАГДСАН';
+    } else {
+      icon?.classList.replace('fa-solid', 'fa-regular');
+      if (text) text.textContent = 'ХАДГАЛАХ';
     }
-  }
-});
 
-  // ── Эхний рендер ─────────────────────────────────────────────────────────
+    const uniId = btn.dataset.uniId;
+    if (uniId) {
+      const cardHeart = grid.querySelector(`.uni-card[data-id="${uniId}"] .heart-btn`);
+      if (cardHeart) cardHeart.classList.toggle('is-active', isNowActive);
+      if (typeof fav_saveUni === 'function') {
+        const uni = UNIVERSITIES.find(u => u.id === uniId);
+        if (uni) { isNowActive ? fav_saveUni(uni) : fav_removeUni(uniId); }
+      }
+    }
+  });
+
+  // ── Initial render ────────────────────────────────────────────
   render();
 });

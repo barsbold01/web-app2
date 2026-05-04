@@ -65,98 +65,12 @@
     </header>
 
     <div class="db-content">
-      <div class="uni-hero">
-        <h1>Дэлхийн их дээд<br>сургуулиудыг судлаарай</h1>
-        <div class="uni-search-row">
-          <div class="uni-search-wrap">
-            <svg class="icon icon-18" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input class="uni-search-input" type="text" placeholder="Сургууль, улс, хотын нэрээр хайх..."/>
-          </div>
-          <button class="uni-filter-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders-horizontal w-5 h-5">
-              <line x1="21" x2="14" y1="4" y2="4"></line>
-              <line x1="10" x2="3" y1="4" y2="4"></line>
-              <line x1="21" x2="12" y1="12" y2="12"></line>
-              <line x1="8" x2="3" y1="12" y2="12"></line>
-              <line x1="21" x2="16" y1="20" y2="20"></line>
-              <line x1="12" x2="3" y1="20" y2="20"></line>
-              <line x1="14" x2="14" y1="2" y2="6"></line>
-              <line x1="8" x2="8" y1="10" y2="14"></line>
-              <line x1="16" x2="16" y1="18" y2="22"></line>
-            </svg>ШҮҮЛТҮҮР</button>
-        </div>
-        
-      </div>
+      <div id="uni-search-root"></div>
 
       <div class="uni-stats">
         <div class="uni-stat"><span class="uni-stat__num">500+</span><span class="uni-stat__label">Сургууль</span></div>
         <div class="uni-stat"><span class="uni-stat__num">40+</span><span class="uni-stat__label">Улс орон</span></div>
         <div class="uni-stat"><span class="uni-stat__num">100+</span><span class="uni-stat__label">Хөтөлбөр</span></div>
-      </div>
-      <div class="filter-panel" id="filterPanel">
-        <div class="filter-grid">
-          <div class="filter-group">
-            <label>БҮС НУТАГ</label>
-            <select id="regionSelect">
-              <option value="all">Бүгд (All)</option>
-              <option value="usa">АНУ (USA)</option>
-              <option value="uk">Их Британи (UK)</option>
-              <option value="japan">Япон (Japan)</option>
-              <option value="korea">Өмнөд Солонгос</option>
-              <option value="australia">Австрали</option>
-              <option value="china">Хятад</option>
-              <option value="europe">Европ</option>
-              <option value="canada">Канада</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <label>ХӨТӨЛБӨРИЙН ТӨРӨЛ</label>
-            <select id="programSelect">
-              <option value="all">Бүгд (All)</option>
-              <option value="engineering">Инженерчлэл</option>
-              <option value="computer-science">Компьютерийн шинжлэх ухаан</option>
-              <option value="business">Бизнес ба Удирдах ухаан</option>
-              <option value="medicine">Анагаах ухаан</option>
-              <option value="law">Хууль эрх зүй</option>
-              <option value="natural-sciences">Байгалийн шинжлэх ухаан</option>
-              <option value="mathematics">Математик</option>
-              <option value="economics">Эдийн засаг</option>
-              <option value="arts-humanities">Урлаг ба Хүмүүнлэг</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <label>ЭРЭМБЭ / ЭРЭМБЭЛЭХ</label>
-            <select id="rankSelect">
-              <option value="ranking">Эрэмбээр (Ranking)</option>
-              <option value="tuition-low">Төлбөр (Багаас их рүү)</option>
-              <option value="tuition-high">Төлбөр (Ихээс бага руу)</option>
-              <option value="name">Нэрээр (A-Z)</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <label>СУРГАЛТЫН ТӨЛБӨР</label>
-            <select id="tuitionSelect">
-              <option value="all">Бүгд (All)</option>
-              <option value="free">Үнэ төлбөргүй / Бүрэн тэтгэлэгт</option>
-              <option value="low">Хямд ($0 - $5,000)</option>
-              <option value="mid">Дундаж ($5,000 - $20,000)</option>
-              <option value="high">Өндөр ($20,000 - $40,000)</option>
-              <option value="very-high">Маш өндөр ($40,000+)</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="filter-footer">
-          <label class="checkbox-container">
-            <input type="checkbox" id="scholarOnly">
-            <span class="checkmark"></span>
-            ЗӨВХӨН ТЭТГЭЛЭГТЭЙ СУРГУУЛИУД
-          </label>
-          <button class="reset-btn">✕ RESET</button>
-        </div>
       </div>
       <div class="uni-results-area">
         <div class="uni-results-header" id="uniResultsHeader">Нийт 0 сургууль олдлоо</div>
@@ -224,8 +138,10 @@
       </div>
     </div>
   </div>
+  <script src="../js/favorites.js"></script>
   <script src="../js/data.js"></script>
   <script src="../js/uni.js"></script>
+  <script src="../react/dist/search-filter.iife.js"></script>
 <script>
 (function() {
   var s = localStorage.getItem('ns_session');
