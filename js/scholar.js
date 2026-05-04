@@ -1,95 +1,26 @@
-// Scholarship page — card rendering and modal logic.
-// Filter state is owned by the React ScholarSearchFilter component (react/src/ScholarSearchFilter.jsx)
-// and communicated via the custom 'scholarFiltersChanged' window event.
+// scholar.js — modal logic only.
+// Cards, filtering, and the grid are now rendered by React (ScholarSearchFilter.jsx).
 
 window.appData.then(() => {
 
-  // ── DOM refs ──────────────────────────────────────────────────
-  const grid          = document.getElementById('scholarGrid');
-  const resultsHeader = document.getElementById('scholarResultsHeader');
-  const modal         = document.getElementById('scholModal');
-  const closeBtn      = document.querySelector('.schol-close-modal');
-  const saveBtn       = document.querySelector('.schol-save-btn');
-  const overlay       = document.querySelector('.schol-modal-overlay');
+  const modal    = document.getElementById('scholModal');
+  const closeBtn = document.querySelector('.schol-close-modal');
+  const saveBtn  = document.querySelector('.schol-save-btn');
+  const overlay  = document.querySelector('.schol-modal-overlay');
 
-  // ── Filter state (driven by React component) ──────────────────
-  let currentFilters = { query: '', region: 'all', activeTab: 'all' };
+  let _currentScholar = null;
 
-  // ── SVG template ──────────────────────────────────────────────
-  const heartSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>`;
+  // Called by React ScholarCard when a card is clicked
+  window.openScholarModal = (sch) => {
+    _currentScholar = sch;
 
-  // ── Card HTML builder ─────────────────────────────────────────
-  const buildCard = (sch) => `
-    <div class="scholar-card" data-id="${sch.id}">
-      <div class="scholar-card__header">
-        <div class="scholar-card__logo">${sch.logo}</div>
-        <div class="scholar-card__title-wrap">
-          <h3 class="scholar-card__name">${sch.name}</h3>
-          <p class="scholar-card__provider">${sch.provider}</p>
-        </div>
-        <button class="heart-btn" aria-label="Хадгалах">${heartSVG}</button>
-      </div>
-      <div class="scholar-card__funding-box">
-        <span class="funding-label">${sch.fundingLabel}</span>
-        <div class="funding-type">${sch.fundingType}</div>
-      </div>
-      <div class="scholar-card__tags">
-        ${sch.tags.map(t => `<span class="uni-tag">${t}</span>`).join('')}
-      </div>
-      <div class="scholar-card__footer">
-        <div class="scholar-card__deadline">
-          <span class="deadline-label">ДУУСАХ ХУГАЦАА</span>
-          <span class="deadline-date">${sch.deadline}</span>
-        </div>
-        <button class="apply-btn">БҮРТГҮҮЛЭХ</button>
-      </div>
-    </div>`;
-
-  // ── Filter ────────────────────────────────────────────────────
-  const getFiltered = () => {
-    const { activeTab, region } = currentFilters;
-    const query = currentFilters.query.toLowerCase().trim();
-
-    return SCHOLARSHIPS.filter(sch => {
-      if (activeTab === 'full'    && sch.funding !== 'full')    return false;
-      if (activeTab === 'partial' && sch.funding !== 'partial') return false;
-      if (region !== 'all' && sch.country !== region) return false;
-      if (query && !sch.name.toLowerCase().includes(query)
-               && !sch.provider.toLowerCase().includes(query)) return false;
-      return true;
-    });
-  };
-
-  // ── Restore saved heart states ────────────────────────────────
-  const restoreHeartStates = () => {
-    if (typeof fav_isScholarSaved !== 'function') return;
-    grid.querySelectorAll('.scholar-card').forEach(card => {
-      if (fav_isScholarSaved(card.dataset.id)) {
-        card.querySelector('.heart-btn')?.classList.add('is-active');
-      }
-    });
-  };
-
-  // ── Grid render ───────────────────────────────────────────────
-  const render = () => {
-    const filtered = getFiltered();
-    grid.innerHTML = filtered.map(buildCard).join('');
-    resultsHeader.textContent = `Нийт ${filtered.length} тэтгэлэг олдлоо`;
-    attachCardListeners();
-    restoreHeartStates();
-  };
-
-  // ── Modal population ──────────────────────────────────────────
-  const openModal = (sch) => {
-    document.getElementById('sm-logo').textContent    = sch.logo;
-    document.getElementById('sm-title').textContent   = sch.name;
-    document.getElementById('sm-provider').innerHTML  = `<i class="fas fa-university"></i> ${sch.provider}`;
-    document.getElementById('sm-funding').textContent = sch.fundingType;
-    document.getElementById('sm-amount').textContent  = sch.amount;
-    document.getElementById('sm-deadline').textContent= sch.deadline;
-    document.getElementById('sm-level').textContent   = sch.level;
+    document.getElementById('sm-logo').textContent     = sch.logo;
+    document.getElementById('sm-title').textContent    = sch.name;
+    document.getElementById('sm-provider').innerHTML   = `<i class="fas fa-university"></i> ${sch.provider}`;
+    document.getElementById('sm-funding').textContent  = sch.fundingType;
+    document.getElementById('sm-amount').textContent   = sch.amount;
+    document.getElementById('sm-deadline').textContent = sch.deadline;
+    document.getElementById('sm-level').textContent    = sch.level;
 
     const descEl = document.getElementById('sm-description');
     if (descEl) descEl.textContent = sch.description;
@@ -104,86 +35,39 @@ window.appData.then(() => {
     if (linkEl) linkEl.href = sch.applyLink;
 
     if (saveBtn) {
-      const cardEl = grid.querySelector(`.scholar-card[data-id="${sch.id}"]`);
-      const isSaved = cardEl?.querySelector('.heart-btn')?.classList.contains('is-active');
-      saveBtn.classList.toggle('active', !!isSaved);
+      const isSaved = typeof fav_isScholarSaved === 'function' && fav_isScholarSaved(sch.id);
+      saveBtn.classList.toggle('active', isSaved);
       const icon = saveBtn.querySelector('i');
       if (icon) icon.className = isSaved ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
-      saveBtn.dataset.scholId = sch.id;
     }
 
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
   };
 
-  // ── Modal close ───────────────────────────────────────────────
-  const closeModal = () => {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-  };
-
-  // ── Card event listeners ──────────────────────────────────────
-  const attachCardListeners = () => {
-    grid.querySelectorAll('.scholar-card').forEach(card => {
-      card.addEventListener('click', (e) => {
-        if (e.target.closest('.apply-btn') || e.target.closest('.heart-btn')) return;
-        const sch = SCHOLARSHIPS.find(s => s.id === card.dataset.id);
-        if (sch) openModal(sch);
-      });
-
-      const heartBtn = card.querySelector('.heart-btn');
-      heartBtn?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        heartBtn.classList.toggle('is-active');
-        const sch = SCHOLARSHIPS.find(s => s.id === card.dataset.id);
-        if (sch && typeof fav_saveScholar === 'function') {
-          heartBtn.classList.contains('is-active')
-            ? fav_saveScholar(sch)
-            : fav_removeScholar(sch.id);
-        }
-      });
-
-      const applyBtn = card.querySelector('.apply-btn');
-      applyBtn?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const sch = SCHOLARSHIPS.find(s => s.id === card.dataset.id);
-        if (sch) window.open(sch.applyLink, '_blank', 'noopener');
-      });
-    });
-  };
-
-  // ── React filter event ────────────────────────────────────────
-  window.addEventListener('scholarFiltersChanged', (e) => {
-    currentFilters = e.detail;
-    render();
-  });
-
-  // ── Modal close actions ───────────────────────────────────────
-  closeBtn?.addEventListener('click', closeModal);
-  overlay?.addEventListener('click', closeModal);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-  // ── Modal save toggle ─────────────────────────────────────────
+  // ── Modal save button ─────────────────────────────────────────
   saveBtn?.addEventListener('click', () => {
+    if (!_currentScholar) return;
     saveBtn.classList.toggle('active');
     const isNowActive = saveBtn.classList.contains('active');
     const icon = saveBtn.querySelector('i');
     if (isNowActive) {
       icon?.classList.replace('fa-regular', 'fa-solid');
+      typeof fav_saveScholar === 'function' && fav_saveScholar(_currentScholar);
     } else {
       icon?.classList.replace('fa-solid', 'fa-regular');
+      typeof fav_removeScholar === 'function' && fav_removeScholar(_currentScholar.id);
     }
-    const scholId = saveBtn.dataset.scholId;
-    if (scholId) {
-      const cardHeart = grid.querySelector(`.scholar-card[data-id="${scholId}"] .heart-btn`);
-      if (cardHeart) cardHeart.classList.toggle('is-active', isNowActive);
-      if (typeof fav_saveScholar === 'function') {
-        const sch = SCHOLARSHIPS.find(s => s.id === scholId);
-        if (sch) { isNowActive ? fav_saveScholar(sch) : fav_removeScholar(scholId); }
-      }
-    }
+    window.dispatchEvent(new CustomEvent('favoritesChanged'));
   });
 
-  // ── Initial render ────────────────────────────────────────────
-  render();
+  // ── Close modal ───────────────────────────────────────────────
+  const closeModal = () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  };
+
+  closeBtn?.addEventListener('click', closeModal);
+  overlay?.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 });

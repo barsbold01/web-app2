@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import ScholarCard from './ScholarCard';
 
 const INITIAL = { query: '', region: 'all', activeTab: 'all' };
 
@@ -8,33 +9,47 @@ const TABS = [
   { key: 'partial', label: 'ХАГАС САНХҮҮЖИЛТ' },
 ];
 
-export default function ScholarSearchFilter() {
+export default function ScholarSection() {
   const [filters, setFilters] = useState(INITIAL);
   const [panelOpen, setPanelOpen] = useState(false);
-
-  const dispatch = useCallback((f) => {
-    window.dispatchEvent(new CustomEvent('scholarFiltersChanged', { detail: f }));
-  }, []);
+  const [scholarships, setScholarships] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(filters);
-  }, [filters, dispatch]);
+    window.appData.then(() => {
+      setScholarships(window.SCHOLARSHIPS || []);
+      setLoading(false);
+    });
+  }, []);
 
-  const set = (key) => (e) => {
-    setFilters((prev) => ({ ...prev, [key]: e.target.value }));
-  };
+  const filtered = useMemo(() => {
+    const query = filters.query.toLowerCase().trim();
+    return scholarships.filter(sch => {
+      if (filters.activeTab === 'full'    && sch.funding !== 'full')    return false;
+      if (filters.activeTab === 'partial' && sch.funding !== 'partial') return false;
+      if (filters.region !== 'all' && sch.country !== filters.region)   return false;
+      if (query &&
+        !sch.name.toLowerCase().includes(query) &&
+        !sch.provider.toLowerCase().includes(query)) return false;
+      return true;
+    });
+  }, [scholarships, filters]);
 
-  const setTab = (key) => {
-    setFilters((prev) => ({ ...prev, activeTab: key }));
-  };
+  const set = (key) => (e) =>
+    setFilters(prev => ({ ...prev, [key]: e.target.value }));
 
-  const reset = () => {
-    setFilters(INITIAL);
-    setPanelOpen(false);
+  const setTab = (key) =>
+    setFilters(prev => ({ ...prev, activeTab: key }));
+
+  const reset = () => { setFilters(INITIAL); setPanelOpen(false); };
+
+  const openModal = (sch) => {
+    if (typeof window.openScholarModal === 'function') window.openScholarModal(sch);
   };
 
   return (
     <>
+      {/* ── Hero + Search ── */}
       <div className="uni-hero">
         <h1>Өөрт тохирсон тэтгэлгээ ол</h1>
         <div className="uni-search-row">
@@ -51,12 +66,13 @@ export default function ScholarSearchFilter() {
               onChange={set('query')}
             />
           </div>
-          <button className="uni-filter-btn" onClick={() => setPanelOpen((o) => !o)}>
+          <button className="uni-filter-btn" onClick={() => setPanelOpen(o => !o)}>
             ШҮҮЛТҮҮР
           </button>
         </div>
       </div>
 
+      {/* ── Funding tabs ── */}
       <div className="scholarship-tabs">
         {TABS.map(({ key, label }) => (
           <button
@@ -69,6 +85,7 @@ export default function ScholarSearchFilter() {
         ))}
       </div>
 
+      {/* ── Filter panel ── */}
       <div className={`filter-panel${panelOpen ? ' active' : ''}`}>
         <div className="filter-grid">
           <div className="filter-group">
@@ -86,12 +103,21 @@ export default function ScholarSearchFilter() {
             </select>
           </div>
         </div>
-
         <div className="filter-footer">
           <div />
-          <button className="reset-btn" onClick={reset}>
-            ✕ RESET
-          </button>
+          <button className="reset-btn" onClick={reset}>✕ RESET</button>
+        </div>
+      </div>
+
+      {/* ── Results ── */}
+      <div className="uni-results-area">
+        <div className="uni-results-header">
+          {loading ? 'Ачаалж байна...' : `Нийт ${filtered.length} тэтгэлэг олдлоо`}
+        </div>
+        <div className="uni-grid scholarship-grid">
+          {filtered.map(sch => (
+            <ScholarCard key={sch.id} sch={sch} onCardClick={openModal} />
+          ))}
         </div>
       </div>
     </>
