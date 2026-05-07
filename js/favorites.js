@@ -33,15 +33,29 @@ function fav_isScholarSaved(id) {
 
 function fav_saveUni(uni) {
   const saved = fav_getSavedUnis();
-  if (saved.find(u => u.id === uni.id)) return;
-  saved.push({
+  const item = {
     id:             uni.id,
     name:           uni.name,
+    nameEn:         uni.nameEn,
+    logo:           uni.logo,
     location:       uni.location,
+    rank:           uni.rank,
+    rankLabel:      uni.rankLabel,
+    type:           uni.type,
+    tuition:        uni.tuition,
     deadline:       uni.deadline,
+    deadlineLabel:  uni.deadlineLabel,
+    acceptanceRate: uni.acceptanceRate,
     hasScholarship: uni.hasScholarship,
-    tags:           uni.tags || []
-  });
+    tags:           uni.tags || [],
+    programLabels:  uni.programLabels || [],
+    requirements:   uni.requirements || [],
+    website:        uni.website,
+    savedAt:        new Date().toISOString()
+  };
+  const existing = saved.findIndex(u => u.id === uni.id);
+  if (existing >= 0) saved[existing] = { ...saved[existing], ...item };
+  else saved.push(item);
   localStorage.setItem(_favKey('ns_saved_unis'), JSON.stringify(saved));
 }
 
@@ -54,16 +68,27 @@ function fav_removeUni(id) {
 
 function fav_saveScholar(sch) {
   const saved = fav_getSavedScholars();
-  if (saved.find(s => s.id === sch.id)) return;
-  saved.push({
+  const item = {
     id:           sch.id,
+    logo:         sch.logo,
     name:         sch.name,
     provider:     sch.provider,
     deadline:     sch.deadline,
     funding:      sch.funding,
     fundingLabel: sch.fundingLabel || (sch.funding === 'full' ? 'Бүрэн' : 'Хагас'),
-    level:        sch.level || ''
-  });
+    fundingType:  sch.fundingType,
+    amount:       sch.amount,
+    level:        sch.level || '',
+    description:  sch.description || '',
+    requirements: sch.requirements || [],
+    covers:       sch.covers || [],
+    tags:         sch.tags || [],
+    applyLink:    sch.applyLink,
+    savedAt:      new Date().toISOString()
+  };
+  const existing = saved.findIndex(s => s.id === sch.id);
+  if (existing >= 0) saved[existing] = { ...saved[existing], ...item };
+  else saved.push(item);
   localStorage.setItem(_favKey('ns_saved_scholars'), JSON.stringify(saved));
 }
 

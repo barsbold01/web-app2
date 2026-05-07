@@ -1016,6 +1016,38 @@ body {
 /* Body – uni.css-тай ижил */
 .schol-modal-body { padding: 24px; }
 
+.modal-action-plan {
+  display: grid;
+  gap: 8px;
+}
+
+.modal-action-plan div {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #000;
+  padding: 9px 10px;
+  background: #fff;
+}
+
+.modal-action-plan strong {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--lime);
+  border: 1px solid #000;
+  font-size: 11px;
+}
+
+.modal-action-plan span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #111;
+}
+
 /* Close button */
 .schol-close-modal {
   position: absolute;

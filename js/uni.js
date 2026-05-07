@@ -30,6 +30,18 @@ window.appData.then(() => {
     document.getElementById('uniModalRequirements').innerHTML =
       uni.requirements.map(r => `<li>${r}</li>`).join('');
 
+    const planEl = document.getElementById('uniModalPlan');
+    if (planEl) {
+      const requirements = uni.requirements || [];
+      const programs = uni.programLabels || [];
+      planEl.innerHTML = [
+        `Шалгуур: ${requirements.length} шаардлагаа шалгах`,
+        `Хөтөлбөр: ${programs.slice(0, 2).join(', ') || 'сонгох'}`,
+        `Deadline: ${uni.deadlineLabel || uni.deadline}`,
+        uni.hasScholarship ? 'Тэтгэлэгтэй боломжийг dashboard дээр тэмдэглэх' : 'Санхүүжилтийн хувилбаруудыг харьцуулах'
+      ].map((step, index) => `<div><strong>${index + 1}</strong><span>${step}</span></div>`).join('');
+    }
+
     if (saveBtn) {
       const isSaved = typeof fav_isUniSaved === 'function' && fav_isUniSaved(uni.id);
       saveBtn.classList.toggle('active', isSaved);

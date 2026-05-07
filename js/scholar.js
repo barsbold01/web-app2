@@ -34,11 +34,25 @@ window.appData.then(() => {
     const linkEl = document.getElementById('sm-apply-link');
     if (linkEl) linkEl.href = sch.applyLink;
 
+    const planEl = document.getElementById('sm-plan');
+    if (planEl) {
+      const covers = sch.covers || [];
+      const requirements = sch.requirements || [];
+      planEl.innerHTML = [
+        `Хамрах хүрээ: ${covers.length} төрлийн дэмжлэг`,
+        `Шаардлага: ${requirements.length} нөхцөлөө шалгах`,
+        `Түвшин: ${sch.level || 'Тодорхойгүй'}`,
+        `Deadline: ${sch.deadline}`
+      ].map((step, index) => `<div><strong>${index + 1}</strong><span>${step}</span></div>`).join('');
+    }
+
     if (saveBtn) {
       const isSaved = typeof fav_isScholarSaved === 'function' && fav_isScholarSaved(sch.id);
       saveBtn.classList.toggle('active', isSaved);
       const icon = saveBtn.querySelector('i');
+      const text = saveBtn.querySelector('span');
       if (icon) icon.className = isSaved ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+      if (text) text.textContent = isSaved ? 'ХАДГАЛАГДСАН' : 'ХАДГАЛАХ';
     }
 
     modal.style.display = 'block';
@@ -53,9 +67,13 @@ window.appData.then(() => {
     const icon = saveBtn.querySelector('i');
     if (isNowActive) {
       icon?.classList.replace('fa-regular', 'fa-solid');
+      const text = saveBtn.querySelector('span');
+      if (text) text.textContent = 'ХАДГАЛАГДСАН';
       typeof fav_saveScholar === 'function' && fav_saveScholar(_currentScholar);
     } else {
       icon?.classList.replace('fa-solid', 'fa-regular');
+      const text = saveBtn.querySelector('span');
+      if (text) text.textContent = 'ХАДГАЛАХ';
       typeof fav_removeScholar === 'function' && fav_removeScholar(_currentScholar.id);
     }
     window.dispatchEvent(new CustomEvent('favoritesChanged'));

@@ -493,6 +493,7 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
 }
 .saved-item:last-child { margin-bottom: 0; }
 .saved-item:hover { background: var(--lime); }
+.saved-item--rich { align-items: flex-start; }
 
 .saved-icon {
   width: 48px; height: 48px;
@@ -501,6 +502,14 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
   border-radius: 0;
+  color: var(--lime);
+  font-size: .68rem;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: .02em;
+  overflow: hidden;
+  padding: 4px;
 }
 .saved-icon svg { width: 20px; height: 20px; color: var(--lime); stroke: var(--lime); }
 
@@ -519,12 +528,69 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
 }
 .saved-meta { font-size: .8rem; color: var(--gray-500); margin-top: 2px; }
 
-.saved-actions { text-align: right; }
+.saved-detail-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.saved-detail-row span {
+  border: 1px solid var(--navy);
+  padding: 3px 7px;
+  font-size: .68rem;
+  font-weight: 700;
+  color: var(--navy);
+  background: #fff;
+}
+
+.saved-progress {
+  height: 6px;
+  border: 1px solid var(--navy);
+  margin-top: 9px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.saved-progress__bar {
+  height: 100%;
+  background: var(--navy);
+}
+
+.saved-actions {
+  text-align: right;
+  min-width: 122px;
+}
 
 .saved-due {
   font-size: .7rem;
   color: var(--gray-400);
   margin-top: 4px;
+}
+
+.saved-action-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.saved-open-btn {
+  border: var(--border);
+  padding: 5px 8px;
+  color: var(--navy);
+  background: #fff;
+  font-size: .66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: .04em;
+}
+
+.saved-open-btn:hover {
+  background: var(--navy);
+  color: var(--lime);
 }
 
 .saved-empty {
@@ -596,7 +662,7 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
   margin-bottom: 5px;
 }
 
-.dl-meta { display: flex; align-items: center; gap: 8px; }
+.dl-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
 .dl-badge {
   padding: 3px 8px;
@@ -611,6 +677,13 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
 .dl-badge.safe     { background: var(--white);   color: var(--navy); border: var(--border); }
 
 .dl-date { font-size: .75rem; color: var(--gray-500); font-weight: 600; }
+.dl-type {
+  font-size: .65rem;
+  font-weight: 800;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
 
 /* ============================================================
    PROGRESS BARS
@@ -890,6 +963,15 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
 @media (max-width: 640px) {
   .qa-grid { grid-template-columns: repeat(2, 1fr); }
   .page-title { font-size: 1.6rem; }
+  .saved-item--rich { flex-wrap: wrap; }
+  .saved-info { min-width: calc(100% - 64px); }
+  .saved-actions {
+    width: 100%;
+    min-width: 0;
+    text-align: left;
+    padding-left: 60px;
+  }
+  .saved-action-row { justify-content: flex-start; }
   .application-hero { padding: 20px 18px; }
   .application-hero p { font-size: .95rem; }
   .application-roadmap { padding-left: 0; }
