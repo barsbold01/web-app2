@@ -190,5 +190,55 @@
     "acceptanceRate": "35%",
     "requirements": ["IELTS 6.5+", "Аттестат GPA 85%+", "Өргөдлийн захидал"],
     "website": "https://unimelb.edu.au"
-  }
+  },
+  {
+    "id": "tsinghua",
+    "logo": "THU",
+    "name": "Цинхуагийн Их Сургууль",
+    "nameEn": "Tsinghua University",
+    "location": "Бээжин, Хятад",
+    "region": "china",
+    "type": "Улсын",
+    "rank": 20,
+    "rankLabel": "ДЭЛХИЙД #20",
+    "image": "../uni_images/tsinghua.jpg",
+    "tuition": "¥26,000/жил",
+    "tuitionUSD": 3600,
+    "tuitionCategory": "low",
+    "deadline": "2026.04.30",
+    "deadlineLabel": "2026 оны 4-р сарын 30",
+    "tags": ["STEM", "Судалгаа"],
+    "hasScholarship": true,
+    "programs": ["engineering", "computer-science", "economics", "natural-sciences"],
+    "programLabels": ["Инженерчлэл", "Компьютерийн шинжлэх ухаан", "Эдийн засаг", "Байгалийн шинжлэх ухаан"],
+    "acceptanceRate": "15%",
+    "requirements": ["HSK 5+ / IELTS 6.5+", "Аттестат / Диплом", "Урам зоригийн захидал", "2 Зөвлөмжийн захидал"],
+    "website": "https://tsinghua.edu.cn/en"
+},
+{
+    "id": "epfl",
+    "logo": "EPFL",
+    "name": "Лозанны Политехникийн Холбооны Сургууль",
+    "nameEn": "École Polytechnique Fédérale de Lausanne",
+    "location": "Лозанн, Швейцарь",
+    "region": "europe",
+    "type": "Улсын",
+    "rank": 15,
+    "rankLabel": "ДЭЛХИЙД #15",
+    "image": "../uni_images/epfl.jpg",
+    "tuition": "CHF 730/жил",
+    "tuitionUSD": 810,
+    "tuitionCategory": "low",
+    "deadline": "2025.12.15",
+    "deadlineLabel": "2025 оны 12-р сарын 15",
+    "tags": ["STEM", "Хямд төлбөр"],
+    "hasScholarship": true,
+    "programs": ["engineering", "computer-science", "natural-sciences", "mathematics"],
+    "programLabels": ["Инженерчлэл", "Компьютерийн шинжлэх ухаан", "Байгалийн шинжлэх ухаан", "Математик"],
+    "acceptanceRate": "22%",
+    "requirements": ["TOEFL 100+ / IELTS 7.0+", "Бакалаврын диплом", "GPA 5.0/6.0", "Урам зоригийн захидал"],
+    "website": "https://epfl.ch/en"
+}
 ]
+
+
