@@ -10,15 +10,55 @@ function getUser() {
 function getSavedUnis()     { return typeof fav_getSavedUnis     === 'function' ? fav_getSavedUnis()     : []; }
 function getSavedScholars() { return typeof fav_getSavedScholars === 'function' ? fav_getSavedScholars() : []; }
 
+function parseDeadline(dateStr) {
+  if (!dateStr) return null;
+  const numeric = dateStr.match(/^(\d{4})\.(\d{1,2})\.(\d{1,2})$/);
+  if (numeric) return new Date(+numeric[1], +numeric[2] - 1, +numeric[3]);
+
+  const mn = dateStr.match(/(\d{4})\s*оны\s*(\d{1,2})-р\s*сар\s*(\d{1,2})/);
+  if (mn) return new Date(+mn[1], +mn[2] - 1, +mn[3]);
+
+  const parsed = new Date(dateStr);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
 function urgency(dateStr) {
-  const [y, m, d] = dateStr.split('.');
   const today    = new Date(); today.setHours(0, 0, 0, 0);
-  const deadline = new Date(+y, +m - 1, +d);
+  const deadline = parseDeadline(dateStr);
+  if (!deadline) return { label: 'Тодорхойгүй', cls: 'upcoming' };
   const diff     = Math.ceil((deadline - today) / 86400000);
   if (diff < 0)   return { label: 'Дууссан',     cls: 'urgent' };
   if (diff <= 30) return { label: 'Яаралтай',    cls: 'urgent' };
   if (diff <= 90) return { label: 'Тойлж байна', cls: 'upcoming' };
   return           { label: 'Хэвийн',            cls: 'safe' };
+}
+
+function sortByDeadline(a, b) {
+  const da = parseDeadline(a.date);
+  const db = parseDeadline(b.date);
+  return (da?.getTime() ?? Infinity) - (db?.getTime() ?? Infinity);
+}
+
+function savedTimeLabel(savedAt) {
+  if (!savedAt) return 'Саяхан хадгалсан';
+  const saved = new Date(savedAt);
+  if (Number.isNaN(saved.getTime())) return 'Саяхан хадгалсан';
+  const diff = Math.max(0, Date.now() - saved.getTime());
+  const minutes = Math.floor(diff / 60000);
+  if (minutes < 1) return 'Дөнгөж сая';
+  if (minutes < 60) return `${minutes} минутын өмнө`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours} цагийн өмнө`;
+  const days = Math.floor(hours / 24);
+  return `${days} өдрийн өмнө`;
+}
+
+function planProgress(item) {
+  let done = 1;
+  if (item.requirements?.length) done += 1;
+  if (item.website || item.applyLink) done += 1;
+  if (item.deadline) done += 1;
+  return Math.min(100, Math.round((done / 4) * 100));
 }
 
 // ── SVG atoms ─────────────────────────────────────────────────────────────────
@@ -143,24 +183,40 @@ function SavedUniCard({ unis, onRemove }) {
           Хадгалсан их сургууль байхгүй байна. <a href="uni.html">Хайж олох →</a>
         </div>
       ) : (
-        unis.map(u => (
-          <div key={u.id} className="saved-item">
-            <div className="saved-icon si-indigo"><UniIcon /></div>
-            <div className="saved-info">
-              <div className="saved-name">{u.name}</div>
-              <div className="saved-meta">{u.location}</div>
+        unis.map(u => {
+          const progress = planProgress(u);
+          return (
+            <div key={u.id} className="saved-item saved-item--rich">
+              <div className="saved-icon si-indigo">{u.logo || <UniIcon />}</div>
+              <div className="saved-info">
+                <div className="saved-name">{u.name}</div>
+                <div className="saved-meta">{u.location}</div>
+                <div className="saved-detail-row">
+                  <span>{u.rankLabel || (u.rank ? `#${u.rank}` : 'Эрэмбэ тодорхойгүй')}</span>
+                  <span>{u.tuition || 'Төлбөр тодорхойгүй'}</span>
+                  <span>{u.requirements?.length || 0} шалгуур</span>
+                </div>
+                <div className="saved-progress" aria-label={`Бэлтгэл ${progress}%`}>
+                  <div className="saved-progress__bar" style={{ width: `${progress}%` }} />
+                </div>
+              </div>
+              <div className="saved-actions">
+                {u.hasScholarship
+                  ? <span className="badge badge-green">Тэтгэлэгт</span>
+                  : <span className="badge badge-amber">{u.tags?.[0] || u.type || 'Сургууль'}</span>}
+                <div className="saved-due">Хугацаа: {u.deadlineLabel || u.deadline || 'Тодорхойгүй'}</div>
+                <div className="saved-action-row">
+                  {u.website && (
+                    <a className="saved-open-btn" href={u.website} target="_blank" rel="noopener">Дэлгэрэнгүй</a>
+                  )}
+                  <button className="saved-remove-btn" aria-label="Устгах" onClick={() => onRemove('uni', u.id)}>
+                    <XIcon />
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="saved-actions">
-              {u.hasScholarship
-                ? <span className="badge badge-green">Тэтгэлэгт</span>
-                : <span className="badge badge-amber">{u.tags?.[0] || ''}</span>}
-              <div className="saved-due">Хугацаа: {u.deadline}</div>
-              <button className="saved-remove-btn" aria-label="Устгах" onClick={() => onRemove('uni', u.id)}>
-                <XIcon />
-              </button>
-            </div>
-          </div>
-        ))
+          );
+        })
       )}
     </div>
   );
@@ -181,41 +237,59 @@ function SavedScholarCard({ scholars, onRemove }) {
           Хадгалсан тэтгэлэг байхгүй байна. <a href="scholar.html">Хайж олох →</a>
         </div>
       ) : (
-        scholars.map(s => (
-          <div key={s.id} className="saved-item">
-            <div className="saved-icon si-purple"><ScholarIcon /></div>
-            <div className="saved-info">
-              <div className="saved-name">{s.name}</div>
-              <div className="saved-meta">{s.provider}{s.level ? ` · ${s.level}` : ''}</div>
+        scholars.map(s => {
+          const progress = planProgress(s);
+          return (
+            <div key={s.id} className="saved-item saved-item--rich">
+              <div className="saved-icon si-purple">{s.logo || <ScholarIcon />}</div>
+              <div className="saved-info">
+                <div className="saved-name">{s.name}</div>
+                <div className="saved-meta">{s.provider}{s.level ? ` · ${s.level}` : ''}</div>
+                <div className="saved-detail-row">
+                  <span>{s.amount || s.fundingType || 'Санхүүжилт'}</span>
+                  <span>{s.covers?.length || 0} хамрах зүйл</span>
+                  <span>{s.requirements?.length || 0} шаардлага</span>
+                </div>
+                <div className="saved-progress" aria-label={`Бэлтгэл ${progress}%`}>
+                  <div className="saved-progress__bar" style={{ width: `${progress}%` }} />
+                </div>
+              </div>
+              <div className="saved-actions">
+                <span className={`badge ${s.funding === 'full' ? 'badge-green' : 'badge-amber'}`}>
+                  {s.fundingLabel}
+                </span>
+                <div className="saved-due">{s.deadline || 'Тодорхойгүй'}</div>
+                <div className="saved-action-row">
+                  {s.applyLink && (
+                    <a className="saved-open-btn" href={s.applyLink} target="_blank" rel="noopener">Бүртгүүлэх</a>
+                  )}
+                  <button className="saved-remove-btn" aria-label="Устгах" onClick={() => onRemove('scholar', s.id)}>
+                    <XIcon />
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="saved-actions">
-              <span className={`badge ${s.funding === 'full' ? 'badge-green' : 'badge-amber'}`}>
-                {s.fundingLabel}
-              </span>
-              <div className="saved-due">{s.deadline}</div>
-              <button className="saved-remove-btn" aria-label="Устгах" onClick={() => onRemove('scholar', s.id)}>
-                <XIcon />
-              </button>
-            </div>
-          </div>
-        ))
+          );
+        })
       )}
     </div>
   );
 }
 
-function DeadlinesCard({ savedUnis }) {
-  // Prefer deadlines from saved unis; fall back to static list
+function DeadlinesCard({ savedUnis, savedScholars }) {
+  // Prefer deadlines from saved items; fall back to static list
   const deadlines = useMemo(() => {
-    if (savedUnis.length > 0) {
-      return savedUnis
+    const fromSaved = [
+      ...savedUnis
         .filter(u => u.deadline)
-        .map(u => ({ name: u.name, date: u.deadline }))
-        .sort((a, b) => a.date.localeCompare(b.date))
-        .slice(0, 4);
-    }
+        .map(u => ({ name: u.name, date: u.deadline, type: 'Сургууль' })),
+      ...savedScholars
+        .filter(s => s.deadline)
+        .map(s => ({ name: s.name, date: s.deadline, type: 'Тэтгэлэг' })),
+    ].sort(sortByDeadline).slice(0, 4);
+    if (fromSaved.length > 0) return fromSaved;
     return STATIC_DEADLINES;
-  }, [savedUnis]);
+  }, [savedUnis, savedScholars]);
 
   return (
     <div className="card">
@@ -226,7 +300,7 @@ function DeadlinesCard({ savedUnis }) {
         Ойртож буй хугацаанууд
       </div>
 
-      {deadlines.map(({ name, date }) => {
+      {deadlines.map(({ name, date, type }) => {
         const { label, cls } = urgency(date);
         const isUrgent = cls === 'urgent';
         return (
@@ -238,6 +312,7 @@ function DeadlinesCard({ savedUnis }) {
               <div className="dl-name">{name}</div>
               <div className="dl-meta">
                 <span className={`dl-badge ${cls}`}>{label}</span>
+                {type && <span className="dl-type">{type}</span>}
                 <span className="dl-date">{date}</span>
               </div>
             </div>
@@ -282,9 +357,21 @@ function ExamPrepCard() {
 function ActivityCard({ savedUnis, savedScholars }) {
   // Build activity feed from saved items
   const items = useMemo(() => {
-    const uniActs    = savedUnis.map(u => ({ icon: 'uni',    action: 'Их сургууль хадгаллаа', detail: u.name }));
-    const scholActs  = savedScholars.map(s => ({ icon: 'schol', action: 'Тэтгэлэг хадгаллаа',   detail: s.name }));
-    const merged = [...uniActs, ...scholActs];
+    const uniActs = savedUnis.map(u => ({
+      icon: 'uni',
+      action: 'Их сургууль хадгаллаа',
+      detail: `${u.name}${u.deadline ? ` · ${u.deadline}` : ''}`,
+      time: savedTimeLabel(u.savedAt),
+      stamp: u.savedAt || ''
+    }));
+    const scholActs = savedScholars.map(s => ({
+      icon: 'schol',
+      action: 'Тэтгэлэг хадгаллаа',
+      detail: `${s.name}${s.deadline ? ` · ${s.deadline}` : ''}`,
+      time: savedTimeLabel(s.savedAt),
+      stamp: s.savedAt || ''
+    }));
+    const merged = [...uniActs, ...scholActs].sort((a, b) => b.stamp.localeCompare(a.stamp));
     return merged.length > 0 ? merged.slice(0, 5) : null;
   }, [savedUnis, savedScholars]);
 
@@ -370,7 +457,7 @@ export default function DashboardApp() {
         </div>
 
         <div className="dash-col-side">
-          <DeadlinesCard savedUnis={savedUnis} />
+          <DeadlinesCard savedUnis={savedUnis} savedScholars={savedScholars} />
           <ExamPrepCard />
           <ActivityCard savedUnis={savedUnis} savedScholars={savedScholars} />
         </div>
