@@ -80,20 +80,18 @@ svg    { display: inline-block; vertical-align: middle; }
   background: var(--lime);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
+  border-radius: 0;
 }
 
-.logo-icon svg { width: 20px; height: 20px; color: var(--navy); stroke: var(--navy); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.logo-icon svg { width: 20px; height: 20px; }
 
-.logo-text h2 {
+.logo-brand {
   font-family: var(--font-display);
-  font-size: 1rem;
   font-weight: 700;
+  font-size: 1rem;
   color: var(--white);
   letter-spacing: -.02em;
 }
-.logo-text h2 span { color: var(--lime); }
-.logo-text p  { font-size: .72rem; color: rgba(255,255,255,.4); margin-top: 2px; }
-
 .nav-label {
   font-size: .68rem;
   font-weight: 700;
