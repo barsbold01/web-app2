@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Хөтөч — Дараагийн Алхам</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/guide.css" />
+</head>
+<body>
+<div class="app-layout">
+ 
+  <!-- ХАЖУУГИЙН САМБАР -->
+  <aside class="sidebar" id="app-sidebar">
+    <a class="logo" href="index.html" aria-label="Нүүр хуудас руу очих">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;stroke:#0A0E27"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3.33 1.67 6.67 1.67 12 0v-5"/></svg>
+      </div>
+      <span class="logo-brand">ДАРААГИЙН АЛХАМ</span>
+    </a>
+    <div class="nav-label">ЦЭС</div>
+    <a href="dashboard.html" class="nav-item">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Хянах самбар
+    </a>
+    <a href="uni.html" class="nav-item">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Их Сургуулиуд
+    </a>
+    <a href="scholar.html" class="nav-item">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+      Тэтгэлэгүүд
+    </a>
+    <a href="exam-info.html" class="nav-item">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      Шалгалтууд
+    </a>
+    <a href="guide.html" class="nav-item active">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Өргөдөл
+    </a>
+    <div class="sidebar-footer">
+      <div class="user-chip">
+        <div class="user-avatar">М</div>
+        <div>
+          <div class="user-name">Мөнхбат</div>
+          <div class="user-role">12-р ангийн сурагч</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+ 
+  <!-- ҮНДСЭН АГУУЛГА -->
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <span>Гадаадад Суралцах Төв 2026</span>
+      </div>
+      <div class="topbar-right">
+        <div class="notif-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+          <span class="notif-dot"></span>
+        </div>
+      </div>
+    </header>
+ 
+    <!-- ======= PAGE CONTENT ======= -->
+    <div class="page-content">
+ 
+      <!-- HERO -->
+      <section class="application-hero">
+        <h1 class="page-title">Өргөдлийн Зам</h1>
+        <p>Их сургуулийн өргөдлийн үйл явцыг амжилттай дамжин өнгөрөхийн тулд энэхүү алхам алхмаар гарын авлагыг дагана уу</p>
+      </section>
+ 
+      <!-- ROADMAP -->
+      <section class="application-roadmap">
+ 
+        <div class="roadmap-item">
+          <div class="roadmap-step">01</div>
+          <div class="roadmap-line"></div>
+          <div class="roadmap-card">
+            <div class="roadmap-card-header">
+              <h3>Профайлаа Бүтээ</h3>
+              <button class="roadmap-arrow" aria-label="Дэлгэрэнгүй">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <p>Хичээлийн болон хичээлээс гадуурх профайлаа эрт эхлэн хөгжүүл. Таны сонирхолтой нийцэж, манлайлал, тууштай байдал, нөлөөллийг харуулсан үйл ажиллагаанд анхаарлаа хандуул.</p>
+            <div class="roadmap-detail">
+              <ul class="detail-list">
+                <li>GPA болон хичээлийн ачааллаа тогтоолон хянах</li>
+                <li>Клуб, спорт, сайн дурын ажлуудад оролцох</li>
+                <li>Олимпиад, тэмцээнд оролцон амжилт гаргах</li>
+                <li>Судалгаа эсвэл дадлага хийх боломж хайх</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="roadmap-item">
+          <div class="roadmap-step">02</div>
+          <div class="roadmap-line"></div>
+          <div class="roadmap-card">
+            <div class="roadmap-card-header">
+              <h3>Их Сургуулиуд Судал</h3>
+              <button class="roadmap-arrow" aria-label="Дэлгэрэнгүй">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <p>Таны хичээлийн сонирхол, карьерын зорилго, өргөдлийн профайлтай тохирох их сургуулиудыг тодорхойл. Тэдгээрийн хөтөлбөр, элсэлтийн шаардлага, өргөдлийн хугацааг судал.</p>
+            <div class="roadmap-detail">
+              <ul class="detail-list">
+                <li>QS болон Times Higher Education жагсаалтыг харах</li>
+                <li>Тэтгэлгийн боломжийг шалгах</li>
+                <li>Суралцах хугацаа, зардлыг харьцуулах</li>
+                <li>Элсэлтийн хувь, дундаж оноог судлах</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="roadmap-item">
+          <div class="roadmap-step">03</div>
+          <div class="roadmap-line"></div>
+          <div class="roadmap-card">
+            <div class="roadmap-card-header">
+              <h3>Баримт Бичгүүдээ Бэлдэ</h3>
+              <button class="roadmap-arrow" aria-label="Дэлгэрэнгүй">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <p>CV/Resume, Хувийн тайлбар, Зөвлөмжийн захиа, транскрипт зэрэг шаардагдах бүх баримт бичгийг цуглуулж, бэлд. Тус бүр нь таны хамгийн сайн талыг харуулах ёстой.</p>
+            <div class="roadmap-detail">
+              <ul class="detail-list">
+                <li>CV/Resume-г олон улсын стандартаар боловсруулах</li>
+                <li>Академик гэрчилгээний баталгаажуулсан орчуулга авах</li>
+                <li>Багш, зөвлөхөөсөө зөвлөмжийн захиа хүсэх</li>
+                <li>IELTS/TOEFL, SAT/ACT шалгалт өгөх</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="roadmap-item">
+          <div class="roadmap-step">04</div>
+          <div class="roadmap-line"></div>
+          <div class="roadmap-card">
+            <div class="roadmap-card-header">
+              <h3>Эссэгээ Бич</h3>
+              <button class="roadmap-arrow" aria-label="Дэлгэрэнгүй">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <p>Таны жинхэнэ дуу хоолойг тусгасан хүчирхэг хувийн тайлбар болон нэмэлт эссэнүүдийг боловсруул. Таныг хэн болох, хичээлийн сонирхлыг бий болгосон тодорхой туршлагуудад анхаарлаа хандуул.</p>
+            <div class="roadmap-detail">
+              <ul class="detail-list">
+                <li>Өөрийнхөө онцлог түүхийг тодорхойлох</li>
+                <li>Common App эссэний аль нэг сэдвийг сонгох</li>
+                <li>Олон удаа засварлан, итгэмжлэгдсэн хүнд уншуулах</li>
+                <li>Supplemental эссэнүүдийг тус бүрд тохируулан бичих</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="roadmap-item">
+          <div class="roadmap-step">05</div>
+          <div class="roadmap-line"></div>
+          <div class="roadmap-card">
+            <div class="roadmap-card-header">
+              <h3>Өргөдлүүдээ Илгээ</h3>
+              <button class="roadmap-arrow" aria-label="Дэлгэрэнгүй">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <p>Хугацааны өмнө өргөдлийн бүх хэсгийг бөглөж илгээ. Бүх материал зөв илгээгдсэн эсэхийг дахин шалгаж, өргөдлийнхөө статусыг хянаж байгаарай.</p>
+            <div class="roadmap-detail">
+              <ul class="detail-list">
+                <li>Early Decision/Early Action хугацааг тэмдэглэх (11-р сар)</li>
+                <li>Common App болон тус сургуулийн өргөдлийн системийг ашиглах</li>
+                <li>Өргөдлийн хураамжийн чөлөөлөлт хүсэх боломжийг судлах</li>
+                <li>Илгээсний дараа баталгааны имэйл хүлээн авсан эсэхийг шалгах</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="roadmap-item roadmap-item--last">
+          <div class="roadmap-step">06</div>
+          <div class="roadmap-card">
+            <div class="roadmap-card-header">
+              <h3>Хариуг Хүлээн Хариул</h3>
+              <button class="roadmap-arrow" aria-label="Дэлгэрэнгүй">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <p>Илгээсний дараа их сургуулиуд өргөдлийг хянаж шийдвэр гаргана. Хүлээн авсан тохиолдолд санхүүгийн тусламжийн багцыг нарийвчлан судалж, хугацаанд хариу өг.</p>
+            <div class="roadmap-detail">
+              <ul class="detail-list">
+                <li>Санхүүгийн тусламжийн багцуудыг харьцуулах</li>
+                <li>Дотуур байрны хүсэлт гаргах</li>
+                <li>Оюутны визийн хүсэлт эхлүүлэх (I-20 / CAS авах)</li>
+                <li>Сургуульдаа байр нөгцөлгөө баталгаажуулах</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+ 
+      </section>
+ 
+      <!-- DETAILED GUIDES -->
+      <section class="guides-section">
+        <div class="guides-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <h2>ДЭЛГЭРЭНГҮЙ ХӨТӨЧҮҮД</h2>
+        </div>
+        <p class="guides-sub">Их сургуулийн өргөдлийн аяллын бүх талыг хамарсан иж бүрэн хөтөчүүдэд хандах</p>
+ 
+        <div class="guides-grid">
+          <a href="#" class="guide-card guide-card--active">
+            <div class="guide-icon" style="background:#3B5BDB;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.62 1.19l3-.01a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="guide-info">
+              <span class="guide-title">Визний Хөтөч</span>
+              <span class="guide-desc">Өөр өөр улс орны оюутны визний өргөдлийн бүрэн хөтөч</span>
+            </div>
+            <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+ 
+          <a href="#" class="guide-card guide-card--active">
+            <div class="guide-icon" style="background:#2F9E44;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <div class="guide-info">
+              <span class="guide-title">Тэтгэлгийн Хөтөч</span>
+              <span class="guide-desc">Мэргэжлийн зөвлөгөөтэйгөөр тэтгэлэг олж, өргөдөл гаргах</span>
+            </div>
+            <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+ 
+          <a href="#" class="guide-card guide-card--active">
+            <div class="guide-icon" style="background:#7048E8;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <div class="guide-info">
+              <span class="guide-title">Хувийн Тайлбар</span>
+              <span class="guide-desc">Хүчирхэг эссэ болон хувийн тайлбар бичих</span>
+            </div>
+            <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+ 
+          <a href="#" class="guide-card guide-card--active">
+            <div class="guide-icon" style="background:#E8590C;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="guide-info">
+              <span class="guide-title">Ярилцлагын Бэлтгэл</span>
+              <span class="guide-desc">Элсэлтийн ярилцлагад итгэлтэйгээр бэлдэх</span>
+            </div>
+            <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+ 
+          <a href="#" class="guide-card guide-card--soon">
+            <div class="guide-icon" style="background:#E03131;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="guide-info">
+              <span class="guide-title">Баримт Бичгийн Жагсаалт <span class="soon-badge">УДАХГҮЙ</span></span>
+              <span class="guide-desc">Өргөдлийн шаардагдах бүх баримт бичгийг хянах</span>
+            </div>
+          </a>
+ 
+          <a href="#" class="guide-card guide-card--soon">
+            <div class="guide-icon" style="background:#6741D9;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="guide-info">
+              <span class="guide-title">Цагийн Төлөвлөгч <span class="soon-badge">УДАХГҮЙ</span></span>
+              <span class="guide-desc">Хугацааны дагуу өргөдлийн аяллаа төлөвлөх</span>
+            </div>
+          </a>
+ 
+          <a href="#" class="guide-card guide-card--soon">
+            <div class="guide-icon" style="background:#0C8599;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="guide-info">
+              <span class="guide-title">Улс Орнуудын Хөтөч <span class="soon-badge">УДАХГҮЙ</span></span>
+              <span class="guide-desc">Улс тус бүрийн өргөдлийн тусгай шаардлага</span>
+            </div>
+          </a>
+ 
+          <a href="#" class="guide-card guide-card--soon">
+            <div class="guide-icon" style="background:#E67700;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="guide-info">
+              <span class="guide-title">Түгээмэл Асуулт <span class="soon-badge">УДАХГҮЙ</span></span>
+              <span class="guide-desc">Их сургуулийн өргөдлийн талаарх нийтлэг асуултууд</span>
+            </div>
+          </a>
+        </div>
+ 
+        <div class="guides-cta">
+          <button class="cta-btn">БҮГДИЙГ ҮЗЭХ →</button>
+        </div>
+      </section>
+ 
+      <!-- MENTOR CTA -->
+      <section class="mentor-section">
+        <h2>Тусламж Хэрэгтэй юу? Ментортой Ярилц</h2>
+        <p>Өргөдлийн аяллын алхам бүрт тань хөтлөх туршлагатай менторуудтай холбогдоорой</p>
+        <button class="mentor-btn">МЕНТОР ХАЙХ →</button>
+      </section>
+ 
+    </div>
+  </main>
+</div>
+ 
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-nav">
+  <a href="dashboard.html" class="mobile-nav__item">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    <span>Самбар</span>
+  </a>
+  <a href="uni.html" class="mobile-nav__item">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span>Сургууль</span>
+  </a>
+  <a href="scholar.html" class="mobile-nav__item">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+    <span>Тэтгэлэг</span>
+  </a>
+  <a href="exam-info.html" class="mobile-nav__item">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    <span>Шалгалт</span>
+  </a>
+  <a href="guide.html" class="mobile-nav__item active">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <span>Өргөдөл</span>
+  </a>
+</nav>
+ 
+<script src="guide-content.js"></script>
+</body>
+</html>
