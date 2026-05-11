@@ -68,97 +68,85 @@
     </header>
 
     <!-- Content -->
-    <div class="content">
+    <div class="content exam-hub">
 
-      <!-- Page header -->
-      <div class="page-header-block">
+      <section class="exam-hero" aria-labelledby="examHeroTitle">
+        <div class="exam-hero__copy">
+          <span class="eyebrow">Шалгалтын төв</span>
+          <h1 id="examHeroTitle">Оноогоо төлөвлөж, шалгалтаа ухаалгаар сонго.</h1>
+          <p>IELTS, TOEFL, SAT, HSK, TOPIK шалгалтын формат, онооны шаардлага, төлбөр, бэлтгэлийн материалыг нэг дороос харьцуул.</p>
+        </div>
+        <div class="exam-hero__metrics" aria-label="Шалгалтын товч үзүүлэлт">
+          <div>
+            <strong>5</strong>
+            <span>шалгалт</span>
+          </div>
+          <div>
+            <strong>4</strong>
+            <span>чадварын хэсэг</span>
+          </div>
+          <div>
+            <strong>2026</strong>
+            <span>төлөвлөгөө</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="exam-toolbar" aria-label="Шалгалт хайх ба шүүх">
+        <label class="exam-search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="examSearch" type="search" placeholder="IELTS, SAT эсвэл хэлээр хайх" autocomplete="off" />
+        </label>
+        <div class="exam-filter-group" id="examFilters" aria-label="Шалгалтын төрөл">
+          <button class="exam-filter active" data-filter="all">Бүгд</button>
+          <button class="exam-filter" data-filter="english">Англи хэл</button>
+          <button class="exam-filter" data-filter="admission">Элсэлт</button>
+          <button class="exam-filter" data-filter="asian">Ази хэл</button>
+        </div>
+      </section>
+
+      <section class="exam-card-grid" id="examCards" aria-live="polite"></section>
+
+      <section class="exam-insights-grid">
+        <article class="score-board">
+          <div class="section-heading">
+            <span class="eyebrow">Онооны зураглал</span>
+            <h2>Нэг харцаар харьцуул.</h2>
+          </div>
+          <div class="score-comparison" id="scoreComparison"></div>
+        </article>
+
+        <article class="prep-route">
+          <div class="section-heading">
+            <span class="eyebrow">IELTS мастер төлөвлөгөө</span>
+            <h2>Чадвар бүрээр нь бэлд.</h2>
+          </div>
+          <div class="skill-grid" id="ieltsSkills"></div>
+        </article>
+      </section>
+
+      <section class="exam-cta">
         <div>
-          <div class="page-title">Олон улсын шалгалтын гарын авлага</div>
-          <div class="page-subtitle">IELTS, TOEFL, SAT, HSK, TOPIK шалгалтуудын талаар мэдэх ёстой бүх зүйл</div>
+          <span class="eyebrow">Дараагийн алхам</span>
+          <h2>3-6 сарын бэлтгэлийн хуанлигаа өнөөдөр эхлүүл.</h2>
         </div>
-        <div class="exam-stat-pills">
-          <div class="stat-pill accent">
-            <span class="stat-pill-num">5</span>
-            <span class="stat-pill-label">Шалгалт</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-pill-num">140+</span>
-            <span class="stat-pill-label">Хүлээн зөвшөөрсөн орон</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-pill-num">10k+</span>
-            <span class="stat-pill-label">Байгууллага</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Two-column exam layout -->
-      <div class="exam-layout">
-
-        <!-- Left panel -->
-        <div class="exam-left-panel">
-
-          <div class="panel-card">
-            <div class="panel-card-header">Шалгалт сонгох</div>
-            <div class="exam-list" id="examList"></div>
-          </div>
-
-          <div class="panel-card" style="margin-top:12px;">
-            <div class="panel-card-header">Хурдан мэдээлэл</div>
-            <div class="quick-facts-body" id="quickFacts"></div>
-          </div>
-
-          <div class="tip-promo-card">
-            <div class="tip-promo-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18"><line x1="9" y1="21" x2="15" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M12 3a6 6 0 0 1 6 6c0 3-2 5-3 6H9c-1-1-3-3-3-6a6 6 0 0 1 6-6z"/></svg>
-            </div>
-            <div class="tip-promo-title">Pro зөвлөгөө</div>
-            <p class="tip-promo-text">Шалгалтаас 3–6 сарын өмнө бэлтгэлээ эхлүүлснээр оноогоо 15–20% нэмэгдүүлэх боломжтой.</p>
-          </div>
-        </div>
-
-        <!-- Right panel -->
-        <div class="exam-right-panel">
-
-          <div class="exam-banner" id="examBanner">
-            <div class="exam-banner-inner">
-              <div class="exam-banner-emoji" id="bannerEmoji"></div>
-              <div>
-                <div class="exam-banner-title" id="bannerTitle"></div>
-                <div class="exam-banner-sub" id="bannerSub"></div>
-                <div class="exam-tags" id="bannerTags"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="exam-tabs">
-            <button class="etab-btn active" data-tab="overview">
-              <svg viewBox="0 0 24 24" width="13" height="13"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <span>Тойм</span>
-            </button>
-            <button class="etab-btn" data-tab="format">
-              <svg viewBox="0 0 24 24" width="13" height="13"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>Формат</span>
-            </button>
-            <button class="etab-btn" data-tab="prep">
-              <svg viewBox="0 0 24 24" width="13" height="13"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-              <span>Бэлтгэл</span>
-            </button>
-            <button class="etab-btn" data-tab="dates">
-              <svg viewBox="0 0 24 24" width="13" height="13"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              <span>Огноонууд</span>
-            </button>
-          </div>
-
-          <div class="etab-pane active" id="pane-overview"></div>
-          <div class="etab-pane" id="pane-format"></div>
-          <div class="etab-pane" id="pane-prep"></div>
-          <div class="etab-pane" id="pane-dates"></div>
-        </div>
-
-      </div>
+        <a class="cta-button" href="dashboard.html#application">
+          Өргөдлийн төлөвлөгөө рүү
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </section>
     </div>
   </main>
+</div>
+
+<div class="exam-modal" id="examModal" aria-hidden="true">
+  <div class="exam-modal__backdrop" data-close-modal></div>
+  <section class="exam-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalExamTitle">
+    <button class="modal-close" type="button" data-close-modal aria-label="Хаах">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div id="examModalContent"></div>
+  </section>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════

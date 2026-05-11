@@ -1,31 +1,40 @@
-<aside class="sidebar" id="app-sidebar">
-    <div class="logo">
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Шалгалтын дасгал — Дараагийн Алхам</title>
+  <link rel="stylesheet" href="../css/test.css" />
+</head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar" id="app-sidebar">
+    <a class="logo" href="index.html">
       <div class="logo-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#0A0E27;stroke:#0A0E27"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3.33 1.67 6.67 1.67 12 0v-5"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3.33 1.67 6.67 1.67 12 0v-5"/></svg>
       </div>
       <span class="logo-brand">ДАРААГИЙН АЛХАМ</span>
-    </div>
+    </a>
 
     <div class="nav-label">ЦЭС</div>
-
-    <a href="dashboard.html" class="nav-item" data-page="dashboard" onclick="showPage('dashboard'); return false;">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    <a href="dashboard.html" class="nav-item">
+      <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
       Хянах самбар
     </a>
-    <a href="#uni" class="nav-item active">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <a href="uni.html" class="nav-item">
+      <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       Их Сургуулиуд
     </a>
     <a href="scholar.html" class="nav-item">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+      <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
       Тэтгэлэгүүд
     </a>
-    <a href="exam-info.html" class="nav-item">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    <a href="exam-info.html" class="nav-item active">
+      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
       Шалгалтууд
     </a>
-    <a href="#application" class="nav-item" data-page="application" onclick="showPage('application'); return false;">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <a href="dashboard.html#application" class="nav-item">
+      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       Application
     </a>
 
@@ -40,13 +49,185 @@
     </div>
   </aside>
 
-
-
-  <header class="topbar">
+  <main class="main">
+    <header class="topbar">
       <div class="topbar-left">
+        <a class="back-link" href="exam-info.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          Шалгалтууд руу
+        </a>
         <span>Гадаадад Суралцах Төв 2026</span>
       </div>
       <div class="topbar-right">
-        <div class="notif-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg><span class="notif-dot"></span></div>
+        <button class="notif-btn" type="button" aria-label="Мэдэгдэл">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+          <span class="notif-dot"></span>
+        </button>
       </div>
     </header>
+
+    <div class="practice-page">
+      <section class="practice-hero">
+        <div>
+          <span class="eyebrow" id="examLabel">IELTS</span>
+          <h1 id="practiceTitle">Listening дасгал</h1>
+          <p id="practiceIntro">Шалгалтын хэсгийн бүтэц, хугацаа, жишиг даалгаврыг нэг дэлгэц дээр цэгцтэй хараарай.</p>
+        </div>
+        <div class="timer-panel">
+          <span>Дасгалын цаг</span>
+          <strong id="practiceTime">30 мин</strong>
+        </div>
+      </section>
+
+      <section class="section-tabs" id="sectionTabs" aria-label="Шалгалтын хэсгүүд"></section>
+
+      <div class="practice-layout">
+        <article class="task-panel">
+          <div class="panel-heading">
+            <span id="taskType">Sample task</span>
+            <strong id="taskScore">Band 0-9</strong>
+          </div>
+          <h2 id="taskTitle">Section practice</h2>
+          <p id="taskText">Дэлгэрэнгүй хэсгээс сонгосон шалгалтын дагуу жишиг дасгал энд харагдана.</p>
+
+          <div class="question-stack" id="questionStack"></div>
+        </article>
+
+        <aside class="answer-panel">
+          <div class="answer-card">
+            <h3>Хариулах талбар</h3>
+            <label>
+              1-р хариулт
+              <input type="text" placeholder="Хариултаа бичнэ үү" />
+            </label>
+            <label>
+              2-р хариулт
+              <input type="text" placeholder="Хариултаа бичнэ үү" />
+            </label>
+            <label>
+              3-р хариулт
+              <input type="text" placeholder="Хариултаа бичнэ үү" />
+            </label>
+            <button class="primary-action" type="button">Хариултаа шалгах</button>
+          </div>
+
+          <div class="tip-card">
+            <h3>Бэлтгэлийн санамж</h3>
+            <p id="practiceTip">Цаг барьж ажиллаад, дараа нь алдаагаа төрлөөр нь тэмдэглээрэй.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</div>
+
+<nav class="mobile-nav">
+  <a href="dashboard.html" class="mobile-nav__item">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    <span>Самбар</span>
+  </a>
+  <a href="uni.html" class="mobile-nav__item">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span>Сургууль</span>
+  </a>
+  <a href="scholar.html" class="mobile-nav__item">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+    <span>Тэтгэлэг</span>
+  </a>
+  <a href="exam-info.html" class="mobile-nav__item active">
+    <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    <span>Шалгалт</span>
+  </a>
+  <a href="dashboard.html#application" class="mobile-nav__item">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <span>Өргөдөл</span>
+  </a>
+</nav>
+
+<script>
+const practiceData = {
+  IELTS: {
+    sections: ['Listening', 'Reading', 'Writing', 'Speaking'],
+    duration: { Listening: '30 мин', Reading: '60 мин', Writing: '60 мин', Speaking: '11-14 мин' },
+    score: 'Band 0-9',
+    tip: 'Асуултаа урьдчилан уншаад түлхүүр үгсийг тэмдэглэ. Сонсох үед зөвхөн яг сонссон мэдээллээ бич.',
+  },
+  TOEFL: {
+    sections: ['Reading', 'Listening', 'Speaking', 'Writing'],
+    duration: { Reading: '35 мин', Listening: '36 мин', Speaking: '16 мин', Writing: '29 мин' },
+    score: '0-30 хэсэг бүр',
+    tip: 'Integrated даалгаварт уншсан, сонссон мэдээллээ холбоод богино бүтэцтэй тэмдэглэл хөтөл.',
+  },
+  SAT: {
+    sections: ['Reading & Writing', 'Math', 'Module 1', 'Module 2'],
+    duration: { 'Reading & Writing': '64 мин', Math: '70 мин', 'Module 1': '32-35 мин', 'Module 2': '32-35 мин' },
+    score: '400-1600',
+    tip: 'Эхлээд оноо өгдөг хялбар асуултаа баталгаажуулж, гацсан асуултыг тэмдэглээд буцаж ажилла.',
+  },
+  HSK: {
+    sections: ['HSK 1-2', 'HSK 3-4', 'HSK 5-6'],
+    duration: { 'HSK 1-2': '40-55 мин', 'HSK 3-4': '85-100 мин', 'HSK 5-6': '125-140 мин' },
+    score: '300 оноо',
+    tip: 'Шинэ ханзаа өгүүлбэр дотор давтаж, сонсох хэсгийн өмнө сонголтын ялгааг ажигла.',
+  },
+  TOPIK: {
+    sections: ['TOPIK I', 'Listening', 'Reading', 'Writing'],
+    duration: { 'TOPIK I': '100 мин', Listening: '60 мин', Reading: '70 мин', Writing: '50 мин' },
+    score: 'TOPIK I/II',
+    tip: 'Дүрмийн хэв маяг, холбох нөхцөлийг тусад нь жагсааж давтаад бичгийн хэсэгт загвар бүтэц ашигла.',
+  },
+};
+
+function getParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    exam: (params.get('exam') || 'IELTS').toUpperCase(),
+    section: params.get('section') || '',
+  };
+}
+
+function normalizeSection(exam, sectionParam) {
+  const data = practiceData[exam] || practiceData.IELTS;
+  const slug = sectionParam.toLowerCase();
+  return data.sections.find((section) => section.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug) || data.sections[0];
+}
+
+function slugify(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+function renderPractice() {
+  const params = getParams();
+  const exam = practiceData[params.exam] ? params.exam : 'IELTS';
+  const data = practiceData[exam];
+  const section = normalizeSection(exam, params.section);
+
+  document.getElementById('examLabel').textContent = exam;
+  document.getElementById('practiceTitle').textContent = `${section} дасгал`;
+  document.getElementById('practiceTime').textContent = data.duration[section] || data.duration[data.sections[0]];
+  document.getElementById('taskScore').textContent = data.score;
+  document.getElementById('taskType').textContent = `${exam} sample`;
+  document.getElementById('taskTitle').textContent = `${section} жишиг даалгавар`;
+  document.getElementById('taskText').textContent = `${exam} шалгалтын ${section} хэсэгт ажиллахдаа зааврыг эхлээд уншиж, хугацаагаа хуваарилан, хариултаа нотолгоотойгоор сонгоно.`;
+  document.getElementById('practiceTip').textContent = data.tip;
+
+  document.getElementById('sectionTabs').innerHTML = data.sections.map((item) => `
+    <a class="${item === section ? 'active' : ''}" href="test.html?exam=${exam}&section=${slugify(item)}">${item}</a>
+  `).join('');
+
+  document.getElementById('questionStack').innerHTML = [
+    'Гол санааг тодорхойлж, нотолгоо болгож болох түлхүүр үгийг бич.',
+    'Даалгаврын шаардлагад тохирох хамгийн зөв хариултыг сонго.',
+    'Цаг дуусахаас өмнө хариултаа дахин шалгаж, хоосон үлдээснээ нөх.',
+  ].map((question, index) => `
+    <div class="question-row">
+      <span>${index + 1}</span>
+      <p>${question}</p>
+    </div>
+  `).join('');
+}
+
+renderPractice();
+</script>
+</body>
+</html>
