@@ -3,231 +3,329 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Шалгалтын дасгал — Дараагийн Алхам</title>
-  <link rel="stylesheet" href="../css/test.css" />
+  <title>Exam Preparation — Дараагийн Алхам</title>
+  <link rel="stylesheet" href="../css/test.css?v=20260511" />
 </head>
 <body>
-<div class="app-layout">
-  <aside class="sidebar" id="app-sidebar">
-    <a class="logo" href="index.html">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3.33 1.67 6.67 1.67 12 0v-5"/></svg>
+  <main class="prep-page">
+    <a class="back-button" href="exam-info.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      Back to Exams
+    </a>
+
+    <section class="prep-hero">
+      <div class="prep-hero__icon" id="heroIcon"></div>
+      <div class="prep-hero__copy">
+        <h1 id="prepTitle">IELTS Listening Preparation</h1>
+        <p id="prepSubtitle">Master the IELTS Listening section with comprehensive strategies, practice techniques, and expert guidance</p>
+        <div class="prep-meta" id="prepMeta"></div>
       </div>
-      <span class="logo-brand">ДАРААГИЙН АЛХАМ</span>
-    </a>
+    </section>
 
-    <div class="nav-label">ЦЭС</div>
-    <a href="dashboard.html" class="nav-item">
-      <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-      Хянах самбар
-    </a>
-    <a href="uni.html" class="nav-item">  
-      <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      Их Сургуулиуд
-    </a>
-    <a href="scholar.html" class="nav-item">
-      <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-      Тэтгэлэгүүд
-    </a>
-    <a href="exam-info.html" class="nav-item active">
-      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-      Шалгалтууд
-    </a>
-    <a href="dashboard.html#application" class="nav-item">
-      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-      Application
-    </a>
-  
-    <div class="sidebar-footer">
-      <div class="user-chip">
-        <div class="user-avatar">М</div>
-        <div>
-          <div class="user-name">Мөнхбат</div>
-          <div class="user-role">12-р ангийн сурагч</div>
-        </div>
+    <section class="progress-band">
+      <h2>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-4 12.75V17h8v-2.25A7 7 0 0 0 12 2z"/><path d="M9 21h6"/><path d="M10 17h4"/></svg>
+        Your Progress
+      </h2>
+      <div class="progress-grid" id="progressGrid"></div>
+    </section>
+
+    <section class="recommend-card">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-4 12.75V17h8v-2.25A7 7 0 0 0 12 2z"/><path d="M9 21h6"/><path d="M10 17h4"/></svg>
       </div>
-    </div>
-  </aside>
-
-  <main class="main">
-    <header class="topbar">
-      <div class="topbar-left">
-        <a class="back-link" href="exam-info.html">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
-          Шалгалтууд руу
-        </a>
-        <span>Гадаадад Суралцах Төв 2026</span>
+      <div>
+        <h2>AI Study Recommendation</h2>
+        <p id="recommendIntro">Based on your current progress, we recommend focusing on:</p>
+        <ul class="check-list" id="recommendList"></ul>
       </div>
-      <div class="topbar-right">
-        <button class="notif-btn" type="button" aria-label="Мэдэгдэл">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
-          <span class="notif-dot"></span>
-        </button>
+    </section>
+
+    <section class="content-block">
+      <h2 class="block-title">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Section Overview
+      </h2>
+      <div class="overview-grid" id="overviewGrid"></div>
+    </section>
+
+    <section class="content-block">
+      <h2 class="block-title">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+        Common Question Types
+      </h2>
+      <div class="question-types" id="questionTypes"></div>
+    </section>
+
+    <section class="content-block">
+      <h2 class="block-title">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+        Preparation Strategies
+      </h2>
+      <div class="strategy-grid" id="strategyGrid"></div>
+    </section>
+
+    <section class="content-block">
+      <h2 class="block-title alert">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        Time Management Tips
+      </h2>
+      <div class="time-grid" id="timeTips"></div>
+    </section>
+
+    <section class="content-block">
+      <h2 class="block-title danger">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        Mistakes to Avoid
+      </h2>
+      <div class="mistake-list" id="mistakeList"></div>
+    </section>
+
+    <section class="content-block">
+      <h2 class="block-title">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Recommended Resources
+      </h2>
+      <div class="resource-list" id="resourceList"></div>
+    </section>
+
+    <section class="ready-cta">
+      <h2>Ready to Practice?</h2>
+      <p>Access mock tests, practice exercises, and personalized study plans</p>
+      <div class="cta-actions">
+        <a class="btn-primary" href="#questionTypes">Start Practice Test</a>
+        <a class="btn-secondary" href="#progressGrid">View Study Plan</a>
       </div>
-    </header>
-
-    <div class="practice-page">
-      <section class="practice-hero">
-        <div>
-          <span class="eyebrow" id="examLabel">IELTS</span>
-          <h1 id="practiceTitle">Listening дасгал</h1>
-          <p id="practiceIntro">Шалгалтын хэсгийн бүтэц, хугацаа, жишиг даалгаврыг нэг дэлгэц дээр цэгцтэй хараарай.</p>
-        </div>
-        <div class="timer-panel">
-          <span>Дасгалын цаг</span>
-          <strong id="practiceTime">30 мин</strong>
-        </div>
-      </section>
-
-      <section class="section-tabs" id="sectionTabs" aria-label="Шалгалтын хэсгүүд"></section>
-
-      <div class="practice-layout">
-        <article class="task-panel">
-          <div class="panel-heading">
-            <span id="taskType">Sample task</span>
-            <strong id="taskScore">Band 0-9</strong>
-          </div>
-          <h2 id="taskTitle">Section practice</h2>
-          <p id="taskText">Дэлгэрэнгүй хэсгээс сонгосон шалгалтын дагуу жишиг дасгал энд харагдана.</p>
-
-          <div class="question-stack" id="questionStack"></div>
-        </article>
-
-        <aside class="answer-panel">
-          <div class="answer-card">
-            <h3>Хариулах талбар</h3>
-            <label>
-              1-р хариулт
-              <input type="text" placeholder="Хариултаа бичнэ үү" />
-            </label>
-            <label>
-              2-р хариулт
-              <input type="text" placeholder="Хариултаа бичнэ үү" />
-            </label>
-            <label>
-              3-р хариулт
-              <input type="text" placeholder="Хариултаа бичнэ үү" />
-            </label>
-            <button class="primary-action" type="button">Хариултаа шалгах</button>
-          </div>
-
-          <div class="tip-card">
-            <h3>Бэлтгэлийн санамж</h3>
-            <p id="practiceTip">Цаг барьж ажиллаад, дараа нь алдаагаа төрлөөр нь тэмдэглээрэй.</p>
-          </div>
-        </aside>
-      </div>
-    </div>
+    </section>
   </main>
-</div>
-
-<nav class="mobile-nav">
-  <a href="dashboard.html" class="mobile-nav__item">
-    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-    <span>Самбар</span>
-  </a>
-  <a href="uni.html" class="mobile-nav__item">
-    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <span>Сургууль</span>
-  </a>
-  <a href="scholar.html" class="mobile-nav__item">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-    <span>Тэтгэлэг</span>
-  </a>
-  <a href="exam-info.html" class="mobile-nav__item active">
-    <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-    <span>Шалгалт</span>
-  </a>
-  <a href="dashboard.html#application" class="mobile-nav__item">
-    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-    <span>Өргөдөл</span>
-  </a>
-</nav>
 
 <script>
-const practiceData = {
+const exams = {
   IELTS: {
-    sections: ['Listening', 'Reading', 'Writing', 'Speaking'],
-    duration: { Listening: '30 мин', Reading: '60 мин', Writing: '60 мин', Speaking: '11-14 мин' },
+    display: 'IELTS',
+    icon: 'headphones',
     score: 'Band 0-9',
-    tip: 'Асуултаа урьдчилан уншаад түлхүүр үгсийг тэмдэглэ. Сонсох үед зөвхөн яг сонссон мэдээллээ бич.',
+    target: '7.5',
+    sections: ['Listening', 'Reading', 'Writing', 'Speaking'],
+    duration: { Listening: '30 minutes', Reading: '60 minutes', Writing: '60 minutes', Speaking: '11-14 minutes' },
+    questions: { Listening: '40 questions', Reading: '40 questions', Writing: '2 tasks', Speaking: '3 parts' },
   },
   TOEFL: {
+    display: 'TOEFL',
+    icon: 'headphones',
+    score: '0-120',
+    target: '100',
     sections: ['Reading', 'Listening', 'Speaking', 'Writing'],
-    duration: { Reading: '35 мин', Listening: '36 мин', Speaking: '16 мин', Writing: '29 мин' },
-    score: '0-30 хэсэг бүр',
-    tip: 'Integrated даалгаварт уншсан, сонссон мэдээллээ холбоод богино бүтэцтэй тэмдэглэл хөтөл.',
+    duration: { Reading: '35 minutes', Listening: '36 minutes', Speaking: '16 minutes', Writing: '29 minutes' },
+    questions: { Reading: '20 questions', Listening: '28 questions', Speaking: '4 tasks', Writing: '2 tasks' },
   },
   SAT: {
-    sections: ['Reading & Writing', 'Math', 'Module 1', 'Module 2'],
-    duration: { 'Reading & Writing': '64 мин', Math: '70 мин', 'Module 1': '32-35 мин', 'Module 2': '32-35 мин' },
+    display: 'SAT',
+    icon: 'target',
     score: '400-1600',
-    tip: 'Эхлээд оноо өгдөг хялбар асуултаа баталгаажуулж, гацсан асуултыг тэмдэглээд буцаж ажилла.',
+    target: '1450',
+    sections: ['Reading & Writing', 'Math', 'Module 1', 'Module 2'],
+    duration: { 'Reading & Writing': '64 minutes', Math: '70 minutes', 'Module 1': '32-35 minutes', 'Module 2': '32-35 minutes' },
+    questions: { 'Reading & Writing': '54 questions', Math: '44 questions', 'Module 1': 'Adaptive set', 'Module 2': 'Adaptive set' },
   },
   HSK: {
+    display: 'HSK',
+    icon: 'book',
+    score: '300 points',
+    target: '240',
     sections: ['HSK 1-2', 'HSK 3-4', 'HSK 5-6'],
-    duration: { 'HSK 1-2': '40-55 мин', 'HSK 3-4': '85-100 мин', 'HSK 5-6': '125-140 мин' },
-    score: '300 оноо',
-    tip: 'Шинэ ханзаа өгүүлбэр дотор давтаж, сонсох хэсгийн өмнө сонголтын ялгааг ажигла.',
+    duration: { 'HSK 1-2': '40-55 minutes', 'HSK 3-4': '85-100 minutes', 'HSK 5-6': '125-140 minutes' },
+    questions: { 'HSK 1-2': 'Foundation set', 'HSK 3-4': 'Intermediate set', 'HSK 5-6': 'Advanced set' },
   },
   TOPIK: {
-    sections: ['TOPIK I', 'Listening', 'Reading', 'Writing'],
-    duration: { 'TOPIK I': '100 мин', Listening: '60 мин', Reading: '70 мин', Writing: '50 мин' },
+    display: 'TOPIK',
+    icon: 'book',
     score: 'TOPIK I/II',
-    tip: 'Дүрмийн хэв маяг, холбох нөхцөлийг тусад нь жагсааж давтаад бичгийн хэсэгт загвар бүтэц ашигла.',
+    target: 'Level 4',
+    sections: ['TOPIK I', 'Listening', 'Reading', 'Writing'],
+    duration: { 'TOPIK I': '100 minutes', Listening: '60 minutes', Reading: '70 minutes', Writing: '50 minutes' },
+    questions: { 'TOPIK I': '70 questions', Listening: '50 questions', Reading: '50 questions', Writing: '4 tasks' },
   },
 };
 
-function getParams() {
-  const params = new URLSearchParams(window.location.search);
-  return {
-    exam: (params.get('exam') || 'IELTS').toUpperCase(),
-    section: params.get('section') || '',
-  };
-}
+const iconPaths = {
+  headphones: '<path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 14a2 2 0 0 1-2 2h-1v-4h1a2 2 0 0 1 2 2Z"/><path d="M3 14a2 2 0 0 0 2 2h1v-4H5a2 2 0 0 0-2 2Z"/>',
+  target: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+};
 
-function normalizeSection(exam, sectionParam) {
-  const data = practiceData[exam] || practiceData.IELTS;
-  const slug = sectionParam.toLowerCase();
-  return data.sections.find((section) => section.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug) || data.sections[0];
+const commonQuestionTypes = [
+  ['Multiple Choice', 'Choose correct answer from options', 'Medium', 'Read questions before audio, predict answer type, eliminate wrong options'],
+  ['Form/Note Completion', 'Fill in missing information in forms or notes', 'Easy', 'Anticipate what type of info is needed, write as you hear'],
+  ['Matching', 'Match items from a list to categories', 'Hard', 'Preview all options, note keywords, track multiple answers simultaneously'],
+  ['Map/Diagram Labeling', 'Label parts of a map or diagram', 'Medium', 'Study the map first, understand direction words, follow the speaker path'],
+  ['Short Answer Questions', 'Write short answers from listening', 'Easy', 'Check word limit, write exactly what you hear, use correct spelling'],
+];
+
+const strategies = [
+  ['Daily Practice', '30-60 min/day', ['Listen to authentic materials', 'Review mistakes immediately', 'Track vocabulary in context']],
+  ['Active Listening Skills', '3-4 times/week', ['Predict content before listening', 'Follow signpost words', 'Summarize main ideas']],
+  ['Test Simulation', 'Weekly', ['Take full-length practice tests', 'Transfer answers carefully', 'Analyze weak question types']],
+];
+
+const timeTips = [
+  ['Use Preparation Time Wisely', 'Read questions and underline keywords during prep time.'],
+  ['Do not Get Stuck', 'If you miss an answer, move on immediately to avoid missing subsequent questions.'],
+  ['Transfer Time Efficiently', 'You have time at the end to transfer answers. Check spelling carefully.'],
+  ['Predict Answers', 'Before listening, think about what type of word fits the blank.'],
+];
+
+const mistakes = [
+  ['Not reading questions beforehand', 'Always use preparation time to read and predict answers.'],
+  ['Writing more words than allowed', 'Strictly follow word limits, such as NO MORE THAN TWO WORDS.'],
+  ['Incorrect spelling', 'Practice common vocabulary spelling and copy exactly what you hear.'],
+  ['Missing plural forms', 'Listen carefully for s at the end of words.'],
+  ['Getting stuck on one question', 'Move on immediately if you miss an answer.'],
+];
+
+const resources = [
+  ['Cambridge IELTS Books 1-18', 'Official Practice', 'Essential'],
+  ['IELTS Listening Practice Tests', 'Online', 'Recommended'],
+  ['BBC Learning English', 'Free Website', 'Supplementary'],
+  ['IELTS Liz Listening Tips', 'YouTube', 'Recommended'],
+  ['British Council IELTS Prep', 'Official Course', 'Premium'],
+];
+
+function svg(path) {
+  return `<svg viewBox="0 0 24 24" aria-hidden="true">${path}</svg>`;
 }
 
 function slugify(value) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
-function renderPractice() {
-  const params = getParams();
-  const exam = practiceData[params.exam] ? params.exam : 'IELTS';
-  const data = practiceData[exam];
-  const section = normalizeSection(exam, params.section);
+function getContext() {
+  const params = new URLSearchParams(window.location.search);
+  const examKey = (params.get('exam') || 'IELTS').toUpperCase();
+  const exam = exams[examKey] || exams.IELTS;
+  const sectionParam = params.get('section') || '';
+  const section = exam.sections.find((item) => slugify(item) === sectionParam.toLowerCase()) || exam.sections[0];
+  return { examKey: exams[examKey] ? examKey : 'IELTS', exam, section };
+}
 
-  document.getElementById('examLabel').textContent = exam;
-  document.getElementById('practiceTitle').textContent = `${section} дасгал`;
-  document.getElementById('practiceTime').textContent = data.duration[section] || data.duration[data.sections[0]];
-  document.getElementById('taskScore').textContent = data.score;
-  document.getElementById('taskType').textContent = `${exam} sample`;
-  document.getElementById('taskTitle').textContent = `${section} жишиг даалгавар`;
-  document.getElementById('taskText').textContent = `${exam} шалгалтын ${section} хэсэгт ажиллахдаа зааврыг эхлээд уншиж, хугацаагаа хуваарилан, хариултаа нотолгоотойгоор сонгоно.`;
-  document.getElementById('practiceTip').textContent = data.tip;
+function render() {
+  const { examKey, exam, section } = getContext();
+  const duration = exam.duration[section] || Object.values(exam.duration)[0];
+  const questions = exam.questions[section] || Object.values(exam.questions)[0];
+  const mastery = examKey === 'SAT' ? '72%' : examKey === 'HSK' ? '55%' : '60%';
 
-  document.getElementById('sectionTabs').innerHTML = data.sections.map((item) => `
-    <a class="${item === section ? 'active' : ''}" href="test.html?exam=${exam}&section=${slugify(item)}">${item}</a>
+  document.title = `${exam.display} ${section} Preparation — Дараагийн Алхам`;
+  document.getElementById('heroIcon').innerHTML = svg(iconPaths[exam.icon] || iconPaths.book);
+  document.getElementById('prepTitle').textContent = `${exam.display} ${section} Preparation`;
+  document.getElementById('prepSubtitle').textContent = `Master the ${exam.display} ${section} section with comprehensive strategies, practice techniques, and expert guidance`;
+  document.getElementById('prepMeta').innerHTML = [
+    ['clock', duration],
+    ['target', questions],
+    ['chart', exam.score],
+  ].map(([type, text]) => `<span>${metaIcon(type)} ${text}</span>`).join('');
+
+  document.getElementById('progressGrid').innerHTML = [
+    ['Current Score', examKey === 'IELTS' ? '6.5' : examKey === 'SAT' ? '1320' : '78', `Target: ${exam.target}`, '55%'],
+    ['Practice Hours', '35', '', '62%'],
+    ['Mock Tests', '4/10', '', '40%'],
+    ['Mastery', mastery, '', mastery],
+  ].map(([label, value, sub, width]) => `
+    <article class="progress-card">
+      <span>${label}</span>
+      <strong>${value}</strong>
+      ${sub ? `<small>${sub}</small>` : `<div class="meter"><i style="width:${width}"></i></div>`}
+      ${sub ? '' : ''}
+    </article>
   `).join('');
 
-  document.getElementById('questionStack').innerHTML = [
-    'Гол санааг тодорхойлж, нотолгоо болгож болох түлхүүр үгийг бич.',
-    'Даалгаврын шаардлагад тохирох хамгийн зөв хариултыг сонго.',
-    'Цаг дуусахаас өмнө хариултаа дахин шалгаж, хоосон үлдээснээ нөх.',
-  ].map((question, index) => `
-    <div class="question-row">
+  document.querySelectorAll('.progress-card').forEach((card, index) => {
+    if (index === 0) return;
+    if (!card.querySelector('.meter')) card.insertAdjacentHTML('beforeend', '<div class="meter"><i style="width:60%"></i></div>');
+  });
+
+  document.getElementById('recommendIntro').textContent = `Based on your current progress, we recommend focusing on ${section}:`;
+  document.getElementById('recommendList').innerHTML = [
+    ['Matching questions', 'Your weakest area. Practice 2-3 sets daily.'],
+    ['Note-taking speed', 'Take dictation exercises to improve writing speed.'],
+    ['Mock tests', 'Complete 6 more full-length tests before exam day.'],
+  ].map(([strong, text]) => `<li><strong>${strong}</strong> - ${text}</li>`).join('');
+
+  const overviewItems = getOverviewItems(examKey, section, exam);
+  document.getElementById('overviewGrid').innerHTML = overviewItems.map((item, index) => `
+    <article class="overview-card">
+      <h3>Part ${index + 1}</h3>
+      <p>${item}</p>
+      <small>${questionRange(index)}</small>
+    </article>
+  `).join('');
+
+  document.getElementById('questionTypes').innerHTML = commonQuestionTypes.map(([title, desc, level, strategy]) => `
+    <article class="question-card">
+      <div class="card-row">
+        <h3>${title}</h3>
+        <span class="badge ${level.toLowerCase()}">${level}</span>
+      </div>
+      <p>${desc}</p>
+      <div class="strategy-note">${svg('<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.75V17h8v-2.25A7 7 0 0 0 12 2z"/>')} <strong>Strategy:</strong> ${strategy}</div>
+    </article>
+  `).join('');
+
+  document.getElementById('strategyGrid').innerHTML = strategies.map(([title, cadence, items]) => `
+    <article class="strategy-card">
+      <h3>${title}</h3>
+      <small>${svg('<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>')} ${cadence}</small>
+      <ol>${items.map((item) => `<li>${item}</li>`).join('')}</ol>
+    </article>
+  `).join('');
+
+  document.getElementById('timeTips').innerHTML = timeTips.map(([title, text], index) => `
+    <article class="time-tip">
       <span>${index + 1}</span>
-      <p>${question}</p>
-    </div>
+      <div><h3>${title}</h3><p>${text}</p></div>
+    </article>
+  `).join('');
+
+  document.getElementById('mistakeList').innerHTML = mistakes.map(([title, fix]) => `
+    <article class="mistake-card">
+      <span class="mistake-icon">${svg('<circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/>')}</span>
+      <div>
+        <h3>× ${title}</h3>
+        <p>${svg('<path d="M20 6 9 17l-5-5"/>')} <strong>Fix:</strong> ${fix}</p>
+      </div>
+    </article>
+  `).join('');
+
+  document.getElementById('resourceList').innerHTML = resources.map(([title, type, badge]) => `
+    <a class="resource-row" href="exam-info.html">
+      <span><strong>${title}</strong><small>${type}</small></span>
+      <em class="${badge.toLowerCase()}">${badge}</em>
+    </a>
   `).join('');
 }
 
-renderPractice();
+function metaIcon(type) {
+  if (type === 'clock') return svg('<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>');
+  if (type === 'target') return svg('<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/>');
+  return svg('<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>');
+}
+
+function getOverviewItems(examKey, section, exam) {
+  if (examKey === 'IELTS' && section === 'Listening') {
+    return [
+      'Social conversation between two people',
+      'Monologue in a social context',
+      'Academic conversation (up to 4 people)',
+      'Academic monologue/lecture',
+    ];
+  }
+  return exam.sections.slice(0, 4).map((item) => `${item} focused practice and scoring patterns`);
+}
+
+function questionRange(index) {
+  return ['Questions 1-10', 'Questions 11-20', 'Questions 21-30', 'Questions 31-40'][index] || 'Practice set';
+}
+
+render();
 </script>
 </body>
 </html>
