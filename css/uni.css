@@ -146,7 +146,6 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
   color: var(--white);
   letter-spacing: -.02em;
 }
-
 .nav-label {
   font-size: .68rem;
   font-weight: 700;
