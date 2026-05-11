@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -47,31 +46,10 @@ svg { display: block; fill: none; stroke: currentColor; stroke-width: 2; stroke-
 
 .logo {
   height: 64px;
-=======
-/* ============================================================
-   SIDEBAR
-   ============================================================ */
-.sidebar {
-  width: 260px;
-  min-height: 100vh;
-  background: var(--navy);
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  position: fixed;
-  top: 0; left: 0; bottom: 0;
-  overflow-y: auto;
-  z-index: 100;
-  border-right: none;
-}
-
-.logo {
->>>>>>> 9f74518 (css zssn)
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 0 20px;
-<<<<<<< HEAD
   border-bottom: 2px solid rgba(255,255,255,.08);
 }
 
@@ -84,26 +62,11 @@ svg { display: block; fill: none; stroke: currentColor; stroke-width: 2; stroke-
   flex-shrink: 0;
   background: var(--lime);
   color: var(--navy);
-=======
-  height: 64px;
-  border-bottom: 2px solid rgba(255,255,255,.08);
-  flex-shrink: 0;
-  text-decoration: none;
-}
-
-.logo-icon {
-  width: 36px; height: 36px;
-  background: var(--lime);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  border-radius: 0;
->>>>>>> 9f74518 (css zssn)
 }
 
 .logo-icon svg { width: 20px; height: 20px; }
 
 .logo-brand {
-<<<<<<< HEAD
   color: var(--white);
   font-family: var(--font-display);
   font-size: 1rem;
@@ -122,80 +85,26 @@ svg { display: block; fill: none; stroke: currentColor; stroke-width: 2; stroke-
 
 .nav-item {
   width: 100%;
-=======
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--white);
-  letter-spacing: -.02em;
-}
-
-.nav-label {
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.3);
-  padding: 20px 20px 8px;
-}
-
-.nav-item {
->>>>>>> 9f74518 (css zssn)
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 10px 20px;
-<<<<<<< HEAD
   border-left: 3px solid transparent;
   color: rgba(255,255,255,.65);
   font-size: .875rem;
   font-weight: 700;
-=======
-  font-size: .875rem;
-  font-weight: 600;
-  color: rgba(255,255,255,.65);
-  cursor: pointer;
-  transition: all .15s;
-  text-decoration: none;
-  border-left: 3px solid transparent;
-  width: 100%;
-}
-
-.nav-item img {
-  width: 16px; height: 16px;
-  filter: brightness(0) invert(1);
->>>>>>> 9f74518 (css zssn)
 }
 
 .nav-item:hover { background: rgba(255,255,255,.06); color: var(--white); }
 .nav-item.active { background: rgba(204,255,0,.1); color: var(--lime); border-left-color: var(--lime); }
-<<<<<<< HEAD
 .nav-icon { width: 18px; height: 18px; flex-shrink: 0; }
 
-=======
-
-.nav-icon {
-  width: 18px; height: 18px;
-  flex-shrink: 0;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vertical-align: middle;
-}
-
-/* ============================================================
-   SIDEBAR FOOTER
-   ============================================================ */
->>>>>>> 9f74518 (css zssn)
 .sidebar-footer {
   margin-top: auto;
   padding: 16px;
   border-top: 2px solid rgba(255,255,255,.08);
 }
 
-<<<<<<< HEAD
 .user-chip { display: flex; align-items: center; gap: 10px; padding: 10px; }
 .user-avatar {
   width: 36px;
@@ -225,59 +134,19 @@ svg { display: block; fill: none; stroke: currentColor; stroke-width: 2; stroke-
   position: sticky;
   top: 0;
   z-index: 50;
-=======
-.user-chip {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-}
-
-.user-avatar {
-  width: 36px; height: 36px;
-  background: var(--lime);
-  border: 2px solid rgba(204,255,0,.4);
-  border-radius: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--navy);
-  font-size: .85rem;
-  flex-shrink: 0;
-}
-
-.user-name { font-size: .875rem; font-weight: 600; color: var(--white); }
-.user-role { font-size: .7rem; color: rgba(255,255,255,.4); }
-
-/* ============================================================
-   TOPBAR
-   ============================================================ */
-.topbar {
-  background: var(--white);
-  border-bottom: var(--border);
-  padding: 0 24px;
->>>>>>> 9f74518 (css zssn)
   height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-<<<<<<< HEAD
   gap: 16px;
   padding: 0 24px;
   background: var(--white);
   border-bottom: var(--border);
-=======
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  flex-shrink: 0;
->>>>>>> 9f74518 (css zssn)
 }
 
 .topbar-left {
   display: flex;
   align-items: center;
-<<<<<<< HEAD
   gap: 14px;
   min-width: 0;
   color: var(--navy);
@@ -717,65 +586,3 @@ svg { display: block; fill: none; stroke: currentColor; stroke-width: 2; stroke-
   }
   .task-panel h2 { font-size: 1.55rem; }
 }
-=======
-  gap: 8px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: -.02em;
-  color: var(--navy);
-}
-
-.globe-icon { display: none; }
-
-.topbar-left span { font-weight: 800; }
-
-.topbar-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.notif-btn {
-  padding: 8px 20px;
-  border: var(--border);
-  color: var(--navy);
-  font-weight: 700;
-  font-size: .8rem;
-  letter-spacing: .04em;
-  background: none;
-  cursor: pointer;
-  transition: background .15s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-  border-radius: 0;
-}
-.notif-btn img { width: 16px; height: 16px; }
-.notif-btn:hover { background: var(--lime); }
-
-.notif-dot {
-  width: 8px; height: 8px;
-  background: var(--red-600);
-  border-radius: 50%;
-  position: absolute;
-  top: 6px; right: 6px;
-  border: 2px solid var(--white);
-}
-
-.signin-top-btn {
-  font-family: var(--font-body);
-  background: var(--navy);
-  color: var(--lime);
-  border: none;
-  border-radius: 0;
-  padding: 8px 20px;
-  font-size: .8rem;
-  font-weight: 700;
-  cursor: pointer;
-  letter-spacing: .04em;
-  transition: background .15s;
-}
-.signin-top-btn:hover { background: #000; }
->>>>>>> 9f74518 (css zssn)
