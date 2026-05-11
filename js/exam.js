@@ -25,7 +25,7 @@ const examMeta = {
     skills: ['Сонсгол', 'Унших', 'Бичих', 'Ярих'],
   },
   TOEFL: {
-    org: 'ETS',
+    org: 'ETS',    
     category: 'english',
     tone: '#0EA5E9',
     soft: '#EFF6FF',
