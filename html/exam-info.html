@@ -67,86 +67,8 @@
       </div>
     </header>
 
-    <!-- Content -->
-    <div class="content exam-hub">
-
-      <section class="exam-hero" aria-labelledby="examHeroTitle">
-        <div class="exam-hero__copy">
-          <span class="eyebrow">Шалгалтын төв</span>
-          <h1 id="examHeroTitle">Оноогоо төлөвлөж, шалгалтаа ухаалгаар сонго.</h1>
-          <p>IELTS, TOEFL, SAT, HSK, TOPIK шалгалтын формат, онооны шаардлага, төлбөр, бэлтгэлийн материалыг нэг дороос харьцуул.</p>
-        </div>
-        <div class="exam-hero__metrics" aria-label="Шалгалтын товч үзүүлэлт">
-          <div>
-            <strong>5</strong>
-            <span>шалгалт</span>
-          </div>
-          <div>
-            <strong>4</strong>
-            <span>чадварын хэсэг</span>
-          </div>
-          <div>
-            <strong>2026</strong>
-            <span>төлөвлөгөө</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="exam-toolbar" aria-label="Шалгалт хайх ба шүүх">
-        <label class="exam-search">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input id="examSearch" type="search" placeholder="IELTS, SAT эсвэл хэлээр хайх" autocomplete="off" />
-        </label>
-        <div class="exam-filter-group" id="examFilters" aria-label="Шалгалтын төрөл">
-          <button class="exam-filter active" data-filter="all">Бүгд</button>
-          <button class="exam-filter" data-filter="english">Англи хэл</button>
-          <button class="exam-filter" data-filter="admission">Элсэлт</button>
-          <button class="exam-filter" data-filter="asian">Ази хэл</button>
-        </div>
-      </section>
-
-      <section class="exam-card-grid" id="examCards" aria-live="polite"></section>
-
-      <section class="exam-insights-grid">
-        <article class="score-board">
-          <div class="section-heading">
-            <span class="eyebrow">Онооны зураглал</span>
-            <h2>Нэг харцаар харьцуул.</h2>
-          </div>
-          <div class="score-comparison" id="scoreComparison"></div>
-        </article>
-
-        <article class="prep-route">
-          <div class="section-heading">
-            <span class="eyebrow">IELTS мастер төлөвлөгөө</span>
-            <h2>Чадвар бүрээр нь бэлд.</h2>
-          </div>
-          <div class="skill-grid" id="ieltsSkills"></div>
-        </article>
-      </section>
-
-      <section class="exam-cta">
-        <div>
-          <span class="eyebrow">Дараагийн алхам</span>
-          <h2>3-6 сарын бэлтгэлийн хуанлигаа өнөөдөр эхлүүл.</h2>
-        </div>
-        <a class="cta-button" href="dashboard.html#application">
-          Өргөдлийн төлөвлөгөө рүү
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-      </section>
-    </div>
+    <div id="exam-info-root"></div>
   </main>
-</div>
-
-<div class="exam-modal" id="examModal" aria-hidden="true">
-  <div class="exam-modal__backdrop" data-close-modal></div>
-  <section class="exam-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalExamTitle">
-    <button class="modal-close" type="button" data-close-modal aria-label="Хаах">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <div id="examModalContent"></div>
-  </section>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -177,7 +99,7 @@
 
 <script src="../js/session.js"></script>
 <script src="../js/data.js"></script>
-<script src="../js/exam.js"></script>
+<script src="../react/dist/search-filter.iife.js"></script>
 </body>
 </html>
      
