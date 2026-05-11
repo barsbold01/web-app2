@@ -146,7 +146,7 @@
         { "name": "Talk To Me In Korean",   "type": "Курс",       "link": "https://talktomeinkorean.com" },
         { "name": "TOPIK GUIDE",            "type": "Сайт",       "link": "https://www.topikguide.com" }
       ],
-      "tips": [
+      "tips": [  
         "Сонсох чадвараа сайжруулахын тулд Солонгос мэдээ, подкаст сонсоорой.",
         "TOPIK II Уншлагын Солонгос сонины нийтлэлийг унших дадлага хий.",
         "Дүрмийн хэв маягийг түвшин тус бүрээр нь системтэйгээр сур (TOPIK 1–6).",
