@@ -1,6 +1,7 @@
 // Loads backend API data and exposes it as globals via window.appData promise.
 // When the app is opened without the backend, it falls back to the old static JSON files.
 const API_BASE_URL = window.API_BASE_URL || (window.location.port === '3000' ? '' : 'http://localhost:3000');
+window.API_BASE_URL = API_BASE_URL;
 
 async function loadJson(apiPath, fallbackPath) {
   try {

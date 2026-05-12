@@ -48,6 +48,52 @@ export async function createDataStore(projectRoot) {
     return readJsonFile(path.join(staticDataDir, 'universities.json'));
   }
 
+  async function searchUniversities(filters = {}) {
+    const query = (filters.search || '').trim().toLowerCase();
+    const region = filters.region || 'all';
+    const program = filters.program || 'all';
+    const tuition = filters.tuition || 'all';
+    const scholarOnly = filters.scholarOnly === 'true' || filters.scholarOnly === true;
+    const sort = filters.sort || 'ranking';
+
+    let universities = await getUniversities();
+
+    if (query) {
+      universities = universities.filter((university) => [
+        university.id,
+        university.logo,
+        university.name,
+        university.nameEn,
+        university.location,
+        ...(university.tags || []),
+        ...(university.programLabels || [])
+      ].some((value) => String(value || '').toLowerCase().includes(query)));
+    }
+
+    if (region !== 'all') {
+      universities = universities.filter((university) => university.region === region);
+    }
+
+    if (program !== 'all') {
+      universities = universities.filter((university) => (university.programs || []).includes(program));
+    }
+
+    if (tuition !== 'all') {
+      universities = universities.filter((university) => university.tuitionCategory === tuition);
+    }
+
+    if (scholarOnly) {
+      universities = universities.filter((university) => university.hasScholarship);
+    }
+
+    return [...universities].sort((a, b) => {
+      if (sort === 'tuition-low') return (a.tuitionUSD || 0) - (b.tuitionUSD || 0);
+      if (sort === 'tuition-high') return (b.tuitionUSD || 0) - (a.tuitionUSD || 0);
+      if (sort === 'name') return String(a.name || '').localeCompare(String(b.name || ''));
+      return (a.rank || 9999) - (b.rank || 9999);
+    });
+  }
+
   async function getUniversityById(id) {
     const universities = await getUniversities();
     return universities.find((university) => university.id === id);
@@ -59,6 +105,35 @@ export async function createDataStore(projectRoot) {
     }
 
     return readJsonFile(path.join(staticDataDir, 'scholarships.json'));
+  }
+
+  async function searchScholarships(filters = {}) {
+    const query = (filters.search || '').trim().toLowerCase();
+    const region = filters.region || 'all';
+    const funding = filters.funding || filters.activeTab || 'all';
+
+    let scholarships = await getScholarships();
+
+    if (funding !== 'all') {
+      scholarships = scholarships.filter((scholarship) => scholarship.funding === funding);
+    }
+
+    if (region !== 'all') {
+      scholarships = scholarships.filter((scholarship) => scholarship.country === region);
+    }
+
+    if (query) {
+      scholarships = scholarships.filter((scholarship) => [
+        scholarship.name,
+        scholarship.provider,
+        scholarship.country,
+        scholarship.level,
+        scholarship.description,
+        ...(scholarship.tags || [])
+      ].some((value) => String(value || '').toLowerCase().includes(query)));
+    }
+
+    return scholarships;
   }
 
   async function getScholarshipById(id) {
@@ -92,8 +167,10 @@ export async function createDataStore(projectRoot) {
   return {
     source: DATA_SOURCE,
     getUniversities,
+    searchUniversities,
     getUniversityById,
     getScholarships,
+    searchScholarships,
     getScholarshipById,
     getExamContent,
     getExamByKey

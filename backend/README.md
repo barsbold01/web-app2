@@ -16,11 +16,16 @@ Default API:
 ```txt
 GET http://localhost:3000/api/health
 GET http://localhost:3000/api/universities
+GET http://localhost:3000/api/universities?search=mit&region=usa&sort=ranking
 GET http://localhost:3000/api/universities/mit
 GET http://localhost:3000/api/scholarships
+GET http://localhost:3000/api/scholarships?search=mext&funding=full&region=japan
 GET http://localhost:3000/api/scholarships/mext
 GET http://localhost:3000/api/exams
 GET http://localhost:3000/api/exams/IELTS
+GET http://localhost:3000/api/favorites?userEmail=test@example.com
+POST http://localhost:3000/api/favorites
+DELETE http://localhost:3000/api/favorites/university/mit?userEmail=test@example.com
 ```
 
 The backend also serves the frontend files, so the app can be opened from:

@@ -11,6 +11,36 @@ function _favKey(base) {
   }
 }
 
+function _favUserEmail() {
+  try {
+    const u = JSON.parse(localStorage.getItem('ns_session'));
+    return u?.email || 'guest';
+  } catch {
+    return 'guest';
+  }
+}
+
+function _favApiBase() {
+  return window.API_BASE_URL || (window.location.port === '3000' ? '' : 'http://localhost:3000');
+}
+
+function _favSync(type, method, itemOrId) {
+  const userEmail = _favUserEmail();
+  const base = _favApiBase();
+  const options = { method, headers: { 'Content-Type': 'application/json' } };
+  let url = `${base}/api/favorites`;
+
+  if (method === 'POST') {
+    options.body = JSON.stringify({ userEmail, type, item: itemOrId });
+  } else {
+    url += `/${type}/${encodeURIComponent(itemOrId)}?userEmail=${encodeURIComponent(userEmail)}`;
+  }
+
+  fetch(url, options).catch((error) => {
+    console.warn('Favorite backend sync failed; localStorage is still updated.', error);
+  });
+}
+
 /* ── Storage helpers ─────────────────────────────────────────────────────── */
 
 function fav_getSavedUnis() {
@@ -57,6 +87,7 @@ function fav_saveUni(uni) {
   if (existing >= 0) saved[existing] = { ...saved[existing], ...item };
   else saved.push(item);
   localStorage.setItem(_favKey('ns_saved_unis'), JSON.stringify(saved));
+  _favSync('university', 'POST', item);
 }
 
 function fav_removeUni(id) {
@@ -64,6 +95,7 @@ function fav_removeUni(id) {
     _favKey('ns_saved_unis'),
     JSON.stringify(fav_getSavedUnis().filter(u => u.id !== id))
   );
+  _favSync('university', 'DELETE', id);
 }
 
 function fav_saveScholar(sch) {
@@ -90,6 +122,7 @@ function fav_saveScholar(sch) {
   if (existing >= 0) saved[existing] = { ...saved[existing], ...item };
   else saved.push(item);
   localStorage.setItem(_favKey('ns_saved_scholars'), JSON.stringify(saved));
+  _favSync('scholarship', 'POST', item);
 }
 
 function fav_removeScholar(id) {
@@ -97,6 +130,7 @@ function fav_removeScholar(id) {
     _favKey('ns_saved_scholars'),
     JSON.stringify(fav_getSavedScholars().filter(s => s.id !== id))
   );
+  _favSync('scholarship', 'DELETE', id);
 }
 
 /* ── Dashboard rendering ─────────────────────────────────────────────────── */

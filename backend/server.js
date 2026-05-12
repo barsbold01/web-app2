@@ -4,6 +4,7 @@ import express from 'express';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createDataStore } from './dataStore.js';
+import { createFavoritesStore } from './favoritesStore.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,6 +13,7 @@ const projectRoot = path.resolve(__dirname, '..');
 const app = express();
 const port = Number(process.env.PORT || 3000);
 const dataStore = await createDataStore(projectRoot);
+const favoritesStore = createFavoritesStore(projectRoot);
 
 app.use(cors());
 app.use(express.json());
@@ -26,7 +28,7 @@ app.get('/api/health', (req, res) => {
 
 app.get('/api/universities', async (req, res, next) => {
   try {
-    res.json(await dataStore.getUniversities());
+    res.json(await dataStore.searchUniversities(req.query));
   } catch (error) {
     next(error);
   }
@@ -44,9 +46,51 @@ app.get('/api/universities/:id', async (req, res, next) => {
 
 app.get('/api/scholarships', async (req, res, next) => {
   try {
-    res.json(await dataStore.getScholarships());
+    res.json(await dataStore.searchScholarships(req.query));
   } catch (error) {
     next(error);
+  }
+});
+
+app.get('/api/favorites', async (req, res, next) => {
+  try {
+    res.json(await favoritesStore.getFavorites(req.query.userEmail));
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.post('/api/favorites', async (req, res, next) => {
+  try {
+    const { userEmail, type, item } = req.body;
+
+    if (!['university', 'scholarship'].includes(type)) {
+      return res.status(400).json({ message: 'Favorite type must be university or scholarship' });
+    }
+
+    if (!item?.id) {
+      return res.status(400).json({ message: 'Favorite item id is required' });
+    }
+
+    const favorites = await favoritesStore.saveFavorite(userEmail, type, item);
+    return res.status(201).json(favorites);
+  } catch (error) {
+    return next(error);
+  }
+});
+
+app.delete('/api/favorites/:type/:id', async (req, res, next) => {
+  try {
+    const { type, id } = req.params;
+
+    if (!['university', 'scholarship'].includes(type)) {
+      return res.status(400).json({ message: 'Favorite type must be university or scholarship' });
+    }
+
+    const favorites = await favoritesStore.removeFavorite(req.query.userEmail, type, id);
+    return res.json(favorites);
+  } catch (error) {
+    return next(error);
   }
 });
 

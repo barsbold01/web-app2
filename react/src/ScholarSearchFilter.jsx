@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import ScholarCard from './ScholarCard';
 
 const INITIAL = { query: '', region: 'all', activeTab: 'all' };
@@ -16,24 +16,36 @@ export default function ScholarSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    window.appData.then(() => {
-      setScholarships(window.SCHOLARSHIPS || []);
-      setLoading(false);
-    });
-  }, []);
+    const controller = new AbortController();
+    const timer = setTimeout(async () => {
+      setLoading(true);
+      const params = new URLSearchParams({
+        search: filters.query,
+        region: filters.region,
+        funding: filters.activeTab,
+      });
 
-  const filtered = useMemo(() => {
-    const query = filters.query.toLowerCase().trim();
-    return scholarships.filter(sch => {
-      if (filters.activeTab === 'full'    && sch.funding !== 'full')    return false;
-      if (filters.activeTab === 'partial' && sch.funding !== 'partial') return false;
-      if (filters.region !== 'all' && sch.country !== filters.region)   return false;
-      if (query &&
-        !sch.name.toLowerCase().includes(query) &&
-        !sch.provider.toLowerCase().includes(query)) return false;
-      return true;
-    });
-  }, [scholarships, filters]);
+      try {
+        const response = await fetch(`${window.API_BASE_URL || ''}/api/scholarships?${params}`, {
+          signal: controller.signal
+        });
+        if (!response.ok) throw new Error(`API error ${response.status}`);
+        setScholarships(await response.json());
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          await window.appData;
+          setScholarships(window.SCHOLARSHIPS || []);
+        }
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    }, 250);
+
+    return () => {
+      controller.abort();
+      clearTimeout(timer);
+    };
+  }, [filters]);
 
   const set = (key) => (e) =>
     setFilters(prev => ({ ...prev, [key]: e.target.value }));
@@ -112,10 +124,10 @@ export default function ScholarSection() {
       {/* ── Results ── */}
       <div className="uni-results-area">
         <div className="uni-results-header">
-          {loading ? 'Ачаалж байна...' : `Нийт ${filtered.length} тэтгэлэг олдлоо`}
+          {loading ? 'Ачаалж байна...' : `Нийт ${scholarships.length} тэтгэлэг олдлоо`}
         </div>
         <div className="uni-grid scholarship-grid">
-          {filtered.map(sch => (
+          {scholarships.map(sch => (
             <ScholarCard key={sch.id} sch={sch} onCardClick={openModal} />
           ))}
         </div>

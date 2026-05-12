@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import UniCard from './UniCard';
 
 const INITIAL = {
@@ -28,34 +28,39 @@ export default function UniSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    window.appData.then(() => {
-      setUniversities(window.UNIVERSITIES || []);
-      setLoading(false);
-    });
-  }, []);
+    const controller = new AbortController();
+    const timer = setTimeout(async () => {
+      setLoading(true);
+      const params = new URLSearchParams({
+        search: filters.query,
+        region: filters.region,
+        program: filters.program,
+        sort: filters.sort,
+        tuition: filters.tuition,
+        scholarOnly: String(filters.scholarOnly),
+      });
 
-  const filtered = useMemo(() => {
-    const query = filters.query.toLowerCase().trim();
-    let result = universities.filter(uni => {
-      if (query &&
-        !uni.name.toLowerCase().includes(query) &&
-        !uni.nameEn.toLowerCase().includes(query) &&
-        !uni.location.toLowerCase().includes(query)) return false;
-      if (filters.region !== 'all' && uni.region !== filters.region) return false;
-      if (filters.program !== 'all' && !uni.programs.includes(filters.program)) return false;
-      if (filters.tuition !== 'all' && uni.tuitionCategory !== filters.tuition) return false;
-      if (filters.scholarOnly && !uni.hasScholarship) return false;
-      return true;
-    });
+      try {
+        const response = await fetch(`${window.API_BASE_URL || ''}/api/universities?${params}`, {
+          signal: controller.signal
+        });
+        if (!response.ok) throw new Error(`API error ${response.status}`);
+        setUniversities(await response.json());
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          await window.appData;
+          setUniversities(window.UNIVERSITIES || []);
+        }
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    }, 250);
 
-    return [...result].sort((a, b) => {
-      if (filters.sort === 'ranking')      return a.rank - b.rank;
-      if (filters.sort === 'tuition-low')  return a.tuitionUSD - b.tuitionUSD;
-      if (filters.sort === 'tuition-high') return b.tuitionUSD - a.tuitionUSD;
-      if (filters.sort === 'name')         return a.name.localeCompare(b.name);
-      return 0;
-    });
-  }, [universities, filters]);
+    return () => {
+      controller.abort();
+      clearTimeout(timer);
+    };
+  }, [filters]);
 
   const set = (key) => (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -175,10 +180,10 @@ export default function UniSection() {
       {/* ── Results ── */}
       <div className="uni-results-area">
         <div className="uni-results-header">
-          {loading ? 'Ачаалж байна...' : `Нийт ${filtered.length} сургууль олдлоо`}
+          {loading ? 'Ачаалж байна...' : `Нийт ${universities.length} сургууль олдлоо`}
         </div>
         <div className="uni-grid">
-          {filtered.map(uni => (
+          {universities.map(uni => (
             <UniCard key={uni.id} uni={uni} onCardClick={openModal} />
           ))}
         </div>
