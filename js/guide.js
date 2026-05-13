@@ -90,28 +90,108 @@
   }
 
   /* ============================================================
+     VISA GUIDE DETAIL OVERLAY
+     ============================================================ */
+  function initVisaGuide() {
+    var visaOverlay = document.getElementById('visa-overlay');
+    var visaCloseBtn = document.getElementById('visa-close-btn');
+    if (!visaOverlay || !visaCloseBtn) return;
+
+    function openVisa() {
+      visaOverlay.classList.add('is-open');
+      visaOverlay.setAttribute('aria-hidden', 'false');
+      visaOverlay.scrollTop = 0;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVisa() {
+      visaOverlay.classList.remove('is-open');
+      visaOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    visaCloseBtn.addEventListener('click', closeVisa);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && visaOverlay.classList.contains('is-open')) closeVisa();
+    });
+
+    // 1. Guide section дахь "Визний Хөтөч" карт
+    var mainVisaCard = document.querySelector('.guide-card[data-guide="visa"]');
+    if (mainVisaCard) {
+      mainVisaCard.addEventListener('click', function (e) {
+        e.preventDefault();
+        openVisa();
+      });
+    }
+
+    // 2. Hub overlay дахь "ХӨТӨЧ ҮЗЭХ →" товч
+    var hubVisaBtn = document.querySelector('.hg-btn[data-guide="visa"]');
+    if (hubVisaBtn) {
+      hubVisaBtn.addEventListener('click', function () {
+        // Hub-ийг түр нуун visa overlay нээх
+        var hubOverlay = document.getElementById('hub-overlay');
+        if (hubOverlay) hubOverlay.style.zIndex = '400';
+        openVisa();
+        // Visa хаахад hub-ийг сэргээх
+        visaCloseBtn.addEventListener('click', function restoreHub() {
+          if (hubOverlay) hubOverlay.style.zIndex = '';
+          visaCloseBtn.removeEventListener('click', restoreHub);
+        }, { once: true });
+      });
+    }
+  }
+
+  /* ============================================================
+     ALL GUIDES HUB OVERLAY
+     ============================================================ */
+  function initGuidesHub() {
+    var openBtn  = document.getElementById('open-all-guides-btn');
+    var overlay  = document.getElementById('hub-overlay');
+    var closeBtn = document.getElementById('hub-close-btn');
+
+    if (!openBtn || !overlay || !closeBtn) return;
+
+    function openHub() {
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeHub() {
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', openHub);
+    closeBtn.addEventListener('click', closeHub);
+
+    // Overlay-н гадна дарахад хаах
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeHub();
+    });
+
+    // ESC товчоор хаах
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeHub();
+    });
+
+
+  }
+
+  /* ============================================================
      MENTOR BUTTON
      ============================================================ */
   function initMentorBtn() {
     var btn = document.querySelector('.mentor-btn');
     if (!btn) return;
     btn.addEventListener('click', function () {
-      alert('Ментор хайх хэсэг удахгүй нэмэгдэнэ!');
+      // TODO: ментор хайх хуудас руу шилжүүлэх
     });
   }
 
-  /* ============================================================
-     CTA BUTTON
-     ============================================================ */
-  function initCtaBtn() {
-    var btn = document.querySelector('.cta-btn');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      alert('Бүх хөтөчүүд удахгүй нэмэгдэнэ!');
-    });
-  }
-
-  /* ============================================================
+/* ============================================================
      SOON BADGE — идэвхгүй холбоосын клик хаах
      ============================================================ */
   function initSoonCards() {
@@ -128,9 +208,10 @@
      ============================================================ */
   document.addEventListener('DOMContentLoaded', function () {
     initRoadmapAccordion();
+    initVisaGuide();
+    initGuidesHub();
     initScrollReveal();
     initMentorBtn();
-    initCtaBtn();
     initSoonCards();
 
     // Шугамын өндрийг хуудас бүрэн ачаалсны дараа тооцоолох
