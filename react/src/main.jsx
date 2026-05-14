@@ -1,8 +1,9 @@
 import { createRoot } from 'react-dom/client';
-import UniSection     from './UniSearchFilter';
-import ScholarSection from './ScholarSearchFilter';
-import DashboardApp   from './DashboardApp';
-import ExamInfoApp    from './ExamInfoApp';
+import UniSection       from './UniSearchFilter';
+import ScholarSection   from './ScholarSearchFilter';
+import DashboardApp     from './DashboardApp';
+import ExamInfoApp      from './ExamInfoApp';
+import ApplicationPage  from './ApplicationPage';
 
 const uniRoot = document.getElementById('uni-search-root');
 if (uniRoot) createRoot(uniRoot).render(<UniSection />);
@@ -15,3 +16,6 @@ if (dashRoot) createRoot(dashRoot).render(<DashboardApp />);
 
 const examRoot = document.getElementById('exam-info-root');
 if (examRoot) createRoot(examRoot).render(<ExamInfoApp />);
+
+const appRoot = document.getElementById('application-root');
+if (appRoot) createRoot(appRoot).render(<ApplicationPage />);
