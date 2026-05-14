@@ -90,6 +90,86 @@
   }
 
   /* ============================================================
+     SCHOLARSHIP GUIDE OVERLAY
+     ============================================================ */
+  function initScholarGuide() {
+    var overlay  = document.getElementById('scholar-overlay');
+    var closeBtn = document.getElementById('scholar-close-btn');
+    if (!overlay || !closeBtn) return;
+
+    function open() {
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      overlay.scrollTop = 0;
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+    });
+
+    // Main guides grid дахь тэтгэлгийн карт
+    var card = document.querySelector('.guide-card[data-guide="scholarship"]');
+    if (card) card.addEventListener('click', function (e) { e.preventDefault(); open(); });
+
+    // Hub дахь тэтгэлгийн товч
+    var hubBtn = document.querySelector('.hg-btn[data-guide="scholarship"]');
+    if (hubBtn) hubBtn.addEventListener('click', function () {
+      var hub = document.getElementById('hub-overlay');
+      if (hub) hub.style.zIndex = '400';
+      open();
+      closeBtn.addEventListener('click', function r() {
+        if (hub) hub.style.zIndex = '';
+        closeBtn.removeEventListener('click', r);
+      }, { once: true });
+    });
+  }
+
+  /* ============================================================
+     ROADMAP CARD NAVIGATION
+     ============================================================ */
+  function initRoadmapNav() {
+    // guide-ийн overlay id-тай map
+    var guideMap = {
+      'visa':         'visa-overlay',
+      'scholarship':  'scholar-overlay',
+      // Удахгүй болох guide-үүд — overlay байхгүй тул үл хийх
+      'profile':      null,
+      'universities': null,
+      'documents':    null,
+      'essays':       null,
+      'submit':       null,
+      'respond':      null
+    };
+
+    var cards = document.querySelectorAll('.roadmap-card[data-guide]');
+    cards.forEach(function (card) {
+      var guide = card.getAttribute('data-guide');
+      var overlayId = guideMap[guide];
+      if (!overlayId) return; // overlay байхгүй бол дарлага нэмэхгүй
+
+      // Card-д cursor pointer + hover effect нэмэх
+      card.style.cursor = 'pointer';
+
+      card.addEventListener('click', function (e) {
+        // Accordion товч дарсан бол шилжүүлэхгүй
+        if (e.target.closest('.roadmap-arrow')) return;
+        var target = document.getElementById(overlayId);
+        if (!target) return;
+        target.classList.add('is-open');
+        target.setAttribute('aria-hidden', 'false');
+        target.scrollTop = 0;
+        document.body.style.overflow = 'hidden';
+      });
+    });
+  }
+
+  /* ============================================================
      VISA GUIDE DETAIL OVERLAY
      ============================================================ */
   function initVisaGuide() {
@@ -209,6 +289,8 @@
   document.addEventListener('DOMContentLoaded', function () {
     initRoadmapAccordion();
     initVisaGuide();
+    initScholarGuide();
+    initRoadmapNav();
     initGuidesHub();
     initScrollReveal();
     initMentorBtn();

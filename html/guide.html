@@ -80,7 +80,7 @@
         <div class="roadmap-item">
           <div class="roadmap-step">01</div>
           <div class="roadmap-line"></div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" data-guide="profile">
             <div class="roadmap-card-header">
               <h3>Профайлаа Бүтээ</h3>
               <button class="roadmap-arrow" aria-label="Дэлгэрэнгүй">
@@ -102,7 +102,7 @@
         <div class="roadmap-item">
           <div class="roadmap-step">02</div>
           <div class="roadmap-line"></div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" data-guide="universities">
             <div class="roadmap-card-header">
               <h3>Их Сургуулиуд Судал</h3>
               <button class="roadmap-arrow" aria-label="Дэлгэрэнгүй">
@@ -124,7 +124,7 @@
         <div class="roadmap-item">
           <div class="roadmap-step">03</div>
           <div class="roadmap-line"></div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" data-guide="documents">
             <div class="roadmap-card-header">
               <h3>Баримт Бичгүүдээ Бэлдэ</h3>
               <button class="roadmap-arrow" aria-label="Дэлгэрэнгүй">
@@ -146,7 +146,7 @@
         <div class="roadmap-item">
           <div class="roadmap-step">04</div>
           <div class="roadmap-line"></div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" data-guide="essays">
             <div class="roadmap-card-header">
               <h3>Эссэгээ Бич</h3>
               <button class="roadmap-arrow" aria-label="Дэлгэрэнгүй">
@@ -168,7 +168,7 @@
         <div class="roadmap-item">
           <div class="roadmap-step">05</div>
           <div class="roadmap-line"></div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" data-guide="submit">
             <div class="roadmap-card-header">
               <h3>Өргөдлүүдээ Илгээ</h3>
               <button class="roadmap-arrow" aria-label="Дэлгэрэнгүй">
@@ -189,7 +189,7 @@
 
         <div class="roadmap-item roadmap-item--last">
           <div class="roadmap-step">06</div>
-          <div class="roadmap-card">
+          <div class="roadmap-card" data-guide="respond">
             <div class="roadmap-card-header">
               <h3>Хариуг Хүлээн Хариул</h3>
               <button class="roadmap-arrow" aria-label="Дэлгэрэнгүй">
@@ -230,7 +230,7 @@
             <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
 
-          <a href="#" class="guide-card guide-card--active">
+          <a href="#" class="guide-card guide-card--active" data-guide="scholarship">
             <div class="guide-icon" style="background:#2F9E44;">
               <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
             </div>
@@ -241,26 +241,24 @@
             <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
 
-          <a href="#" class="guide-card guide-card--active">
+          <a href="#" class="guide-card guide-card--soon">
             <div class="guide-icon" style="background:#7048E8;">
               <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
             </div>
             <div class="guide-info">
-              <span class="guide-title">Хувийн Тайлбар</span>
+              <span class="guide-title">Хувийн Тайлбар <span class="soon-badge">УДАХГҮЙ</span></span>
               <span class="guide-desc">Хүчирхэг эссэ болон хувийн тайлбар бичих</span>
             </div>
-            <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
 
-          <a href="#" class="guide-card guide-card--active">
+          <a href="#" class="guide-card guide-card--soon">
             <div class="guide-icon" style="background:#E8590C;">
               <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div class="guide-info">
-              <span class="guide-title">Ярилцлагын Бэлтгэл</span>
+              <span class="guide-title">Ярилцлагын Бэлтгэл <span class="soon-badge">УДАХГҮЙ</span></span>
               <span class="guide-desc">Элсэлтийн ярилцлагад итгэлтэйгээр бэлдэх</span>
             </div>
-            <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
 
           <a href="#" class="guide-card guide-card--soon">
@@ -380,7 +378,7 @@
                 <button class="hg-btn" data-guide="visa">ХӨТӨЧ ҮЗЭХ →</button>
               </div>
 
-              <div class="hub-guide-card hub-guide--active">
+              <div class="hub-guide-card hub-guide--soon">
                 <div class="hg-icon" style="background:#7048E8;">
                   <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                 </div>
@@ -419,10 +417,10 @@
                     <span class="hg-tag">Ярилцлага</span>
                   </div>
                 </div>
-                <button class="hg-btn">ХӨТӨЧ ҮЗЭХ →</button>
+                <button class="hg-btn" data-guide="scholarship">ХӨТӨЧ ҮЗЭХ →</button>
               </div>
 
-              <div class="hub-guide-card hub-guide--active">
+              <div class="hub-guide-card hub-guide--soon">
                 <div class="hg-icon" style="background:#E8590C;">
                   <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
@@ -440,7 +438,7 @@
                     <span class="hg-tag">Дараагийн Алхам</span>
                   </div>
                 </div>
-                <button class="hg-btn">ХӨТӨЧ ҮЗЭХ →</button>
+                <button class="hg-btn hg-btn--soon" disabled>УДАХГҮЙ</button>
               </div>
 
               <!-- Удахгүй хөтөчүүд -->
@@ -883,7 +881,7 @@
     <div class="visa-section">
       <div class="visa-section-header">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <h2>УЛС ОРНУУДААР ОЮУТНЫ ВИЗ</h2>
+        <h2>УЛС ОРНУУДЫН ОЮУТНЫ ВИЗ</h2>
       </div>
       <div class="visa-country-grid">
 
@@ -1150,6 +1148,424 @@
   </div>
 </div>
 <!-- /visa-overlay -->
+
+<!-- ======= SCHOLARSHIP GUIDE OVERLAY ======= -->
+<div class="visa-overlay" id="scholar-overlay" aria-hidden="true">
+  <div class="visa-topbar">
+    <button class="visa-back-btn" id="scholar-close-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
+      ӨРГӨДЛИЙН ХӨТӨЧ РУУ БУЦАХ
+    </button>
+  </div>
+
+  <!-- HERO -->
+  <div class="visa-hero">
+    <div class="visa-hero-icon" style="background:#2F9E44;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+    </div>
+    <div class="visa-hero-text">
+      <h1>Тэтгэлгийн Хөтөч</h1>
+      <p>Тэтгэлэг хэрхэн хайх, өргөдөл гаргах, ялах стратеги болон мэргэжлийн дотоод зөвлөмжийг хамарсан иж бүрэн хөтөч</p>
+    </div>
+  </div>
+
+  <!-- PROGRESS STATS -->
+  <div class="visa-stats-row">
+    <div class="visa-stat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span class="visa-stat-label">СУДАЛСАН</span>
+      <span class="visa-stat-value">12</span>
+    </div>
+    <div class="visa-stat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span class="visa-stat-label">ЯВАГДАЖ БУЙ</span>
+      <span class="visa-stat-value">5</span>
+    </div>
+    <div class="visa-stat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#2F9E44" stroke-width="2" width="22" height="22"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span class="visa-stat-label">ИЛГЭЭСЭН</span>
+      <span class="visa-stat-value">2</span>
+    </div>
+    <div class="visa-stat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+      <span class="visa-stat-label">ЭССЭ ДУУССАН</span>
+      <span class="visa-stat-value">4</span>
+    </div>
+  </div>
+
+  <!-- TYPES OF SCHOLARSHIPS -->
+  <div class="visa-section">
+    <div class="visa-section-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+      <h2>ТЭТГЭЛГИЙН ТӨРЛҮҮД</h2>
+    </div>
+    <div class="sch-types">
+
+      <div class="sch-type-card">
+        <div class="sch-type-body">
+          <h3>Гавьяа Дээр Суурилсан</h3>
+          <p>Хичээлийн амжилт, шалгалтын оноо, эсвэл авьяас чадвар дээр суурилан олгодог</p>
+          <div class="sch-examples">
+            <span class="sch-ex-label">ЖИШЭЭНҮҮД:</span>
+            <ul>
+              <li>Академик Шилдэг Тэтгэлэг</li>
+              <li>Спортын Тэтгэлэг</li>
+              <li>Урлаг & Хөгжмийн Тэтгэлэг</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sch-tip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>ЗӨВЛӨМЖ:</strong> Өндөр GPA, хүчтэй шалгалтын оноо, баримтжуулсан амжилтуудыг хадгалах</span>
+        </div>
+      </div>
+
+      <div class="sch-type-card">
+        <div class="sch-type-body">
+          <h3>Санхүүгийн Хэрэгцээнд Суурилсан</h3>
+          <p>Санхүүгийн хэрэгцээ болон гэр бүлийн орлогод суурилан олгодог</p>
+          <div class="sch-examples">
+            <span class="sch-ex-label">ЖИШЭЭНҮҮД:</span>
+            <ul>
+              <li>Pell Grant (АНУ)</li>
+              <li>Хэрэгцээнд Суурилсан Тусламж</li>
+              <li>Санхүүгийн Хүндрэлийн Тэтгэлэг</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sch-tip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>ЗӨВЛӨМЖ:</strong> FAFSA/CSS Profile-г үнэн зөв бөглөж, дэлгэрэнгүй санхүүгийн баримт бичиг бэлдэх</span>
+        </div>
+      </div>
+
+      <div class="sch-type-card">
+        <div class="sch-type-body">
+          <h3>Улс/Бүс Нутгийн Тэтгэлэг</h3>
+          <p>Тодорхой улс орон эсвэл бүс нутгийн оюутнуудад зориулсан</p>
+          <div class="sch-examples">
+            <span class="sch-ex-label">ЖИШЭЭНҮҮД:</span>
+            <ul>
+              <li>ASEAN Тэтгэлэг</li>
+              <li>Commonwealth Тэтгэлэг</li>
+              <li>Fulbright Хөтөлбөр</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sch-tip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>ЗӨВЛӨМЖ:</strong> Улс орон бүрийн хөтөлбөрүүдийг судлаж, иргэний болзолд нийцэж байгаа эсэхийг шалгах</span>
+        </div>
+      </div>
+
+      <div class="sch-type-card">
+        <div class="sch-type-body">
+          <h3>Мэргэжлийн Чиглэлийн</h3>
+          <p>Тодорхой судлах чиглэлийг сонгосон оюутнуудад зориулсан</p>
+          <div class="sch-examples">
+            <span class="sch-ex-label">ЖИШЭЭНҮҮД:</span>
+            <ul>
+              <li>STEM Тэтгэлэг</li>
+              <li>Инженерийн Шагнал</li>
+              <li>Эрүүл Мэндийн Тэтгэлэг</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sch-tip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>ЗӨВЛӨМЖ:</strong> Тухайн салбарт хандсан хүсэл тэмүүлэл, холбогдох төсөл, туршлагаа харуулах</span>
+        </div>
+      </div>
+
+      <div class="sch-type-card">
+        <div class="sch-type-body">
+          <h3>Олон Янз & Оролцоо</h3>
+          <p>Цөөнхийн бүлэг болон дутуу төлөөлөгдсөн бүлгүүдэд зориулсан</p>
+          <div class="sch-examples">
+            <span class="sch-ex-label">ЖИШЭЭНҮҮД:</span>
+            <ul>
+              <li>STEM дэх Эмэгтэйчүүд</li>
+              <li>Анхны Үеийн Тэтгэлэг</li>
+              <li>Цөөнхийн Тэтгэлэг</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sch-tip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>ЗӨВЛӨМЖ:</strong> Өвөрмөц өнцөг болон олон янз байдалд хувь нэмрээ оруулах байдлаа онцлох</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HOW TO FIND -->
+  <div class="visa-section">
+    <div class="visa-section-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <h2>ТЭТГЭЛЭГ ХААНААС ХАЙХ ВЭ</h2>
+    </div>
+    <div class="visa-country-grid">
+
+      <div class="visa-country-card visa-country--highlight">
+        <div class="vcc-top"><div><div class="vcc-country" style="font-size:1rem;">
+          <span class="vs-num" style="display:inline-flex;margin-right:8px;">1</span>Их Сургуулийн Вэбсайт</div>
+          <div class="vcc-type">Санхүүгийн тусламжийн хэлтсийг шалгах</div></div></div>
+        <ul class="sch-find-list">
+          <li>Зорилтот их сургуулиудын санхүүгийн тусламжийн хэсэгт зочлох</li>
+          <li>Автомат болон өргөдөлд суурилсан тэтгэлгүүдийг харьцуулах</li>
+          <li>Өргөдлийн хугацаа, шаардлагуудыг тэмдэглэх</li>
+          <li>Санхүүгийн тусламжийн алба руу асуулт илгээх</li>
+        </ul>
+      </div>
+
+      <div class="visa-country-card">
+        <div class="vcc-top"><div><div class="vcc-country" style="font-size:1rem;">
+          <span class="vs-num" style="display:inline-flex;margin-right:8px;">2</span>Засгийн Газрын Хөтөлбөр</div>
+          <div class="vcc-type">Улсын тэтгэлгийн боломжуудыг судлах</div></div></div>
+        <ul class="sch-find-list">
+          <li>Эх орны гадаадад суралцах хөтөлбөрүүдийг судлах</li>
+          <li>Очих улсын тэтгэлгийн санал болгосон хөтөлбөрүүдийг шалгах</li>
+          <li>Хоёр талт боловсролын гэрээнүүдийг харах</li>
+          <li>Элчин сайдын яамны боловсролын хэлтэст хандах</li>
+        </ul>
+      </div>
+
+      <div class="visa-country-card">
+        <div class="vcc-top"><div><div class="vcc-country" style="font-size:1rem;">
+          <span class="vs-num" style="display:inline-flex;margin-right:8px;">3</span>Онлайн Мэдээллийн Сан</div>
+          <div class="vcc-type">Тэтгэлгийн хайлтын систем ашиглах</div></div></div>
+        <ul class="sch-find-list">
+          <li>Тэтгэлгийн платформд профайл үүсгэх</li>
+          <li>Холбогдох боломжуудыг шүүж олох</li>
+          <li>Шинэ тэтгэлгүүдэд имэйл мэдэгдэл тохируулах</li>
+          <li>Тохиромжтой боломжуудыг хадгалж зохион байгуулах</li>
+        </ul>
+      </div>
+
+      <div class="visa-country-card">
+        <div class="vcc-top"><div><div class="vcc-country" style="font-size:1rem;">
+          <span class="vs-num" style="display:inline-flex;margin-right:8px;">4</span>Хувийн Байгууллагууд</div>
+          <div class="vcc-type">Корпорат, сан, NGO тэтгэлгүүд</div></div></div>
+        <ul class="sch-find-list">
+          <li>Сонирхлын чиглэл дэх компаниудыг судлах</li>
+          <li>Буяны сангуудыг шалгах</li>
+          <li>Мэргэжлийн холбоодыг харах</li>
+          <li>Олон нийтийн байгууллагуудыг судлах</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- APPLICATION STRATEGY & TIMELINE -->
+  <div class="visa-section">
+    <div class="visa-section-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <h2>ӨРГӨДЛИЙН СТРАТЕГИ & ЦАГИЙН ХУВААРЬ</h2>
+    </div>
+    <div class="visa-steps">
+
+      <div class="visa-step">
+        <div class="vs-num">1</div>
+        <div class="vs-body">
+          <div class="vs-header">
+            <h3>Судалгаа & Зохион Байгуулалт</h3>
+            <span class="vs-timing vs-timing--before">6–8 сарын өмнө</span>
+          </div>
+          <div class="vs-tags">
+            <span>Тэтгэлгийн хяналтын хүснэгт үүсгэх</span>
+            <span>15–20 боломжит тэтгэлэг судлах</span>
+            <span>Бүх хугацаа, шаардлагыг тэмдэглэх</span>
+            <span>Тохирох эсэхийг үнэлэх</span>
+            <span>Шилдэг 8–10-г эрэмбэлэх</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="visa-step">
+        <div class="vs-num">2</div>
+        <div class="vs-body">
+          <div class="vs-header">
+            <h3>Баримт Бичиг Бэлдэх</h3>
+            <span class="vs-timing vs-timing--before">4–6 сарын өмнө</span>
+          </div>
+          <div class="vs-tags">
+            <span>Зөвлөмжийн захиа хүсэх</span>
+            <span>Санхүүгийн баримт цуглуулах</span>
+            <span>Хичээлийн дансны хуулбар бэлдэх</span>
+            <span>Гэрчилгээ, шагналуудыг цуглуулах</span>
+            <span>Шаардлагатай бол шалгалт өгөх</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="visa-step">
+        <div class="vs-num">3</div>
+        <div class="vs-body">
+          <div class="vs-header">
+            <h3>Эссэ Бичих</h3>
+            <span class="vs-timing vs-timing--during">3–5 сарын өмнө</span>
+          </div>
+          <div class="vs-tags">
+            <span>Эссэний сэдэв бүрийг ойлгох</span>
+            <span>Олон хувилбар бичих</span>
+            <span>Тус бүр тэтгэлэгт тохируулан засах</span>
+            <span>Санал авч засварлах</span>
+            <span>Нарийвчлан шалгах</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="visa-step">
+        <div class="vs-num">4</div>
+        <div class="vs-body">
+          <div class="vs-header">
+            <h3>Өргөдөл Илгээх</h3>
+            <span class="vs-timing vs-timing--scheduled">1–2 сарын өмнө</span>
+          </div>
+          <div class="vs-tags">
+            <span>Бүх өргөдлийн маягт бөглөх</span>
+            <span>Шаардлагатай баримт бичиг оруулах</span>
+            <span>Хугацааны өмнө илгээх</span>
+            <span>Баталгааны имэйл хадгалах</span>
+            <span>Шаардлагатай бол дагаж хянах</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCHOLARSHIP ESSAY TIPS -->
+  <div class="visa-section">
+    <div class="visa-section-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <h2>ТЭТГЭЛГИЙН ЭССЭНИЙ ЗӨВЛӨМЖ</h2>
+    </div>
+    <div class="visa-country-grid">
+      <div class="visa-country-card">
+        <div class="vcc-country" style="font-size:.95rem;margin-bottom:12px;">Сэдвийг Ойлгох</div>
+        <ul class="sch-find-list">
+          <li>Сэдвийг хэд хэдэн удаа анхааралтай уншиx</li>
+          <li>Гол үгс болон жинхэнэ асуултыг тодорхойлох</li>
+          <li>Тэтгэлгийн эрхэм зорилго, үнэт зүйлсийг ойлгох</li>
+          <li>Асуултын бүх хэсгийг хамарсан байх</li>
+        </ul>
+      </div>
+      <div class="visa-country-card visa-country--highlight">
+        <div class="vcc-country" style="font-size:.95rem;margin-bottom:12px;">Өөрийн Түүхийг Бүтээх</div>
+        <ul class="sch-find-list">
+          <li>Сонирхол татахуйц эхлэлтэй байх</li>
+          <li>Тодорхой жишээ болон үйл явдлуудыг ашиглах</li>
+          <li>Нөлөөлөл болон үр дүнгээ харуулах</li>
+          <li>Түүхээ зорилготойгоо холбох</li>
+          <li>Тэтгэлгийн үнэт зүйлстэй нийцэж байгааг харуулах</li>
+        </ul>
+      </div>
+      <div class="visa-country-card">
+        <div class="vcc-country" style="font-size:.95rem;margin-bottom:12px;">Ялгарч Гарах</div>
+        <ul class="sch-find-list">
+          <li>Жинхэнэ байх — тэд хүссэн зүйлийг бичихгүй байх</li>
+          <li>Өвөрмөц туршлага эсвэл үзэл бодлоо онцлох</li>
+          <li>Хүсэл тэмүүлэл, жинхэнэ сонирхлоо харуулах</li>
+          <li>Манлайлал болон санаачилгаа нотлох</li>
+        </ul>
+      </div>
+      <div class="visa-country-card">
+        <div class="vcc-country" style="font-size:.95rem;margin-bottom:12px;">Техникийн Мастерлаг</div>
+        <ul class="sch-find-list">
+          <li>Үг/тэмдэгтийн хязгаарыг чандлан мөрдөх</li>
+          <li>Оршил, үндсэн хэсэг, дүгнэлт бүтэцтэй байх</li>
+          <li>Олон удаа шалгах</li>
+          <li>Багш/менторуудаас санал авах</li>
+          <li>Хугацааны өмнө хадгалж илгээх</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div class="visa-section visa-section--issues">
+    <div class="visa-section-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <h2>НИЙТЛЭГ АЛДААНААС ЗАЙЛСХИЙ</h2>
+    </div>
+    <div class="visa-issues">
+
+      <div class="visa-issue">
+        <div class="vi-left">
+          <div class="vi-icon vi-icon--high">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <div>
+            <div class="vi-title">Хэт цөөн тэтгэлэгт өргөдөл гаргах</div>
+            <div style="font-size:.78rem;color:#DC2626;margin-bottom:8px;">Нөлөөлөл: Санхүүжилт авах боломж буурна</div>
+            <div class="vi-solution">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span><strong>Шийдэл:</strong> Өөр өөр тохирох болзолтой 8–15 тэтгэлэгт өргөдөл гаргах</span>
+            </div>
+          </div>
+        </div>
+        <span class="vi-severity vi-severity--high">Өндөр</span>
+      </div>
+
+      <div class="visa-issue">
+        <div class="vi-left">
+          <div class="vi-icon vi-icon--high">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <div>
+            <div class="vi-title">Хугацаа алдах</div>
+            <div style="font-size:.78rem;color:#DC2626;margin-bottom:8px;">Нөлөөлөл: Автоматаар дисквалификаци болно</div>
+            <div class="vi-solution">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span><strong>Шийдэл:</strong> Хугацааны 2 долоо хоног, 1 долоо хоногийн өмнө хуанлийн сануулга үүсгэх</span>
+            </div>
+          </div>
+        </div>
+        <span class="vi-severity vi-severity--high">Өндөр</span>
+      </div>
+
+      <div class="visa-issue">
+        <div class="vi-left">
+          <div class="vi-icon vi-icon--med">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <div>
+            <div class="vi-title">Ерөнхий, дахин ашигласан эссэ</div>
+            <div style="font-size:.78rem;color:#D97706;margin-bottom:8px;">Нөлөөлөл: Эссэ жинхэнэ болон хамааралгүй харагдана</div>
+            <div class="vi-solution">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span><strong>Шийдэл:</strong> Тус бүр тэтгэлгийн эрхэм зорилго, үнэт зүйлстэй нийцүүлэн тохируулах</span>
+            </div>
+          </div>
+        </div>
+        <span class="vi-severity vi-severity--med">Дунд</span>
+      </div>
+
+      <div class="visa-issue">
+        <div class="vi-left">
+          <div class="vi-icon vi-icon--med">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <div>
+            <div class="vi-title">Дутуу өргөдөл</div>
+            <div style="font-size:.78rem;color:#D97706;margin-bottom:8px;">Нөлөөлөл: Хянахгүйгээр татгалзагдана</div>
+            <div class="vi-solution">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span><strong>Шийдэл:</strong> Тус бүр тэтгэлэгт жагсаалт үүсгэж, илгээхийн өмнө бүх зүйлийг шалгах</span>
+            </div>
+          </div>
+        </div>
+        <span class="vi-severity vi-severity--med">Дунд</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<!-- /scholar-overlay -->
 
 <script src="../js/guide.js"></script>
 </body>

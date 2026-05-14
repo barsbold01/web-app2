@@ -820,12 +820,12 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
 
 /* HERO */
 .visa-hero {
-  margin-left: 20px;
   background: var(--navy);
   padding: 40px 40px 36px;
   display: flex;
   align-items: flex-start;
   gap: 24px;
+  margin: 20px;
 }
 .visa-hero-icon {
   width: 72px; height: 72px;
@@ -852,9 +852,10 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
 /* STATS ROW */
 .visa-stats-row {
   display: grid;
-  margin-left: 20px;
   grid-template-columns: repeat(4, 1fr);
   border: var(--border);
+  margin: 20px;
+  margin-bottom: 0;
 }
 .visa-stat {
   padding: 24px 28px;
@@ -1133,4 +1134,101 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
   .visa-section { padding: 24px 16px; }
   .visa-topbar { padding: 0 16px; }
   .vs-header { flex-direction: column; align-items: flex-start; }
+}
+
+/* ============================================================
+   SCHOLARSHIP TYPE CARDS
+   ============================================================ */
+.sch-types {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.sch-type-card {
+  border: var(--border);
+  border-bottom: none;
+  background: var(--white);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0;
+}
+.sch-type-card:last-child { border-bottom: var(--border); }
+.sch-type-body {
+  padding: 20px 24px;
+  border-right: var(--border);
+}
+.sch-type-body h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.sch-type-body > p {
+  font-size: .82rem;
+  color: var(--gray-500);
+  margin-bottom: 14px;
+}
+.sch-ex-label {
+  display: block;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.sch-type-body ul {
+  list-style: disc;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.sch-type-body ul li {
+  font-size: .82rem;
+  color: var(--navy);
+}
+.sch-tip {
+  background: #f9ffc0;
+  border-left: 3px solid #c8e000;
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 280px;
+  font-size: .8rem;
+  color: var(--navy);
+  line-height: 1.5;
+}
+.sch-tip svg { flex-shrink: 0; margin-top: 2px; color: var(--gray-500); }
+
+.sch-find-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0;
+}
+.sch-find-list li {
+  font-size: .82rem;
+  color: var(--navy);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.45;
+}
+.sch-find-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 6px;
+  width: 12px; height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%232F9E44' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpolyline points='22 4 12 14.01 9 11.01'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 640px) {
+  .sch-type-card { grid-template-columns: 1fr; }
+  .sch-type-body { border-right: none; border-bottom: var(--border); }
+  .sch-tip { width: 100%; }
 }
