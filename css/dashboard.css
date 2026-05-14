@@ -620,6 +620,93 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
 .saved-remove-btn:hover { color: #e11d48; }
 
 /* ============================================================
+   APPLICATION TRACKER
+   ============================================================ */
+.app-tracker-card {
+  background: #fff;
+}
+
+.app-count {
+  border: var(--border);
+  padding: 4px 10px;
+  font-size: .72rem;
+  font-weight: 800;
+  color: var(--navy);
+  background: var(--lime);
+}
+
+.app-form {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.4fr) minmax(140px, .8fr) minmax(160px, 1fr) auto;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.app-form select,
+.app-form input,
+.application-actions select {
+  min-height: 40px;
+  border: var(--border);
+  background: #fff;
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: .82rem;
+  font-weight: 700;
+  padding: 8px 10px;
+  border-radius: 0;
+  min-width: 0;
+}
+
+.app-form input::placeholder {
+  color: var(--gray-400);
+}
+
+.application-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  border: var(--border);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  background: #fff;
+}
+
+.application-item:last-child {
+  margin-bottom: 0;
+}
+
+.app-note {
+  margin-top: 6px;
+  font-size: .78rem;
+  color: var(--gray-600);
+}
+
+.application-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.app-status {
+  border: var(--border);
+  padding: 5px 8px;
+  min-width: 92px;
+  text-align: center;
+  font-size: .68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: #fff;
+}
+
+.app-status--planning { background: #fff; color: var(--navy); }
+.app-status--preparing { background: var(--lime); color: var(--navy); }
+.app-status--submitted { background: var(--navy); color: var(--lime); }
+.app-status--accepted { background: #dcfce7; color: var(--green); }
+.app-status--rejected { background: #fee2e2; color: var(--red-600); }
+
+/* ============================================================
    BADGES
    ============================================================ */
 .badge {
@@ -955,6 +1042,8 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
   .menu-btn      { display: flex; }
   .mobile-nav    { display: flex; }
   .main          { padding-bottom: 64px; }
+  .app-form { grid-template-columns: 1fr 1fr; }
+  .app-form .btn { justify-content: center; }
   .application-wrap { padding: 0 16px 40px; }
   .application-roadmap { padding-left: 72px; }
   .roadmap-step { left: -72px; width: 54px; height: 54px; font-size: 1.4rem; }
@@ -972,6 +1061,12 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
     padding-left: 60px;
   }
   .saved-action-row { justify-content: flex-start; }
+  .app-form { grid-template-columns: 1fr; }
+  .application-item { grid-template-columns: 1fr; }
+  .application-actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
   .application-hero { padding: 20px 18px; }
   .application-hero p { font-size: .95rem; }
   .application-roadmap { padding-left: 0; }

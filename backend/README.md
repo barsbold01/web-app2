@@ -2,12 +2,13 @@
 
 This backend serves the existing web app data through API routes.
 
-## Run with static JSON data
+## Run with MongoDB data
 
 ```bash
 cd backend
 npm install
 cp .env.example .env
+npm run seed
 npm run dev
 ```
 
@@ -26,6 +27,16 @@ GET http://localhost:3000/api/exams/IELTS
 GET http://localhost:3000/api/favorites?userEmail=test@example.com
 POST http://localhost:3000/api/favorites
 DELETE http://localhost:3000/api/favorites/university/mit?userEmail=test@example.com
+GET http://localhost:3000/api/applications?userEmail=test@example.com
+POST http://localhost:3000/api/applications
+PATCH http://localhost:3000/api/applications/:id
+DELETE http://localhost:3000/api/applications/:id
+POST http://localhost:3000/api/universities
+PATCH http://localhost:3000/api/universities/:id
+DELETE http://localhost:3000/api/universities/:id
+POST http://localhost:3000/api/scholarships
+PATCH http://localhost:3000/api/scholarships/:id
+DELETE http://localhost:3000/api/scholarships/:id
 ```
 
 The backend also serves the frontend files, so the app can be opened from:
@@ -35,9 +46,8 @@ http://localhost:3000
 http://localhost:3000/html/uni.html
 http://localhost:3000/html/scholar.html
 http://localhost:3000/html/exam-info.html
+http://localhost:3000/html/dashboard.html
 ```
-
-## Run with MongoDB data
 
 Set `.env` to:
 
@@ -52,4 +62,14 @@ Then seed the database from the current JSON files:
 ```bash
 npm run seed
 npm run dev
+```
+
+MongoDB collections:
+
+```txt
+universities
+scholarships
+exam_contents
+favorites
+applications
 ```

@@ -95,8 +95,27 @@ export async function createDataStore(projectRoot) {
   }
 
   async function getUniversityById(id) {
+    if (useMongo) {
+      return University.findOne({ id }).lean();
+    }
+
     const universities = await getUniversities();
     return universities.find((university) => university.id === id);
+  }
+
+  async function createUniversity(payload) {
+    if (!useMongo) throw new Error('Admin write routes require DATA_SOURCE=mongo');
+    return University.create(payload);
+  }
+
+  async function updateUniversity(id, payload) {
+    if (!useMongo) throw new Error('Admin write routes require DATA_SOURCE=mongo');
+    return University.findOneAndUpdate({ id }, payload, { new: true, lean: true });
+  }
+
+  async function deleteUniversity(id) {
+    if (!useMongo) throw new Error('Admin write routes require DATA_SOURCE=mongo');
+    return University.findOneAndDelete({ id }).lean();
   }
 
   async function getScholarships() {
@@ -137,8 +156,27 @@ export async function createDataStore(projectRoot) {
   }
 
   async function getScholarshipById(id) {
+    if (useMongo) {
+      return Scholarship.findOne({ id }).lean();
+    }
+
     const scholarships = await getScholarships();
     return scholarships.find((scholarship) => scholarship.id === id);
+  }
+
+  async function createScholarship(payload) {
+    if (!useMongo) throw new Error('Admin write routes require DATA_SOURCE=mongo');
+    return Scholarship.create(payload);
+  }
+
+  async function updateScholarship(id, payload) {
+    if (!useMongo) throw new Error('Admin write routes require DATA_SOURCE=mongo');
+    return Scholarship.findOneAndUpdate({ id }, payload, { new: true, lean: true });
+  }
+
+  async function deleteScholarship(id) {
+    if (!useMongo) throw new Error('Admin write routes require DATA_SOURCE=mongo');
+    return Scholarship.findOneAndDelete({ id }).lean();
   }
 
   async function getExamContent() {
@@ -169,9 +207,15 @@ export async function createDataStore(projectRoot) {
     getUniversities,
     searchUniversities,
     getUniversityById,
+    createUniversity,
+    updateUniversity,
+    deleteUniversity,
     getScholarships,
     searchScholarships,
     getScholarshipById,
+    createScholarship,
+    updateScholarship,
+    deleteScholarship,
     getExamContent,
     getExamByKey
   };

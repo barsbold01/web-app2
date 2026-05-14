@@ -7,6 +7,10 @@ function getUser() {
   catch { return null; }
 }
 
+function apiBase() {
+  return window.API_BASE_URL || (window.location.port === '3000' ? '' : 'http://localhost:3000');
+}
+
 function getSavedUnis()     { return typeof fav_getSavedUnis     === 'function' ? fav_getSavedUnis()     : []; }
 function getSavedScholars() { return typeof fav_getSavedScholars === 'function' ? fav_getSavedScholars() : []; }
 
@@ -144,6 +148,14 @@ const EXAM_PREP = [
   { name: 'TOPIK',  target: 'Зорилт: 4-р түвшин',  pct: 80, fill: 'fill-purple'},
 ];
 
+const APP_STATUS = [
+  { value: 'planning', label: 'Төлөвлөж байна' },
+  { value: 'preparing', label: 'Бэлдэж байна' },
+  { value: 'submitted', label: 'Илгээсэн' },
+  { value: 'accepted', label: 'Тэнцсэн' },
+  { value: 'rejected', label: 'Тэнцээгүй' },
+];
+
 // ── Sub-components ────────────────────────────────────────────────────────────
 
 function QuickActionsCard() {
@@ -272,6 +284,144 @@ function SavedScholarCard({ scholars, onRemove }) {
           );
         })
       )}
+    </div>
+  );
+}
+
+function ApplicationTrackerCard({ userEmail, savedUnis, savedScholars }) {
+  const targets = [
+    ...savedUnis.map((item) => ({
+      key: `university:${item.id}`,
+      targetType: 'university',
+      targetId: item.id,
+      title: item.name,
+      deadline: item.deadlineLabel || item.deadline || ''
+    })),
+    ...savedScholars.map((item) => ({
+      key: `scholarship:${item.id}`,
+      targetType: 'scholarship',
+      targetId: item.id,
+      title: item.name,
+      deadline: item.deadline || ''
+    }))
+  ];
+
+  const [applications, setApplications] = useState([]);
+  const [selectedTarget, setSelectedTarget] = useState(targets[0]?.key || '');
+  const [status, setStatus] = useState('planning');
+  const [notes, setNotes] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!selectedTarget && targets[0]?.key) setSelectedTarget(targets[0].key);
+  }, [selectedTarget, targets]);
+
+  async function loadApplications() {
+    const response = await fetch(`${apiBase()}/api/applications?userEmail=${encodeURIComponent(userEmail)}`);
+    if (response.ok) setApplications(await response.json());
+  }
+
+  useEffect(() => {
+    loadApplications().catch(() => {});
+  }, [userEmail]);
+
+  async function createApplication(e) {
+    e.preventDefault();
+    const target = targets.find((item) => item.key === selectedTarget);
+    if (!target) return;
+
+    setLoading(true);
+    try {
+      const response = await fetch(`${apiBase()}/api/applications`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userEmail, ...target, status, notes })
+      });
+
+      if (response.ok) {
+        setNotes('');
+        setStatus('planning');
+        await loadApplications();
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function updateStatus(id, nextStatus) {
+    const response = await fetch(`${apiBase()}/api/applications/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: nextStatus })
+    });
+
+    if (response.ok) {
+      setApplications((current) =>
+        current.map((item) => item._id === id ? { ...item, status: nextStatus } : item)
+      );
+    }
+  }
+
+  async function removeApplication(id) {
+    const response = await fetch(`${apiBase()}/api/applications/${id}`, { method: 'DELETE' });
+    if (response.ok) setApplications((current) => current.filter((item) => item._id !== id));
+  }
+
+  return (
+    <div className="card app-tracker-card">
+      <div className="card-title-row">
+        <span className="card-title">Өргөдлийн Хяналт</span>
+        <span className="app-count">{applications.length} өргөдөл</span>
+      </div>
+
+      <form className="app-form" onSubmit={createApplication}>
+        <select value={selectedTarget} onChange={(e) => setSelectedTarget(e.target.value)} disabled={targets.length === 0}>
+          {targets.length === 0 ? (
+            <option value="">Эхлээд сургууль эсвэл тэтгэлэг хадгална уу</option>
+          ) : targets.map((target) => (
+            <option key={target.key} value={target.key}>{target.title}</option>
+          ))}
+        </select>
+        <select value={status} onChange={(e) => setStatus(e.target.value)}>
+          {APP_STATUS.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
+        </select>
+        <input
+          type="text"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          placeholder="Тэмдэглэл..."
+        />
+        <button className="btn btn-indigo" type="submit" disabled={loading || targets.length === 0}>
+          Нэмэх
+        </button>
+      </form>
+
+      {applications.length === 0 ? (
+        <div className="saved-empty">Өргөдөл бүртгээгүй байна. Хадгалсан сургуулиасаа төлөвлөгөө үүсгээрэй.</div>
+      ) : applications.map((application) => {
+        const statusLabel = APP_STATUS.find((item) => item.value === application.status)?.label || application.status;
+        return (
+          <div key={application._id} className="application-item">
+            <div>
+              <div className="saved-name">{application.title}</div>
+              <div className="saved-meta">
+                {application.targetType === 'university' ? 'Их сургууль' : 'Тэтгэлэг'}
+                {application.deadline ? ` · ${application.deadline}` : ''}
+              </div>
+              {application.notes && <div className="app-note">{application.notes}</div>}
+            </div>
+            <div className="application-actions">
+              <select value={application.status} onChange={(e) => updateStatus(application._id, e.target.value)}>
+                {APP_STATUS.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
+              </select>
+              <span className={`app-status app-status--${application.status}`}>{statusLabel}</span>
+              <button className="saved-remove-btn" aria-label="Устгах" onClick={() => removeApplication(application._id)}>
+                <XIcon />
+              </button>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -411,6 +561,7 @@ function ActivityCard({ savedUnis, savedScholars }) {
 export default function DashboardApp() {
   const user = getUser();
   const name = user?.name || 'Хэрэглэгч';
+  const userEmail = user?.email || 'guest';
 
   const [savedUnis,     setSavedUnis]     = useState(getSavedUnis);
   const [savedScholars, setSavedScholars] = useState(getSavedScholars);
@@ -452,6 +603,7 @@ export default function DashboardApp() {
       <div className="dash-grid">
         <div className="dash-col-main">
           <QuickActionsCard />
+          <ApplicationTrackerCard userEmail={userEmail} savedUnis={savedUnis} savedScholars={savedScholars} />
           <SavedUniCard     unis={savedUnis}         onRemove={handleRemove} />
           <SavedScholarCard scholars={savedScholars} onRemove={handleRemove} />
         </div>

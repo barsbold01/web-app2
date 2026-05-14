@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createDataStore } from './dataStore.js';
 import { createFavoritesStore } from './favoritesStore.js';
+import { createApplicationsStore } from './applicationsStore.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,6 +15,7 @@ const app = express();
 const port = Number(process.env.PORT || 3000);
 const dataStore = await createDataStore(projectRoot);
 const favoritesStore = createFavoritesStore(projectRoot);
+const applicationsStore = createApplicationsStore(projectRoot);
 
 app.use(cors());
 app.use(express.json());
@@ -44,6 +46,39 @@ app.get('/api/universities/:id', async (req, res, next) => {
   }
 });
 
+app.post('/api/universities', async (req, res, next) => {
+  try {
+    if (!req.body?.id || !req.body?.name) {
+      return res.status(400).json({ message: 'University id and name are required' });
+    }
+
+    const university = await dataStore.createUniversity(req.body);
+    return res.status(201).json(university);
+  } catch (error) {
+    return next(error);
+  }
+});
+
+app.patch('/api/universities/:id', async (req, res, next) => {
+  try {
+    const university = await dataStore.updateUniversity(req.params.id, req.body);
+    if (!university) return res.status(404).json({ message: 'University not found' });
+    return res.json(university);
+  } catch (error) {
+    return next(error);
+  }
+});
+
+app.delete('/api/universities/:id', async (req, res, next) => {
+  try {
+    const university = await dataStore.deleteUniversity(req.params.id);
+    if (!university) return res.status(404).json({ message: 'University not found' });
+    return res.json({ deleted: true, id: req.params.id });
+  } catch (error) {
+    return next(error);
+  }
+});
+
 app.get('/api/scholarships', async (req, res, next) => {
   try {
     res.json(await dataStore.searchScholarships(req.query));
@@ -57,6 +92,43 @@ app.get('/api/favorites', async (req, res, next) => {
     res.json(await favoritesStore.getFavorites(req.query.userEmail));
   } catch (error) {
     next(error);
+  }
+});
+
+app.get('/api/applications', async (req, res, next) => {
+  try {
+    res.json(await applicationsStore.getApplications(req.query.userEmail));
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.post('/api/applications', async (req, res, next) => {
+  try {
+    const application = await applicationsStore.createApplication(req.body);
+    return res.status(201).json(application);
+  } catch (error) {
+    return next(error);
+  }
+});
+
+app.patch('/api/applications/:id', async (req, res, next) => {
+  try {
+    const application = await applicationsStore.updateApplication(req.params.id, req.body);
+    if (!application) return res.status(404).json({ message: 'Application not found' });
+    return res.json(application);
+  } catch (error) {
+    return next(error);
+  }
+});
+
+app.delete('/api/applications/:id', async (req, res, next) => {
+  try {
+    const application = await applicationsStore.deleteApplication(req.params.id);
+    if (!application) return res.status(404).json({ message: 'Application not found' });
+    return res.json({ deleted: true, id: req.params.id });
+  } catch (error) {
+    return next(error);
   }
 });
 
@@ -104,6 +176,39 @@ app.get('/api/scholarships/:id', async (req, res, next) => {
   }
 });
 
+app.post('/api/scholarships', async (req, res, next) => {
+  try {
+    if (!req.body?.id || !req.body?.name) {
+      return res.status(400).json({ message: 'Scholarship id and name are required' });
+    }
+
+    const scholarship = await dataStore.createScholarship(req.body);
+    return res.status(201).json(scholarship);
+  } catch (error) {
+    return next(error);
+  }
+});
+
+app.patch('/api/scholarships/:id', async (req, res, next) => {
+  try {
+    const scholarship = await dataStore.updateScholarship(req.params.id, req.body);
+    if (!scholarship) return res.status(404).json({ message: 'Scholarship not found' });
+    return res.json(scholarship);
+  } catch (error) {
+    return next(error);
+  }
+});
+
+app.delete('/api/scholarships/:id', async (req, res, next) => {
+  try {
+    const scholarship = await dataStore.deleteScholarship(req.params.id);
+    if (!scholarship) return res.status(404).json({ message: 'Scholarship not found' });
+    return res.json({ deleted: true, id: req.params.id });
+  } catch (error) {
+    return next(error);
+  }
+});
+
 app.get('/api/exams', async (req, res, next) => {
   try {
     res.json(await dataStore.getExamContent());
@@ -134,7 +239,7 @@ app.use((req, res) => {
 
 app.use((error, req, res, next) => {
   console.error(error);
-  res.status(500).json({ message: 'Server error' });
+  res.status(error.status || 500).json({ message: error.status ? error.message : 'Server error' });
 });
 
 app.listen(port, () => {
