@@ -861,6 +861,350 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
   padding: 0 28px 40px;
 }
 
+.application-wrap > .application-hero,
+.application-wrap > .application-roadmap,
+.application-wrap > .application-help {
+  display: none;
+}
+
+.application-redesign {
+  max-width: 1180px;
+}
+
+.application-hub-hero {
+  background: var(--navy);
+  border: var(--border4);
+  padding: 40px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.application-hub-icon {
+  width: 76px;
+  height: 76px;
+  background: var(--lime);
+  border: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.application-hub-copy h2 {
+  color: var(--white);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: .95;
+  letter-spacing: -0.04em;
+  margin-bottom: 14px;
+}
+
+.application-hub-copy p {
+  color: rgba(255,255,255,.68);
+  max-width: 740px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.application-hub-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.application-hub-stats span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--white);
+  font-weight: 800;
+  font-size: .86rem;
+}
+
+.application-hub-stats svg {
+  color: var(--lime);
+  flex-shrink: 0;
+}
+
+.application-hub-tips {
+  background: var(--lime);
+  border: var(--border4);
+  padding: 28px;
+  margin-bottom: 28px;
+}
+
+.application-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.application-heading-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--navy);
+  border: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.application-heading h2 {
+  color: var(--navy);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.application-tip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.application-tip {
+  background: var(--white);
+  border: var(--border);
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.application-tip span {
+  width: 26px;
+  height: 26px;
+  background: var(--navy);
+  color: var(--lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.application-tip p {
+  color: var(--navy);
+  font-size: .86rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.application-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 32px 0 18px;
+}
+
+.application-title-row div {
+  width: 44px;
+  height: 4px;
+  background: var(--lime);
+  border: 1px solid var(--navy);
+}
+
+.application-title-row h2 {
+  color: var(--navy);
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.application-phase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.application-phase-card {
+  background: var(--white);
+  border: var(--border);
+  padding: 22px;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.application-phase-card:hover {
+  border-color: var(--lime);
+  box-shadow: 4px 4px 0 var(--lime);
+}
+
+.application-phase-number {
+  width: 48px;
+  height: 48px;
+  background: var(--lime);
+  border: var(--border);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.application-phase-card h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.application-phase-card p {
+  color: var(--gray-600);
+  font-size: .9rem;
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+.application-phase-card div:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.application-phase-card span {
+  border: 1.5px solid #D1D5DB;
+  color: var(--gray-600);
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+}
+
+.application-guides-panel {
+  background: var(--white);
+  border: var(--border);
+  padding: 30px;
+  margin-bottom: 28px;
+}
+
+.application-heading--panel {
+  border-left: 4px solid var(--lime);
+  padding-left: 14px;
+}
+
+.application-guides-sub {
+  color: var(--gray-600);
+  margin-bottom: 20px;
+  font-size: .95rem;
+}
+
+.application-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.application-guide-card {
+  border: var(--border);
+  background: var(--white);
+  padding: 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: border-color .15s, background .15s, box-shadow .15s;
+}
+
+.application-guide-card:hover {
+  border-color: var(--lime);
+  background: #fbfff0;
+  box-shadow: 3px 3px 0 var(--lime);
+}
+
+.application-guide-icon {
+  width: 52px;
+  height: 52px;
+  border: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.application-guide-icon--blue { background: #3B5BDB; }
+.application-guide-icon--purple { background: #7048E8; }
+.application-guide-icon--green { background: #2F9E44; }
+.application-guide-icon--orange { background: #E8590C; }
+
+.application-guide-card strong {
+  display: block;
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.application-guide-card small {
+  color: var(--gray-500);
+  display: block;
+  font-size: .82rem;
+  line-height: 1.45;
+}
+
+.application-guides-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 22px;
+  background: var(--navy);
+  color: var(--lime);
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: .06em;
+  padding: 14px 28px;
+}
+
+.application-guides-cta:hover {
+  background: #000;
+}
+
+.application-mentor-cta {
+  background: var(--lime);
+  border: var(--border4);
+  padding: 42px 28px;
+  text-align: center;
+}
+
+.application-mentor-cta h3 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+}
+
+.application-mentor-cta p {
+  max-width: 680px;
+  margin: 0 auto 20px;
+  color: rgba(10,14,39,.72);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.application-mentor-cta a {
+  display: inline-flex;
+  background: var(--navy);
+  color: var(--lime);
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: .06em;
+  padding: 14px 32px;
+}
+
+.application-mentor-cta a:hover {
+  background: #000;
+}
+
 .application-hero {
   background: var(--navy);
   color: var(--white);
@@ -1045,6 +1389,9 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
   .app-form { grid-template-columns: 1fr 1fr; }
   .app-form .btn { justify-content: center; }
   .application-wrap { padding: 0 16px 40px; }
+  .application-hub-hero { padding: 28px; }
+  .application-tip-grid,
+  .application-phase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .application-roadmap { padding-left: 72px; }
   .roadmap-step { left: -72px; width: 54px; height: 54px; font-size: 1.4rem; }
 }
@@ -1067,6 +1414,26 @@ button { font-family: var(--font-body); cursor: pointer; background: none; borde
     justify-content: flex-start;
     flex-wrap: wrap;
   }
+  .application-hub-hero {
+    flex-direction: column;
+    padding: 24px 18px;
+  }
+  .application-hub-icon {
+    width: 62px;
+    height: 62px;
+  }
+  .application-hub-copy h2 { font-size: 2.1rem; }
+  .application-hub-copy p { font-size: .95rem; }
+  .application-hub-stats { gap: 10px; }
+  .application-hub-stats span { font-size: .78rem; }
+  .application-hub-tips,
+  .application-guides-panel,
+  .application-mentor-cta { padding: 22px 16px; }
+  .application-tip-grid,
+  .application-phase-grid,
+  .application-guide-grid { grid-template-columns: 1fr; }
+  .application-title-row h2,
+  .application-heading h2 { font-size: 1.15rem; }
   .application-hero { padding: 20px 18px; }
   .application-hero p { font-size: .95rem; }
   .application-roadmap { padding-left: 0; }
