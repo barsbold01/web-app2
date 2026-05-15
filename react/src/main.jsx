@@ -1,9 +1,13 @@
 import { createRoot } from 'react-dom/client';
+import App              from './App';
 import UniSection       from './UniSearchFilter';
 import ScholarSection   from './ScholarSearchFilter';
 import DashboardApp     from './DashboardApp';
 import ExamInfoApp      from './ExamInfoApp';
 import ApplicationPage  from './ApplicationPage';
+
+const root = document.getElementById('root');
+if (root) createRoot(root).render(<App />);
 
 const uniRoot = document.getElementById('uni-search-root');
 if (uniRoot) createRoot(uniRoot).render(<UniSection />);
