@@ -226,14 +226,18 @@
   line-height: 1.7;
 }
 
-.terms-note a {
+.terms-note a,
+.terms-note button {
   color: var(--navy);
   text-decoration: underline;
   font-weight: 700;
   transition: color .15s;
+  font-size: inherit;
+  line-height: inherit;
 }
 
-.terms-note a:hover { color: var(--gray-600); }
+.terms-note a:hover,
+.terms-note button:hover { color: var(--gray-600); }
 
 /* ── PASSWORD TOGGLE ── */
 .input-wrap {

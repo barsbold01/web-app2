@@ -127,6 +127,10 @@ function PageHeader({ page }) {
 
 export default function App() {
   const initialPage = useMemo(() => {
+    if (pages.some((page) => page.id === window.__INITIAL_APP_PAGE__)) {
+      return window.__INITIAL_APP_PAGE__;
+    }
+
     const hash = window.location.hash.replace('#', '');
     return pages.some((page) => page.id === hash) ? hash : 'dashboard';
   }, []);
@@ -137,7 +141,7 @@ export default function App() {
   const showPage = (page) => {
     if (!pages.some((item) => item.id === page)) return;
     setActivePage(page);
-    history.replaceState(null, '', page === 'dashboard' ? '/' : `#${page}`);
+    history.replaceState(null, '', page === 'dashboard' ? window.location.pathname : `${window.location.pathname}#${page}`);
     window.scrollTo(0, 0);
   };
 

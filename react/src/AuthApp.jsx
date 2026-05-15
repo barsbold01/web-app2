@@ -26,7 +26,7 @@ function createSession(user) {
 }
 
 function goToDashboard() {
-  window.location.href = 'dashboard.html';
+  window.location.href = '/app';
 }
 
 function EyeIcon({ hidden }) {

@@ -13,19 +13,68 @@ const landingPageHtml = () =>
   readFileSync(landingPagePath, 'utf8')
     .replaceAll('../css/', '/css/')
     .replaceAll('href="index.html"', 'href="/"')
-    .replaceAll('href="dashboard.html"', 'href="/html/dashboard.html"')
-    .replaceAll('href="uni.html"', 'href="/html/uni.html"')
-    .replaceAll('href="scholar.html"', 'href="/html/scholar.html"')
-    .replaceAll('href="exam-info.html"', 'href="/html/exam-info.html"')
+    .replaceAll('href="dashboard.html"', 'href="/app"')
+    .replaceAll('href="uni.html"', 'href="/app#universities"')
+    .replaceAll('href="scholar.html"', 'href="/app#scholarships"')
+    .replaceAll('href="exam-info.html"', 'href="/app#exams"')
     .replaceAll('href="auth.html"', 'href="/html/auth.html"')
-    .replaceAll('href="guide.html"', 'href="/html/guide.html"');
+    .replaceAll('href="guide.html"', 'href="/app#application"');
+
+const reactAppHtml = (initialPage = 'dashboard') => `<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <script type="module">
+    import RefreshRuntime from "/@react-refresh";
+    RefreshRuntime.injectIntoGlobalHook(window);
+    window.$RefreshReg$ = () => {};
+    window.$RefreshSig$ = () => (type) => type;
+    window.__vite_plugin_react_preamble_installed__ = true;
+  </script>
+  <script type="module" src="/@vite/client"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Хяналтын самбар — Дараагийн Алхам</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="/css/uni.css" />
+  <link rel="stylesheet" href="/css/scholar.css" />
+  <link rel="stylesheet" href="/css/exam.css" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+  <div id="root"></div>
+  <script>window.__INITIAL_APP_PAGE__ = ${JSON.stringify(initialPage)};</script>
+  <script src="/js/favorites.js"></script>
+  <script src="/js/data.js"></script>
+  <script type="module" src="/react/src/main.jsx"></script>
+</body>
+</html>`;
 
 const reactDevPages = () => ({
   name: 'react-dev-pages',
   apply: 'serve',
   transformIndexHtml(html, context) {
+    const appPages = {
+      '/html/dashboard.html': 'dashboard',
+      '/html/uni.html': 'universities',
+      '/html/scholar.html': 'scholarships',
+      '/html/exam-info.html': 'exams',
+      '/html/guide.html': 'application',
+    };
+    const appPage = appPages[context.originalUrl] || appPages[context.path];
+    if (appPage) {
+      return reactAppHtml(appPage);
+    }
+
+    if (context.originalUrl === '/app' || context.originalUrl === '/app/') {
+      return reactAppHtml();
+    }
+
     if (context.path === '/' || context.path === '/index.html') {
       return landingPageHtml();
+    }
+
+    if (context.path === '/app' || context.path === '/app/') {
+      return reactAppHtml();
     }
 
     return html.replace(
