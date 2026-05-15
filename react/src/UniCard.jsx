@@ -14,11 +14,20 @@ const ScholarBadgeSVG = () => (
   </svg>
 );
 
+function assetPath(path) {
+  if (!path) return '';
+  if (/^(https?:)?\/\//.test(path) || path.startsWith('/')) return path;
+  return `/${path.replace(/^(\.\.\/)+/, '')}`;
+}
+
 export default function UniCard({ uni, onCardClick }) {
   const isSavedFn = () =>
     typeof fav_isUniSaved === 'function' && fav_isUniSaved(uni.id);
 
   const [saved, setSaved] = useState(isSavedFn);
+  const [imageReady, setImageReady] = useState(false);
+  const [imageFailed, setImageFailed] = useState(false);
+  const imageSrc = assetPath(uni.image);
 
   // Keep in sync when modal save button or another card fires favoritesChanged
   useEffect(() => {
@@ -42,13 +51,16 @@ export default function UniCard({ uni, onCardClick }) {
   return (
     <div className="uni-card" onClick={() => onCardClick(uni)}>
       <div className="uni-card__img-wrap">
-        <div className="uni-card__img-fallback">{uni.logo}</div>
-        <img
-          src={uni.image}
-          alt={uni.nameEn}
-          loading="lazy"
-          onError={e => { e.target.style.display = 'none'; }}
-        />
+        {(!imageReady || imageFailed) && <div className="uni-card__img-fallback">{uni.logo}</div>}
+        {!imageFailed && imageSrc && (
+          <img
+            src={imageSrc}
+            alt={uni.nameEn || uni.name}
+            loading="lazy"
+            onLoad={() => setImageReady(true)}
+            onError={() => setImageFailed(true)}
+          />
+        )}
         <span className="uni-card__rank">{uni.rankLabel}</span>
         <button
           className={`heart-btn${saved ? ' is-active' : ''}`}

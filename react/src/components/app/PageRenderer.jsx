@@ -21,13 +21,17 @@ export default function PageRenderer({ activePage }) {
       </PageFrame>
 
       <PageFrame id="universities" activePage={activePage}>
-        <PageHeader page="universities" />
-        <UniSection />
+        <div className="db-content">
+          <PageHeader page="universities" />
+          <UniSection />
+        </div>
       </PageFrame>
 
       <PageFrame id="scholarships" activePage={activePage}>
-        <PageHeader page="scholarships" />
-        <ScholarSection />
+        <div className="db-content">
+          <PageHeader page="scholarships" />
+          <ScholarSection />
+        </div>
       </PageFrame>
 
       <PageFrame id="exams" activePage={activePage}>
