@@ -1,44 +1,31 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { readFileSync } from 'node:fs';
 import { fileURLToPath, URL } from 'node:url';
 
 const reactCacheDir = fileURLToPath(new URL('./node_modules/.vite', import.meta.url));
+const landingPagePath = fileURLToPath(new URL('../html/index.html', import.meta.url));
 
 const reactDependency = (path) =>
   fileURLToPath(new URL(`./node_modules/${path}`, import.meta.url));
+
+const landingPageHtml = () =>
+  readFileSync(landingPagePath, 'utf8')
+    .replaceAll('../css/', '/css/')
+    .replaceAll('href="index.html"', 'href="/"')
+    .replaceAll('href="dashboard.html"', 'href="/html/dashboard.html"')
+    .replaceAll('href="uni.html"', 'href="/html/uni.html"')
+    .replaceAll('href="scholar.html"', 'href="/html/scholar.html"')
+    .replaceAll('href="exam-info.html"', 'href="/html/exam-info.html"')
+    .replaceAll('href="auth.html"', 'href="/html/auth.html"')
+    .replaceAll('href="guide.html"', 'href="/html/guide.html"');
 
 const reactDevPages = () => ({
   name: 'react-dev-pages',
   apply: 'serve',
   transformIndexHtml(html, context) {
     if (context.path === '/' || context.path === '/index.html') {
-      return `<!DOCTYPE html>
-<html lang="mn">
-<head>
-  <script type="module">
-    import RefreshRuntime from "/@react-refresh";
-    RefreshRuntime.injectIntoGlobalHook(window);
-    window.$RefreshReg$ = () => {};
-    window.$RefreshSig$ = () => (type) => type;
-    window.__vite_plugin_react_preamble_installed__ = true;
-  </script>
-  <script type="module" src="/@vite/client"></script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Хяналтын самбар — Дараагийн Алхам</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="/css/uni.css" />
-  <link rel="stylesheet" href="/css/scholar.css" />
-  <link rel="stylesheet" href="/css/exam.css" />
-  <link rel="stylesheet" href="/css/dashboard.css" />
-</head>
-<body>
-  <div id="root"></div>
-  <script src="/js/favorites.js"></script>
-  <script src="/js/data.js"></script>
-  <script type="module" src="/react/src/main.jsx"></script>
-</body>
-</html>`;
+      return landingPageHtml();
     }
 
     return html.replace(
