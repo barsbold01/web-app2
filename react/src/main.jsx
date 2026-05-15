@@ -5,6 +5,7 @@ import ScholarSection   from './ScholarSearchFilter';
 import DashboardApp     from './DashboardApp';
 import ExamInfoApp      from './ExamInfoApp';
 import ApplicationPage  from './ApplicationPage';
+import AuthApp          from './AuthApp';
 
 const root = document.getElementById('root');
 if (root) createRoot(root).render(<App />);
@@ -23,3 +24,6 @@ if (examRoot) createRoot(examRoot).render(<ExamInfoApp />);
 
 const appRoot = document.getElementById('application-root');
 if (appRoot) createRoot(appRoot).render(<ApplicationPage />);
+
+const authRoot = document.getElementById('auth-root');
+if (authRoot) createRoot(authRoot).render(<AuthApp />);
