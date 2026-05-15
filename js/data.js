@@ -14,7 +14,7 @@ async function loadJson(apiPath, fallbackPath) {
     return fallbackResponse.json();
   }
 }
-
+    
 window.appData = Promise.all([
   loadJson('/api/universities', '../js/data/static/universities.json'),
   loadJson('/api/scholarships', '../js/data/static/scholarships.json'),

@@ -12,7 +12,7 @@ menuBtn?.addEventListener('click', () => {
 overlay?.addEventListener('click', () => {
   sidebar?.classList.remove('is-open');
   overlay?.classList.remove('is-visible');
-});
+});    
   
 const examMeta = {
   IELTS: {
