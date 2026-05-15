@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AuthNavbar from './components/auth/AuthNavbar';
 import AuthTabs from './components/auth/AuthTabs';
 import LoginForm from './components/auth/LoginForm';
 import RegisterForm from './components/auth/RegisterForm';
@@ -102,31 +103,34 @@ export default function AuthApp() {
   };
 
   return (
-    <section className="auth-section">
-      <div className="auth-wrapper">
-        <div className="auth-card">
-          <AuthTabs activeTab={tab} onChange={setTab} />
+    <>
+      <AuthNavbar />
+      <section className="auth-section">
+        <div className="auth-wrapper">
+          <div className="auth-card">
+            <AuthTabs activeTab={tab} onChange={setTab} />
 
-          {tab === 'login' ? (
-            <LoginForm
-              form={login}
-              errors={loginErrors}
-              loading={loading === 'login'}
-              onChange={updateLogin}
-              onSubmit={handleLogin}
-              onSocialLogin={handleSocialLogin}
-            />
-          ) : (
-            <RegisterForm
-              form={register}
-              error={registerError}
-              loading={loading === 'register'}
-              onChange={updateRegister}
-              onSubmit={handleRegister}
-            />
-          )}
+            {tab === 'login' ? (
+              <LoginForm
+                form={login}
+                errors={loginErrors}
+                loading={loading === 'login'}
+                onChange={updateLogin}
+                onSubmit={handleLogin}
+                onSocialLogin={handleSocialLogin}
+              />
+            ) : (
+              <RegisterForm
+                form={register}
+                error={registerError}
+                loading={loading === 'register'}
+                onChange={updateRegister}
+                onSubmit={handleRegister}
+              />
+            )}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
